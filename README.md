@@ -81,12 +81,10 @@ ___
 * [Kanban](https://www.notion.so/Tableau-de-bord-SportSee-6686aa4b5f44417881a4884c9af5669e)
 * API has active data for use Ids 12 and 18
 * For devs, available EndPoints: 
-* http://localhost:3001-/home/id
-* http://localhost:3001-/user/id
-* http://localhost:3001-/user/activity/id
-* http://localhost:3001-/user/id/average-sessions
-* http://localhost:3001-/user/id/today-score
-* http://localhost:3001-/user/id/key-data
+* http://localhost:3001/home/id
+* http://localhost:3001/user/${userId}/activity
+* http://localhost:3001/user/${userId}/average-sessions
+* http://localhost:3001/user/${userId}/performance
 
 
 # IN PROGRESS 

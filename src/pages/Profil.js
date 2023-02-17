@@ -9,6 +9,8 @@ import lipid from "assets/lipid.png";
 
 
 
+
+
 const Profil = () => {
   return (
 		<>

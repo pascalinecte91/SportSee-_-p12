@@ -4,24 +4,20 @@
     flex-direction: column;
     width: 500px;
     margin-bottom: 2rem;
-    grid-column: span 4;
+    margin-left: 5rem;
 
-
-&__title {
+&_title {
     display: flex;
     align-items: center;
-    font-size: 46px;
+    font-size: 26px;
     font-weight: 600;
-}
-
-h1 {
-    font-size: 46px;
-    line-height: 0;
-    padding-left: 1rem;
+        font-size: 26px;
+   margin-left: 20px;
     color: red;
 }
-
-&__description {
+&_description {
     font-size: 18px;
+    margin-left: 20px;
 }
 }
+

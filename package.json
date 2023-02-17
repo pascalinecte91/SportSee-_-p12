@@ -1,5 +1,5 @@
 {
-  "homepages": "https://pascalinecte.github.io/SportSee_p12/",
+  "homepage": "https://pascalinecte91.github.io/SportSee_p12/",
   "name": "sportsee_p12",
   "version": "0.1.0",
   "private": true,
@@ -22,6 +22,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
+    "predeploy": "npm run build",
     "deploy": "gh-pages -d build"
   },
   "browserslist": {
@@ -37,6 +38,7 @@
     ]
   },
   "devDependencies": {
-    "gh-pages": "^5.0.0"
+    "gh-pages": "^5.0.0",
+    "jsdoc": "^4.0.1"
   }
 }

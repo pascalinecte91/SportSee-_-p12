@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import { Routes, Route } from "react-router-dom";
 import Home from "./pages/Home.js";
 import Profil from "./pages/Profil.js";
@@ -12,8 +12,8 @@ import VerticalSidebar from "./Components/verticalSidebar/VerticalSidebar.jsx";
  */
 
 const App = () => {
-  return (
-		<>
+	return (
+		<div className="container">
 			<Navbar />
 			<VerticalSidebar />
 			<Routes>
@@ -22,8 +22,8 @@ const App = () => {
 				<Route path="/reglage" element={<Reglage />}></Route>
 				<Route path="/communaute" element={<Communaute />}></Route>
 			</Routes>
-		</>
-  );
-  }
-  
+		</div>
+	);
+};
+
 export default App;
