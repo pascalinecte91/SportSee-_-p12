@@ -4,6 +4,7 @@ import logo from "assets/logo.png";
 import "./navbar.scss";
 
 /**
+ * 
  * Component that displays the project navigation bar
  * @component
  */

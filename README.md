@@ -21,7 +21,7 @@ ___
 
 ___
 
-## Dependencies
+## ## Libraries / dependencies / Packages
 - [React](https://fr.reactjs.org/) version 18.2.0
 
   `$ npx create-react-app +name-project` (create projet on computer)
@@ -31,6 +31,16 @@ ___
   To learn React, check out the [documentation](https://reactjs.org/).
 - [Recharts](https://www.npmjs.com/package/recharts) version 2.4.2
 - [Sass](https://stackoverflow.com/questions/67352418/how-to-add-scss-styles-to-a-react-project) version 1.58.1
+
+- [Axios](https://github.com/axios) version 1.3.3
+
+- [gh-pages](https://pascalinecte.github.io/SportSee_p12/)  ici.
+
+Install :  (see wiki p11)
+- npm install -D gh-pages
+- npm run deploy
+- npm run build
+
 ___
 
 ## Available Scripts

@@ -1,5 +1,4 @@
 import React from 'react';
-import Navbar from "Components/navbar/Navbar";
 
 
 //* just component display page "reglage"
@@ -7,7 +6,6 @@ import Navbar from "Components/navbar/Navbar";
 const Reglage = () => {
   return (
     <div>
-    <Navbar />
     <section className="reglage_container">
       <h1>Réglage</h1>
     </section>

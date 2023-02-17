@@ -1,0 +1,27 @@
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    width: 500px;
+    margin-bottom: 2rem;
+    grid-column: span 4;
+
+
+&__title {
+    display: flex;
+    align-items: center;
+    font-size: 46px;
+    font-weight: 600;
+}
+
+h1 {
+    font-size: 46px;
+    line-height: 0;
+    padding-left: 1rem;
+    color: red;
+}
+
+&__description {
+    font-size: 18px;
+}
+}
