@@ -1,23 +1,22 @@
 import PropTypes from "prop-types";
 import React from "react";
+import calories from "assets/calories.png";
 
 
-
-/**
- * @param {*} { icon, quantity, unity, type }
- * @description Component  calories, proteins, weight, carbohydrates
- * @return {JSX.Element}}
- */
+ //**! */ @param {*} { icon, quantity, unity, type }
+ //**  @description Component  calories, proteins, weight, carbohydrates
+ //**  @return {JSX.Element}}
+ 
 
 const CardNutriment = ({ icon, quantity, unity, type }) => {
 	return (
 		<div className="card">
-			<div className="card_icon">
+			<div className="card__icon">
 				<img src={icon} alt="icon" />
 			</div>
-			<div className="card_content">
-				<p className="card_quantity">{quantity}{unity}</p>
-				<p className="card_type">{type}</p>
+			<div className="card__content">
+				<p className="card__quantity">{quantity}{unity}</p>
+				<p className="card__type">{type}</p>
 			</div>
 		</div>
 	);

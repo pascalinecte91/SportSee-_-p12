@@ -15,8 +15,8 @@ const Profil = () => {
   return (
 		<>
 			<Title />
-			<section className="profil_container">
-				<h1>Profil</h1>
+			<section className="profil__container">
+				<Title firstName={firstName} />
 
 				<CardNutriment />
 			</section>

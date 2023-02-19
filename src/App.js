@@ -1,9 +1,9 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
-import Home from "./pages/Home.js";
-import Profil from "./pages/Profil.js";
-import Reglage from "./pages/Reglage.js";
-import Communaute from "./pages/Communaute.js";
+import Home from "pages/home/Home.js";
+import Profil from "pages/profil/Profil.js";
+import Reglage from "pages/reglage/Reglage.js";
+import Communaute from "pages/communaute/Communaute.js";
 import Navbar from "./Components/navbar/Navbar.jsx";
 import VerticalSidebar from "./Components/verticalSidebar/VerticalSidebar.jsx";
 
@@ -17,10 +17,11 @@ const App = () => {
 			<Navbar />
 			<VerticalSidebar />
 			<Routes>
-				<Route path="/" element={<Home />}></Route>
-				<Route path="/user/:userId" element={<Profil />}></Route>
-				<Route path="/reglage" element={<Reglage />}></Route>
-				<Route path="/communaute" element={<Communaute />}></Route>
+				<Route path="/" element={<Home />} />
+				<Route path="/user/:userId" element={<Profil />} />
+				<Route path="/reglage" element={<Reglage />} />
+				<Route path="/communaute" element={<Communaute />} />
+				<Route path="*" element={<Error />}></Route>
 			</Routes>
 		</div>
 	);

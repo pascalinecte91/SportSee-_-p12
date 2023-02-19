@@ -3,7 +3,6 @@ import yoga from "assets/yoga.png";
 import swimming from "assets/swimming.png";
 import bike from "assets/bike.png";
 import weight from "assets/weight.png";
-import "./verticalSidebar.scss";
 
 
 /**
@@ -13,7 +12,7 @@ import "./verticalSidebar.scss";
 
 const VerticalSidebar = () => {
   return (
-    <section className="vertical_nav">
+    <section className="vertical__nav">
     <ul>
       <li><img src={yoga} alt="Yoga"/></li>
       <li><img src={swimming} alt="Swimming"/></li>

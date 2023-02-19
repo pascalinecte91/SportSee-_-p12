@@ -1,0 +1,31 @@
+.error {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: black;
+
+  &__code {
+    font-weight: 700;
+    font-size: 6rem;
+    line-height: 8.5rem;
+    margin-top: 10vh;
+  }
+
+  &__text {
+    font-weight: 500;
+    font-size: 1.125rem;
+    line-height: 1.5rem;
+    text-align: center;
+  }
+
+  &__page {
+    color: inherit;
+    font-weight: 500;
+    font-size: 0.75rem;
+    margin-top: 20vh;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}

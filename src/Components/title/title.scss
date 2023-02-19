@@ -1,4 +1,3 @@
-
 .wrapper {
     display: flex;
     flex-direction: column;
@@ -6,18 +5,19 @@
     margin-bottom: 2rem;
     margin-left: 5rem;
 
-&_title {
-    display: flex;
-    align-items: center;
-    font-size: 26px;
-    font-weight: 600;
+    &__title {
+        display: flex;
+        align-items: center;
         font-size: 26px;
-   margin-left: 20px;
-    color: red;
-}
-&_description {
-    font-size: 18px;
-    margin-left: 20px;
-}
-}
+        font-weight: 600;
+        font-size: 26px;
+        margin-left: 50px; 
+        color: red;
+    }
 
+    &__description {
+        font-size: 18px;
+        margin-left: 50px;
+     
+    }
+}

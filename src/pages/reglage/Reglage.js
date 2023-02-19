@@ -5,11 +5,11 @@ import React from 'react';
 
 const Reglage = () => {
   return (
-    <div>
-    <section className="reglage_container">
+    <>
+    <section className="reglage__container">
       <h1>Réglage</h1>
     </section>
-  </div>
+  </>
   );
 };
 

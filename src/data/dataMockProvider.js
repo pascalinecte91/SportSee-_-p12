@@ -1,18 +1,13 @@
 import axios from "axios";
-axios.defaults.baseURL = `http://localhost:3000`;
 
 //*!  use axios to CONNECT with the backend API.  
-//*!  @function get data
+//*!  @function getProfil
 //*!  @param {string} url
 //*! @returns data
 
-
-const getData = (url) => axios.get(url).then((response) => response.data.data);
-
-export const API = {
-	getUser: (userId) => {
-		const url = `/user/${userId}`;
-		return getData(url);
+const API_URL = "http://localhost:3000/";
+	export const getProfil: (userId) => {
+		return axios get(API_URL + `user/${userId}`);
 	},
 
 //------------------------------------------

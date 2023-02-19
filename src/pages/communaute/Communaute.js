@@ -7,7 +7,7 @@ const Communaute = () => {
   return (
     <div>
     
-      <section className="community_container">
+      <section className="community__container">
         <h1>Communauté</h1>
       </section>
     </div>

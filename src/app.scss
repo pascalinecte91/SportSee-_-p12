@@ -1,55 +1,15 @@
+@import "style/base";
+@import "style/mixins";
+@import "style/variables";
 
+@import "Components/cardNutrition/cardNutriment";
+@import "Components/navbar/navbar";
+@import "Components/title/title";
+@import "Components/verticalSidebar/verticalSidebar";
 
-body {
-  margin: 0;
-  font-family: 'Roboto', 'Helvetica Neue', sans-serif;
-  width: 100%;
-  height: 100%;
-  box-sizing: border-box;
-}
+@import "pages/error/error";
+@import "pages/profil/profil";
+@import "pages/home/home";
+@import "pages/reglage/reglage";
+@import "pages/communaute/communaute";
 
-
-/**************  PROFIL **************/
-.profil_container {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-.container {
-  display: flex;
-  flex-flow: row wrap;
-
-}
-
-
-/***************   ERROR ****************/
-.error {
-    margin: auto;
-    color: red;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    font-family: Montserrat;
-    gap: 5px;
-
-  &__code {
-        font-size: 288px;
-        font-weight: 700;
-        line-height: 411px;
-    }
-  &__text {
-        font-size: 36px;
-        font-weight: 500;
-        line-height: 51px;
-    }
-    a {
-        color: red;
-        font-size: 18px;
-        font-weight: 500;
-        line-height: 26px;
-        margin-top: 50px;
-    }
-}
