@@ -4,14 +4,14 @@ import PropTypes from "prop-types";
 
 const Title = ({ firstName }) => {
 	return (
-		<div className="wrapper">
+		<section className="wrapper">
 			<div className="wrapper__title">
 				<h1>
 					Bonjour <span>{firstName ? ` ${firstName}` : "Invité"}</span>
 				</h1>
 			</div>
 			<div className="wrapper__description">Félicitation ! Vous avez explosé vos objectifs hier 👏</div>
-		</div>
+		</section>
 	);
 };
 

@@ -6,7 +6,7 @@ import React from 'react';
 const Reglage = () => {
   return (
     <>
-    <section className="reglage__container">
+    <section className="reglage">
       <h1>Réglage</h1>
     </section>
   </>

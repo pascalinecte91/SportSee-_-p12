@@ -1,0 +1,67 @@
+.barChartA {
+  background-color: map-get($colors, grey);
+  width: 100%;
+  margin-bottom: 25px;
+  border-radius: 10px;
+}
+
+/*********** LEGEND ***************/
+
+.barChartL {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 60px;
+
+  h2 {
+    color: #20253a;
+    font-weight: map-get($weights, base);
+    font-size: 15px;
+  }
+
+  &__activity {
+    display: flex;
+    gap: 20px;
+    color: map-get($colors, mouse);
+
+    li {
+      display: flex;
+      align-items: center;
+
+      &__kilogram {
+        display: block;
+        width: 8px;
+        height: 8px;
+        border-radius: 4px;
+        background: #282d30;
+        margin-right: 10px;
+      }
+
+      &__calories {
+        display: block;
+        width: 8px;
+        height: 8px;
+        border-radius: 4px;
+        background: #e60000;
+        margin-right: 10px;
+      }
+    }
+  }
+}
+
+/********* TOOLTIP **********/
+
+ul.barChart {
+  &__tooltip {
+  outline: none;
+  background-color: #e60000;
+  color: #fff;
+  font-size: 7px;
+  text-align: center;
+  width: 39px;
+  height: 63px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+}

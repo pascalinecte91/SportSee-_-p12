@@ -5,12 +5,12 @@ import React from 'react';
 
 const Communaute = () => {
   return (
-    <div>
-    
-      <section className="community__container">
+    <>
+      <section className="community">
         <h1>Communauté</h1>
       </section>
-    </div>
+    </>
   );
 };
+
 export default Communaute;

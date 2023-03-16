@@ -10,7 +10,7 @@ import calories from "assets/calories.png";
 
 const CardNutriment = ({ icon, quantity, unity, type }) => {
 	return (
-		<div className="card">
+		<section className="card">
 			<div className="card__icon">
 				<img src={icon} alt="icon" />
 			</div>
@@ -18,7 +18,7 @@ const CardNutriment = ({ icon, quantity, unity, type }) => {
 				<p className="card__quantity">{quantity}{unity}</p>
 				<p className="card__type">{type}</p>
 			</div>
-		</div>
+		</section>
 	);
 };
 

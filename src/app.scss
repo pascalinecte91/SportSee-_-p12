@@ -6,9 +6,10 @@
 @import "Components/navbar/navbar";
 @import "Components/title/title";
 @import "Components/verticalSidebar/verticalSidebar";
+@import "Components/barchart/barchart.scss";
 
 @import "pages/error/error";
-@import "pages/profil/profil";
+@import "pages/dashboard/dashboard";
 @import "pages/home/home";
 @import "pages/reglage/reglage";
 @import "pages/communaute/communaute";
