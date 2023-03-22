@@ -14,16 +14,17 @@
     "react-router-dom": "^6.8.1",
     "react-scripts": "^5.0.1",
     "recharts": "^2.4.2",
-    "sass": "^1.58.1",
+    "sass": "^1.59.3",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "set PORT=3001 && react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "deploy": "gh-pages -d build",
+   "jsdoc": "jsdoc -c jsdoc.json"
   },
   "browserslist": {
     "production": [

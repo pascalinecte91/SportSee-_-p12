@@ -2,14 +2,18 @@ import React from "react";
 import PropTypes from "prop-types";
 
 /**
- * Component React to customize the Activity bar chart tooltip displayed on hover
- * @component
+ * Composant de tooltip pour BarChart.
+ * @param {object} props - Propriétés pour ce composant.
+ * @param {Array} props.payload - Tableau d'objets représentant les données de la barre sur laquelle l'utilisateur a survolé.
+ * @returns {JSX.Element} Composant tooltip.
  */
+
 const BarChartTooltip = ({ payload }) => {
 	return (
-		<ul className="barChart__tooltip">
+		<ul className="barChart__toolTip">
 			{payload.map((entry, index) => (
-				<li key={`itemTooltip-${index}`}>
+				//* cle (elementTooltip)  pour chaque element des li quand màj sur un create ou un delete
+				<li key={`elementTooltip-${index}`}>
 					{entry.value}
 					{entry.unit.toLowerCase()}
 				</li>
@@ -19,10 +23,8 @@ const BarChartTooltip = ({ payload }) => {
 };
 
 BarChartTooltip.propTypes = {
-	/**
-	 * Recharts props value containing user's activity data used for the bar chart and internally formatted by Recharts
-	 */
 	payload: PropTypes.array,
 };
 
 export default BarChartTooltip;
+

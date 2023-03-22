@@ -1,19 +1,23 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import "./error.scss;"
 
-//*!@function display error page
-//* @returns (<Error/>)
+
+/**
+ * Composant React pour la page d'erreur 404.
+ * @returns {JSX.Element} Le composant React pour la page d'erreur 404.
+ */
 
 const Error = () => {
-    return (
-        <section className="error">
-            <div className="error__code">404</div>
-            <div className="error__text">
-                Oups! La page que vous demandez n'existe pas.
-            </div>
-            <Navlink className="error__page" to="/">Retourner sur la page d'accueil </Navlink>
-        </section>
-    )
-}
+	return (
+		<section className="error">
+		
+			<aside className="error__page">
+				<h1>Erreur 404</h1>
+				<p>Oups ! La page que vous recherchez n'existe pas !</p>
+				<NavLink to="/">Retour Accueil</NavLink>
+			</aside>
+		</section>
+	);
+};
+
 export default Error;

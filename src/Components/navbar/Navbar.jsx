@@ -1,34 +1,56 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useParams } from "react-router-dom";
 import logo from "assets/logo.png";
 
-/**
- * 
- * Component that displays the project navigation bar
+/** 
+ * Component React for display horizontal application's navigation
  * @component
  */
 
 const Navbar = () => {
-	let userId = "18";
+	/**
+	 * User's id number collected by a hook in the page's URL
+	 * @constant
+	 * @type {number}
+	 */
+	const { userID } = useParams();
+	/**
+	 * Array containing objects with name and uri for each navigation's link
+	 * @constant with 4 objects  with name and uri for each navigation
+	 * @type {array}
+	 *
+	 */
+
+	const navItems = [
+		{ name: "Accueil", url: "/home/" },
+		{ name: "Profil", url: "/dashboard/" },
+		{ name: "Réglage", url: "/setting/" },
+		{ name: "Communauté", url: "/community/" },
+	];
 
 	return (
-		<nav className="navbar">
-			<div className="navbar__container">
-				<div className="logo"><img src={logo} alt={logo} />
-				</div>
-				<ul className="navbar__link">
-					<NavLink to="/" className={({ isActive }) => (isActive ? "nav-active" :"")}end>
-						<li className="navbar__item">Accueil</li></NavLink>
-					<NavLink to={`/user/${userId}`} className={({ isActive }) => (isActive ? "nav-active" : "")}end>
-						<li className="navbar__item">Profil</li></NavLink>
-					<NavLink to="/reglage" className={({ isActive }) => (isActive ? "nav-active" : "")}end>
-						<li className="navbar__item">Réglage</li></NavLink>
-					<NavLink to="/community" className={({ isActive }) => (isActive ? "nav-active" : "")}end>
-						<li className="navbar__item">Communauté</li></NavLink>
-				</ul>
-			</div>
-		</nav>
+		<header className="header_horizontal">
+			<nav className="horizontal_nav">
+				<NavLink to="/">
+					<picture>
+						<img src={logo} alt="logo SportSee"></img>
+					</picture>
+				</NavLink>
+        //* chaque elemnt est cree en utilisant methode map pour lire le [navitems]
+				{navItems.map((item, index) => (
+					<NavLink
+						to={item.url + userID}
+						key={item.name + index}
+          //* link actif  sinon nav_goToPage
+						className={(nav) => (nav.isActive ? "nav_goToPage--active" : "nav_goToPage")}
+					>
+						{item.name}
+					</NavLink>
+				))}
+			</nav>
+		</header>
 	);
 };
+
 
 export default Navbar;

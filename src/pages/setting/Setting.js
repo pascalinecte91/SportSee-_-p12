@@ -3,7 +3,7 @@ import React from 'react';
 
 //* just component display page "reglage"
 
-const Reglage = () => {
+const Setting = () => {
   return (
     <>
     <section className="reglage">
@@ -13,4 +13,4 @@ const Reglage = () => {
   );
 };
 
-export default Reglage;
+export default Setting;

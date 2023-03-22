@@ -1,101 +1,123 @@
 import React from "react";
-import PropTypes from "prop-types";
-import { BarChart, CartesianGrid, XAxis, YAxis, Tooltip, Legend, Bar, ResponsiveContainer } from "recharts";
-import BarChartLegend from "BarChartLegend";
-import BarChartTooltip from "BarChartTooltip";
-import BarChartCursor from "BarChartCursor";
+import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from "recharts";
 
 /**
- * Component React for display the bar chart showing activity statistics of user
- * @component
+ *
+ * @param {*} { active, payload }
+ * @return {*} 
+ */
+const CustomTooltip = ({ active, payload }) => {
+	if (active && payload && payload.length) {
+		return (
+			<aside className="custom">
+				<p className="custom__label">{`${payload[0]?.value} kg`}</p>
+				<p className="custom__label">{`${payload[1]?.value} KCal`}</p>
+			</aside>
+		);
+	}
+
+	return null;
+};
+
+/**
+ * @param {*} { dataActivity }
+ * @return {*} 
  */
 const BarChartActivity = ({ dataActivity }) => {
-
-	let minWeight = dataActivity[0].kilogram;
-	let maxWeight = dataActivity[dataActivity.length - 1].kilogram;
-	let middleWeight = minWeight + (maxWeight - minWeight) / 2;
-
 	return (
-		<section className="barChartA">
-			<ResponsiveContainer width="100%" height={320}>
+		<section
+			className="activity"
+			style={{
+				backgroundColor: "#FBFBFB",
+				borderRadius: "5px",
+			}}
+		>
+			<ResponsiveContainer aspect={2.3}>
 				<BarChart
+					width={835}
+					height={320}
 					data={dataActivity}
-					barSize={7}
+					margin={{
+						top: 80,
+						right: 48,
+						left: 48,
+						bottom: 32,
+					}}
 					barGap={8}
-					reverseStackOrder={true}
-					margin={{ top: 15, right: 40, bottom: 30, left: 40 }}
 				>
-					<Legend verticalAlign="top" iconSize={8} content={<BarChartLegend />} />
-					<CartesianGrid vertical={false} strokeDasharray="2 2" stroke={"#DEDEDE"} />
+					<CartesianGrid vertical={false} strokeDasharray="3 3 " />
+
 					<XAxis
-						dataKey="dayFormatted"
-						type="number"
-						tickCount={dataActivity.length}
-						domain={["dataMin", "dataMax"]}
-						tickSize={0}
-						dy={20}
-						fontSize={14}
-						tick={{ fill: "#9B9EAC" }}
-						textAnchor="middle"
-						stroke="#DEDEDE"
-						padding={{ left: 11, right: 11 }}
+						tickLine={false}
+						dataKey="dayNum"
+						dy={10}
+						fill="9B9EAC"
+						padding={{ left: -40, right: -40 }}
 					/>
+
+					<YAxis yAxisId="left" dataKey="calories" orientation="left" tick={true} hide tickCount={3} />
 					<YAxis
-						type="number"
-						dataKey="kilogram"
 						yAxisId="right"
+						dataKey="kilogram"
 						orientation="right"
-						domain={["dataMin", "dataMax"]}
+						tickLine={false}
+						stroke="FFFFF"
+						domain={["dataMin - 1", "dataMax"]}
 						tickCount={3}
-						tickSize={0}
-						ticks={[minWeight - 1, middleWeight, maxWeight + 1]}
-						axisLine={false}
+						tick={{ stroke: "9B9EAC" }}
 						dx={50}
-						tick={{ fill: "#9B9EAC" }}
-						fontSize={14}
-						textAnchor="middle"
 					/>
-					<YAxis
-						type="number"
-						dataKey="calories"
-						yAxisId="left"
-						orientation="left"
-						tickCount={3}
-						domain={["dataMin - 50", (dataMax) => dataMax + 50]}
-						hide={true}
+
+					<Legend
+						verticalAlign="top"
+						align="right"
+						iconSize={8}
+						iconType={"circle"}
+						width={277}
+						height={25}
+						wrapperStyle={{ top: "10%", right: "5%" }}
+						formatter={(value) => {
+							return <span style={{ color: "#74798C", fontSize: 14, fontWeight: 500 }}>{value}</span>;
+						}}
 					/>
 					<Tooltip
-						content={<BarChartTooltip />}
-						offset={35}
-						wrapperStyle={{ outline: "none", top: "-100px" }}
-						allowEscapeViewBox={{ x: false, y: true }}
-						isAnimationActive={false}
-						cursor={<BarChartCursor />}
+						wrapperStyle={{ outlineStyle: "none" }}
+						content={<CustomTooltip />}
+						cursor={{ fill: "#DFDFDF" }}
 					/>
 					<Bar
-						dataKey="calories"
-						yAxisId="left"
-						fill="#E60000"
-						unit={"Kcal"}
-						name={"Calories brûlées (KCal)"}
-						radius={[10, 10, 0, 0]}
-					/>
-					<Bar
-						dataKey="kilogram"
 						yAxisId="right"
-						fill="#282D30"
-						unit={"kg"}
-						name={"Poids (kg)"}
-						radius={[10, 10, 0, 0]}
+						dataKey="kilogram"
+						name="Poids (kg)"
+						fill="#00000"
+						barSize={7}
+						radius={[5, 5, 0, 0]}
 					/>
+					<Bar
+						yAxisId="left"
+						dataKey="calories"
+						name="Calories brûlées (kCal)"
+						fill="#FF0000"
+						barSize={7}
+						radius={[5, 5, 0, 0]}
+					/>
+					<text
+						className="activity"
+						x="5%"
+						y="10%"
+						width={147}
+						height={25}
+						textAnchor="start"
+						dominantBaseline="middle"
+						fill="#20253A"
+						style={{ fontWeight: 500 }}
+					>
+						Activité quotidienne
+					</text>
 				</BarChart>
 			</ResponsiveContainer>
 		</section>
 	);
-};
-
-BarChartActivity.propTypes = {
-	dataActivity: PropTypes.array,
 };
 
 export default BarChartActivity;

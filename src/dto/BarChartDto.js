@@ -1,8 +1,8 @@
 
-class ChartBarDto {
+class BarChartDto {
 	constructor(name) {
 		this.name = name;
 	}
 }
 
-export default ChartBarDto;
+export default BarChartDto;

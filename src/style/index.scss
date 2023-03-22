@@ -1,0 +1,15 @@
+@import "style/base";
+@import "style/mixins";
+@import "style/variables";
+
+@import "Components/navbar/Navbar";
+
+@import "Components/verticalSidebar/VerticalSidebar";
+
+
+@import "pages/error/error";
+@import "pages/dashboard/dashboard";
+@import "pages/home/home";
+@import "pages/setting/setting";
+@import "pages/communaute/communaute";
+@import "pages/login/login";

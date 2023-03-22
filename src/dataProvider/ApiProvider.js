@@ -1,4 +1,4 @@
-import ChartBarDto from "dto/ChartBarDto";
+import BarChartDto from "dto/BarChartDto";
 
 class ApiProvider {
 	getActivitiesByUserId(userId) {
@@ -7,7 +7,7 @@ class ApiProvider {
 
 // todo : hydrater le chartBardto avec les datas axios 
 
-		return new ChartBarDto('api');
+		return new BarChartDto('api');
 	}
 }
 

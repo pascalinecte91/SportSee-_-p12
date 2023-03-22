@@ -1,21 +1,18 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-/**
- * Component React to customize the Activity bar chart legend
- * @component
- */
+
 const BarChartLegend = ({ payload }) => {
 	return (
-		<section className="barChartL">
+		<section className="barChart">
 			<h2>Activité quotidienne</h2>
-			<ul className="barChartL__activity">
+			<ul className="barChart__legend">
 				{payload.map((entry, index) => (
-					<li key={`itemLegend-${index}`}>
+					<li key={`elementLegend-${index}`}>
 						{entry.dataKey === "kilogram" ? (
-							<span className="barChartL__kilogram"></span>
+							<span className="barChart__kg"></span>
 						) : (
-							<span className="barChartL__calories"></span>
+							<span className="barChart__cal"></span>
 						)}
 						{entry.value}
 					</li>
@@ -26,9 +23,6 @@ const BarChartLegend = ({ payload }) => {
 };
 
 BarChartLegend.propTypes = {
-	/**
-	 * Recharts props value containing user's activity data used for the bar chart and internally formatted by Recharts
-	 */
 	payload: PropTypes.array,
 };
 

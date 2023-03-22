@@ -4,10 +4,9 @@ import swimming from "assets/swimming.png";
 import bike from "assets/bike.png";
 import weight from "assets/weight.png";
 
-
 /**
- * Component that displays the project Sidebar
- * @component
+ * Composant React pour la barre de navigation verticale.
+ * @returns {JSX.Element} Le composant React pour la barre de navigation verticale.
  */
 
 const VerticalSidebar = () => {
