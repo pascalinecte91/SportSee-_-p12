@@ -50,7 +50,7 @@ In the project directory, you can run:
 ### `npm start`
 
 Runs the app in the development mode.\
-Open [localhost](http://localhost:3000) ( ou 3001) to view it in your browser.
+Open [localhost](http://localhost:3001)  to view it in your browser.
 
 The page will reload when you make changes.\
 You may also see any lint errors in the console.
@@ -86,5 +86,8 @@ ___
 * http://localhost:3001/user/${userId}/average-sessions
 * http://localhost:3001/user/${userId}/performance
 
+
+#### NB : 
+- npm run jsdoc for generated documentation
 
 # IN PROGRESS 

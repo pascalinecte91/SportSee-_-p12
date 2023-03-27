@@ -25,23 +25,23 @@ const Navbar = () => {
 		{ name: "Accueil", url: "/home/" },
 		{ name: "Profil", url: "/dashboard/" },
 		{ name: "Réglage", url: "/setting/" },
-		{ name: "Communauté", url: "/community/" },
+		{ name: "Communauté", url: "/communite/" },
 	];
 
 	return (
-		<header className="header_horizontal">
-			<nav className="horizontal_nav">
-				<NavLink to="/">
+		<header className="horizontal">
+			<nav className="horizontal__nav">
+				<NavLink to="/login">
 					<picture>
 						<img src={logo} alt="logo SportSee"></img>
 					</picture>
 				</NavLink>
-        //* chaque elemnt est cree en utilisant methode map pour lire le [navitems]
+				//* chaque elemnt est cree en utilisant methode map pour lire le [navitems]
 				{navItems.map((item, index) => (
 					<NavLink
-						to={item.url + userID}
+						to={userID ? item.url + userID : item.url}
 						key={item.name + index}
-          //* link actif  sinon nav_goToPage
+						//* link actif  sinon nav_goToPage
 						className={(nav) => (nav.isActive ? "nav_goToPage--active" : "nav_goToPage")}
 					>
 						{item.name}

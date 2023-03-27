@@ -2,11 +2,10 @@ import React from 'react';
 import ApiMockProvider from "dataProvider/ApiMockProvider";
 import ApiProvider from "dataProvider/ApiProvider";
 import { useParams} from "react-router-dom";
-import BarChartActivity from "Components/barchart/BarChartActivity";
-import BarChartLegend from "Components/barchart/BarChartLegend";
-import BarChartTooltip from "Components/barchart/BarChartTooltip";
-import BarChartCursor from "Components/barchart/BarChartCursor";
 import BarChartWrapper from "Components/barchart/chart/BarChartWrapper"; 
+import WelcomeMessage from "Components/welcome/WelcomeMessage";
+
+
 
 
 /**
@@ -19,7 +18,7 @@ const Dashboard = () => {
 	const { userId } = useParams();
 
 	// Indique si le mode démo est activé ou non
-	let isDemo = false;
+	let isDemo = true;
 
 	// Initialise le provider API en fonction du mode démo
 	let provider = isDemo 
@@ -28,12 +27,13 @@ const Dashboard = () => {
 
 	// Obtient les activités de l'utilisateur à partir du fournisseur API
 	let bartChartDtoActivities = provider.getActivitiesByUserId(userId);
-
+console.log(bartChartDtoActivities);
 	// Rendu du composant
 	return (
 		<>
 			<section className="dashboard">
-				<BarChartWrapper dto={bartChartDtoActivities} />
+				<WelcomeMessage  />
+				{<BarChartWrapper dto={bartChartDtoActivities} />}
 			</section>
 		</>
 	);

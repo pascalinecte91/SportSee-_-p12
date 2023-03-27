@@ -16,15 +16,15 @@ const Login = () => {
 					<h1>Se connecter</h1>
 				</picture>
 			</header>
-			<div className="login_wrapper">
+			<div className="login__wrapper">
 				<ul>
 					<li>
-						<NavLink to="/home/12">
+						<NavLink to={`../dashboard/12`}>
 							<p>Karl</p>
 						</NavLink>
 					</li>
 					<li>
-						<NavLink to="/home/18">
+						<NavLink to={`../dashboard/18`}>
 							<p>Cecilia</p>
 						</NavLink>
 					</li>
@@ -33,5 +33,7 @@ const Login = () => {
 		</section>
 	);
 };
+
+
 
 export default Login;

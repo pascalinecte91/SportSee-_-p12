@@ -11,7 +11,7 @@ import weight from "assets/weight.png";
 
 const VerticalSidebar = () => {
   return (
-    <section className="vertical__nav">
+    <section className="vertical__nav"> 
     <ul>
       <li><img src={yoga} alt="Yoga"/></li>
       <li><img src={swimming} alt="Swimming"/></li>

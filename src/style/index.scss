@@ -2,10 +2,12 @@
 @import "style/mixins";
 @import "style/variables";
 
-@import "Components/navbar/Navbar";
 
-@import "Components/verticalSidebar/VerticalSidebar";
-
+@import "Components/navbar/navbar";
+@import "Components/loader/loader";
+@import "Components/verticalSidebar/verticalSidebar";
+@import "Components/barchart/chart/barChart";
+@import "Components/welcome/welcomeMessage";
 
 @import "pages/error/error";
 @import "pages/dashboard/dashboard";

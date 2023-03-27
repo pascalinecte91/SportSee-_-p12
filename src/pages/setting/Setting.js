@@ -1,8 +1,6 @@
 import React from 'react';
 
 
-//* just component display page "reglage"
-
 const Setting = () => {
   return (
     <>
