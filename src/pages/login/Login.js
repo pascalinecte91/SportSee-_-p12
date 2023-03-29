@@ -13,7 +13,7 @@ const Login = () => {
 			<header className="login__header">
 				<picture>
 					<img src={logo} alt="logo Sportsee"></img>
-					<h1>Se connecter</h1>
+					<h1>Choisissez et connectez-vous </h1>
 				</picture>
 			</header>
 			<div className="login__wrapper">

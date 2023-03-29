@@ -48,6 +48,10 @@ const data = [
 ];
 
 class ApiMockProvider {
+	constructor(userId) {
+		this.userId = userId;
+	}
+
 	getActivitiesByUserId(userId) {
 		let userActivityData = [...USER_ACTIVITY].filter((dataActivity) => {
 			return dataActivity.userId == userId;
@@ -58,6 +62,23 @@ class ApiMockProvider {
 		//todo : hydrater le chartBardto avec les datas userActivity
 
 		return new BarChartDto("apiMock ", data);
+	}
+
+	getUserNameByUserId(userId) {
+		let user = USER_MAIN_DATA.filter((user) => {
+			return user.id == userId;
+		});
+
+		let firstName = user[0].userInfos.firstName;
+		return firstName;
+	}
+	getTodayScoreByUserId(userId) {
+		let user = USER_MAIN_DATA.filter((user) => {
+			return user.id == userId;
+		});
+		
+		const todayScore = user[0].todayScore;
+		return todayScore;
 	}
 }
 export default ApiMockProvider;

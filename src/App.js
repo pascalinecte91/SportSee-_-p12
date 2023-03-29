@@ -25,11 +25,11 @@ const App = () => {
 				<Routes>
 					<Route path="/" element={<Home />} />
 					<Route path="/home" element={<Home />} />
-					<Route path="/home/:userID" element={<Home />} />
+					<Route path="/home/:userId" element={<Home />} />
 					<Route path="/login" element={<Login />} />
-					<Route path="/dashboard/:userID" element={<Dashboard />} />
-					<Route path="/setting/:userID" element={<Setting />} />
-					<Route path="/communaute/:userID" element={<Communaute />} />
+					<Route path="/dashboard/:userId" element={<Dashboard />} />
+					<Route path="/setting/:userId" element={<Setting />} />
+					<Route path="/communaute/:userId" element={<Communaute />} />
 					<Route path="*" element={<Error />} />
 				</Routes>
 			</section>

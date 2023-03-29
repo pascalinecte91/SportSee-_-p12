@@ -5,11 +5,11 @@ import PropTypes from "prop-types";
  * Component React for display user's name with a welcoming message
  * @component
  */
-const WelcomeMessage = ({ username }) => {
+const WelcomeMessage = ({ firstName }) => {
 	return (
 		<section className="welcome">
 			<h1>
-				Bonjour <span>{username}</span>
+				Bonjour <span>{firstName}</span>
 			</h1>
 			<p>Félicitations ! Vous avez explosé vos objectifs hier 👏</p>
 		</section>
@@ -17,7 +17,7 @@ const WelcomeMessage = ({ username }) => {
 };
 
 WelcomeMessage.propTypes = {
-	username: PropTypes.string,
+	firstName: PropTypes.string,
 };
 
 export default WelcomeMessage;

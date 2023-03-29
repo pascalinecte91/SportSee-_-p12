@@ -1,7 +1,7 @@
 .login {
   width: 100%;
   min-height: 100vh;
-  background: map-get($colors, night);
+  background: map-get($colors, snow);
 
   &__header {
     text-align: center;
@@ -15,6 +15,7 @@
   &__wrapper {
     text-align: center;
     padding: 0px;
+
   }
     h1 {
       font-size: 24px;
@@ -27,6 +28,7 @@
       display: flex;
       justify-content: center;
       gap: 4%;
+      list-style-type: none;
     }
 
     a {
@@ -34,7 +36,7 @@
       width: 200px;
       text-align: center;
       padding: 20px;
-      background: map-get($colors, snow);
+      background: map-get($colors, night);
       border-radius: 10px;
       color: map-get($colors, blood);
       border: 2px inset transparent;

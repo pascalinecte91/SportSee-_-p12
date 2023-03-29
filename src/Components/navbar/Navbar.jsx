@@ -36,7 +36,7 @@ const Navbar = () => {
 						<img src={logo} alt="logo SportSee"></img>
 					</picture>
 				</NavLink>
-				//* chaque elemnt est cree en utilisant methode map pour lire le [navitems]
+			
 				{navItems.map((item, index) => (
 					<NavLink
 						to={userID ? item.url + userID : item.url}

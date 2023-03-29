@@ -1,15 +1,14 @@
 
 
-
-
 /**
  * @class BarChartDto
  */
 
 class BarChartDto {
-	constructor(name, data) {
+	constructor( name, data) {
 		console.log(name);
 		this.name = name;
+	
 		this.data = data;
 	}
 }
