@@ -5,10 +5,8 @@
  */
 
 class BarChartDto {
-	constructor( name, data) {
-		console.log(name);
-		this.name = name;
-	
+	constructor(data) {
+		console.log(data);
 		this.data = data;
 	}
 }

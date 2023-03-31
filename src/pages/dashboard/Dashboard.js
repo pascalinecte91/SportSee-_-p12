@@ -1,13 +1,19 @@
 import ApiMockProvider from "dataProvider/ApiMockProvider";
 import ApiProvider from "dataProvider/ApiProvider";
+import { userUseState } from "dataProvider/ApiProvider";
 import { useParams } from "react-router-dom";
 import React, { useState, useEffect } from "react";
-import BarChartWrapper from "Components/barchart/chart/BarChartWrapper";
-import WelcomeMessage from "Components/welcome/WelcomeMessage";
+//components
 import Loader from "Components/loader/Loader";
-import TodayScore from "Components/todayScore/TodayScore";
+import Error from "pages/error/Error";
 
-import { userUseState } from "dataProvider/ApiProvider";
+import BarChartActivity from "Components/barChart/BarChartActivity";
+import BarChartTooltip from "Components/barChart/BarChartTooltip";
+import LineChartSessions from "Components/barChart/LineChartSessions";
+import BarChartCursor from "Components/barChart/BarChartCursor";
+import WelcomeMessage from "Components/welcome/WelcomeMessage";
+import PieChartLevel from "Components/pieChartCard/PieChartCard";
+
 
 
 /**
@@ -21,25 +27,30 @@ const Dashboard = () => {
 
 	// Indique si le mode démo est activé ou non
 	let isDemo = true;
-
+	const mockedDataActivities = new ApiMockProvider(userId).getActivitiesByUserId(userId);
 	// Initialise le provider API en fonction du mode démo
 	let provider = isDemo ? new ApiMockProvider() : new ApiProvider();
 
-	// Obtient les activités de l'utilisateur à partir du fournisseur API
-	let bartChartDtoActivities = provider.getActivitiesByUserId(userId);
 
+	/**************************************** */
+
+	//fonction qui renvoie  le prenom du user et stocke dans la var firstname
 	let firstName = provider.getUserNameByUserId(userId);
 
+	//renvoie le score de la journee et stocke dans "todayScore"
 	let todayScore = provider.getTodayScoreByUserId(userId);
-	console.log(todayScore);
-	// Rendu du composant
+
+
+
 	return (
 		<section className="dashboard">
 			<WelcomeMessage firstName={firstName} />
-	
-			<TodayScore todayScore={todayScore} />
-
-			{<BarChartWrapper dto={bartChartDtoActivities} />}
+			<div className="dashboard__content">
+				<PieChartLevel todayScore={todayScore} />
+				{<BarChartActivity dataActivity={mockedDataActivities} />}
+				{<LineChartSessions payload={mockedDataActivities} />}
+			
+			</div>
 		</section>
 	);
 };

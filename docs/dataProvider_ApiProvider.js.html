@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: Components/navbar/Navbar.jsx</title>
+    <title>JSDoc: Source: dataProvider/ApiProvider.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: Components/navbar/Navbar.jsx</h1>
+    <h1 class="page-title">Source: dataProvider/ApiProvider.js</h1>
 
     
 
@@ -26,62 +26,33 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>import React from "react";
-import { NavLink, useParams } from "react-router-dom";
-import logo from "assets/logo.png";
+            <pre class="prettyprint source linenums"><code>import axios from "axios";
+import BarChartDto from "dto/BarChartDto";
+import BarChartActivity from "Components/barChartActivity/BarChartActivity";
 
-/** 
- * Component React for display horizontal application's navigation
- * @component
+/**
+ * @class ApiProvider
  */
 
-const Navbar = () => {
+class ApiProvider {
 	/**
-	 * User's id number collected by a hook in the page's URL
-	 * @constant
-	 * @type {number}
-	 */
-	const { userID } = useParams();
-	/**
-	 * Array containing objects with name and uri for each navigation's link
-	 * @constant with 4 objects  with name and uri for each navigation
-	 * @type {array}
-	 *
+	 * Creates an instance of ApiProvider.
+	 * @memberof ApiProvider
+	 * @param {*} userId
+	 * @return {*}
 	 */
 
-	const navItems = [
-		{ name: "Accueil", url: "/home/" },
-		{ name: "Profil", url: "/dashboard/" },
-		{ name: "Réglage", url: "/setting/" },
-		{ name: "Communauté", url: "/communite/" },
-	];
+	getActivitiesByUserId(userId) {
+		//todo aller chercher les data depuis axios
 
-	return (
-		&lt;header className="horizontal">
-			&lt;nav className="horizontal__nav">
-				&lt;NavLink to="/login">
-					&lt;picture>
-						&lt;img src={logo} alt="logo SportSee">&lt;/img>
-					&lt;/picture>
-				&lt;/NavLink>
-			
-				{navItems.map((item, index) => (
-					&lt;NavLink
-						to={userID ? item.url + userID : item.url}
-						key={item.name + index}
-						//* link actif  sinon nav_goToPage
-						className={(nav) => (nav.isActive ? "nav_goToPage--active" : "nav_goToPage")}
-					>
-						{item.name}
-					&lt;/NavLink>
-				))}
-			&lt;/nav>
-		&lt;/header>
-	);
-};
+		// todo : hydrater le chartBardto avec les datas axios
 
+		return new BarChartDto("api");
+	}
+}
 
-export default Navbar;</code></pre>
+export default ApiProvider;
+</code></pre>
         </article>
     </section>
 

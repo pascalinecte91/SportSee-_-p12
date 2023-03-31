@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: pages/login/Login.js</title>
+    <title>JSDoc: Source: dto/BarChartDto.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: pages/login/Login.js</h1>
+    <h1 class="page-title">Source: dto/BarChartDto.js</h1>
 
     
 
@@ -26,45 +26,20 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>import React from "react";
-import { NavLink } from "react-router-dom";
-import logo from "assets/logo.png";
+            <pre class="prettyprint source linenums"><code>
 
 /**
- * Composant React pour le tableau de bord.
- * @returns {JSX.Element} Le composant React pour le tableau de bord.
+ * @class BarChartDto
  */
 
-const Login = () => {
-	return (
-		&lt;section className="login">
-			&lt;header className="login__header">
-				&lt;picture>
-					&lt;img src={logo} alt="logo Sportsee">&lt;/img>
-					&lt;h1>Choisissez et connectez-vous &lt;/h1>
-				&lt;/picture>
-			&lt;/header>
-			&lt;div className="login__wrapper">
-				&lt;ul>
-					&lt;li>
-						&lt;NavLink to={`../dashboard/12`}>
-							&lt;p>Karl&lt;/p>
-						&lt;/NavLink>
-					&lt;/li>
-					&lt;li>
-						&lt;NavLink to={`../dashboard/18`}>
-							&lt;p>Cecilia&lt;/p>
-						&lt;/NavLink>
-					&lt;/li>
-				&lt;/ul>
-			&lt;/div>
-		&lt;/section>
-	);
-};
+class BarChartDto {
+	constructor(data) {
+		console.log(data);
+		this.data = data;
+	}
+}
 
-
-
-export default Login;
+export default BarChartDto;
 </code></pre>
         </article>
     </section>

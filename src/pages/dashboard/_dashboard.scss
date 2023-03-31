@@ -1,7 +1,14 @@
 .dashboard {
   display: flex;
+  width: 82%;
   flex-direction: column;
   align-content: center;
-  margin-left: 50px;
-  margin-right: 50px;
+  margin: 4vh auto;
+
+  &__content {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+  }
+ 
 }

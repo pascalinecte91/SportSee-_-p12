@@ -1,6 +1,6 @@
 import axios from "axios";
 import BarChartDto from "dto/BarChartDto";
-import BarChartWrapper from "Components/barchart/chart/BarChartWrapper";
+import BarChartActivity from "Components/barChart/BarChartActivity";
 
 /**
  * @class ApiProvider
@@ -15,8 +15,6 @@ class ApiProvider {
 	 */
 
 	getActivitiesByUserId(userId) {
-		
-	
 		//todo aller chercher les data depuis axios
 
 		// todo : hydrater le chartBardto avec les datas axios

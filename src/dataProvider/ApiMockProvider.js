@@ -1,67 +1,37 @@
 import { USER_ACTIVITY, USER_MAIN_DATA, USER_AVERAGE_SESSIONS, USER_PERFORMANCE } from "dataProvider/dataMock";
-
 import BarChartDto from "dto/BarChartDto";
+import BarChartActivity from "Components/barChart/BarChartActivity";
 
-const data = [
-	{
-		name: "Page A",
-		uv: 4000,
-		pv: 2400,
-		amt: 2400,
-	},
-	{
-		name: "Page B",
-		uv: 3000,
-		pv: 1398,
-		amt: 2210,
-	},
-	{
-		name: "Page C",
-		uv: 2000,
-		pv: 9800,
-		amt: 2290,
-	},
-	{
-		name: "Page D",
-		uv: 2780,
-		pv: 3908,
-		amt: 2000,
-	},
-	{
-		name: "Page E",
-		uv: 1890,
-		pv: 4800,
-		amt: 2181,
-	},
-	{
-		name: "Page F",
-		uv: 2390,
-		pv: 3800,
-		amt: 2500,
-	},
-	{
-		name: "Page G",
-		uv: 3490,
-		pv: 4300,
-		amt: 2100,
-	},
-];
 
 class ApiMockProvider {
 	constructor(userId) {
+		// Initialise l'ID de l'utilisateur
 		this.userId = userId;
 	}
 
-	getActivitiesByUserId(userId) {
-		let userActivityData = [...USER_ACTIVITY].filter((dataActivity) => {
-			return dataActivity.userId == userId;
-		});
-		let userActivity = userActivityData[0];
-		//todo : hydrater le chartBardto avec les datas userActivity
-		console.log(userActivityData);
-		//todo : hydrater le chartBardto avec les datas userActivity
+	getActivitiesByUserId() {
+		// Initialise un tableau d'activités utilisateur vide
+		const userActivity = [];
+		// Recherche l'utilisateur correspondant à l'ID fourni
+		const currentUser = USER_ACTIVITY.find((user) => user.userId === parseInt(this.userId));
 
-		return new BarChartDto("apiMock ", data);
+		// Si un utilisateur est trouvé, parcoure ses sessions
+		if (currentUser) {
+			currentUser.sessions.forEach((session) => {
+				// Formate la date de la session
+				const [yyyy, mm, dd] = session.day.split("-");
+				const formattedDate = `${dd}/${mm}`;
+				// Ajoute les informations de la session au tableau d'activités utilisateur
+				userActivity.push({
+					day: formattedDate,
+					kilograms: session.kilogram,
+					calories: session.calories,
+				});
+			});
+		}
+
+		// Retourne le tableau d'activités utilisateur
+		return userActivity;
 	}
 
 	getUserNameByUserId(userId) {
@@ -76,9 +46,14 @@ class ApiMockProvider {
 		let user = USER_MAIN_DATA.filter((user) => {
 			return user.id == userId;
 		});
-		
 		const todayScore = user[0].todayScore;
 		return todayScore;
+	}
+
+	getSessionsUserId(userId) {
+		let user = USER_AVERAGE_SESSIONS.filter((user) => {
+			return user.id == userId;
+		});
 	}
 }
 export default ApiMockProvider;
