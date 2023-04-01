@@ -6,6 +6,7 @@ import PropTypes from "prop-types";
  * @component
  */
 const WelcomeMessage = ({ firstName }) => {
+
 	return (
 		<section className="welcome">
 			<h1>

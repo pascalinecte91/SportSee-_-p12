@@ -5,9 +5,10 @@
  */
 
 class BarChartDto {
-	constructor(data) {
-		console.log(data);
+	constructor(data, titleX, titleY ) {
 		this.data = data;
+		this.titleX = titleX;
+		this.titleY = titleY;
 	}
 }
 

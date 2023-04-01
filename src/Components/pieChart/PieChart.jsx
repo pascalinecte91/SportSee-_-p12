@@ -3,7 +3,7 @@ import { PropTypes } from "prop-types";
 import { PieChart, Pie, RadialBarChart, RadialBar } from "recharts";
 
 
-const PieChartCard = ({ todayScore }) => {
+const  pieChart = ({ todayScore }) => {
 	// on verifie que la valeur todayScore est bien un nombre entre 0 et 1
 	if (typeof todayScore !== "number" || todayScore < 0 || todayScore > 1) {
 		return null;
@@ -34,8 +34,8 @@ const PieChartCard = ({ todayScore }) => {
 	);
 };
 
-PieChartCard.propTypes = {
+ pieChart.propTypes = {
 	todayScore: PropTypes.number.isRequired,
 };
 
-export default PieChartCard;
+export default  pieChart;

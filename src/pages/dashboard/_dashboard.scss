@@ -1,14 +1,32 @@
 .dashboard {
-  display: flex;
-  width: 82%;
-  flex-direction: column;
-  align-content: center;
-  margin: 4vh auto;
+
 
   &__content {
+    font-size: 18px;
+  }
+
+  &__charts {
     display: flex;
-    flex-direction: row-reverse;
     justify-content: space-between;
   }
- 
+
+  &__chartsContent {
+    width: 72%;
+    height: fit-content;
+
+  }
+
+  &__flex {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+
+  &__figure {
+    width: 25%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
 }

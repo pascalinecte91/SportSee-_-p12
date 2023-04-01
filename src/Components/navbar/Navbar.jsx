@@ -2,6 +2,7 @@ import React from "react";
 import { NavLink, useParams } from "react-router-dom";
 import logo from "assets/logo.png";
 
+
 /** 
  * Component React for display horizontal application's navigation
  * @component

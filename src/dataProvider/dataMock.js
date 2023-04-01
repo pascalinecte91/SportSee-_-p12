@@ -110,6 +110,7 @@ export const USER_ACTIVITY = [
 				kilogram: 69,
 				calories: 390,
 			},
+			
 		],
 	},
 ];

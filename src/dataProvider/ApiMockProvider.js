@@ -1,37 +1,34 @@
 import { USER_ACTIVITY, USER_MAIN_DATA, USER_AVERAGE_SESSIONS, USER_PERFORMANCE } from "dataProvider/dataMock";
 import BarChartDto from "dto/BarChartDto";
-import BarChartActivity from "Components/barChart/BarChartActivity";
-
+import BarChartWrapper from "Components/barChart/BarChartWrapper";
+import ChartPerformance from "Components/perfChart/ChartPerformance";
+import ChartPerformanceDto from "dto/ChartPerformanceDto";
+import NutrimentDto  from "dto/NutrimentDto";
 
 class ApiMockProvider {
-	constructor(userId) {
-		// Initialise l'ID de l'utilisateur
-		this.userId = userId;
-	}
-
-	getActivitiesByUserId() {
+	getActivitiesByUserId(userId) {
 		// Initialise un tableau d'activités utilisateur vide
-		const userActivity = [];
+		const userSessions = [];
+		//console.log(userSessions);
 		// Recherche l'utilisateur correspondant à l'ID fourni
-		const currentUser = USER_ACTIVITY.find((user) => user.userId === parseInt(this.userId));
-
+		const currentUser = USER_ACTIVITY.find((user) => user.userId === parseInt(userId));
+		//console.log(currentUser);
 		// Si un utilisateur est trouvé, parcoure ses sessions
 		if (currentUser) {
 			currentUser.sessions.forEach((session) => {
 				// Formate la date de la session
-				const [yyyy, mm, dd] = session.day.split("-");
-				const formattedDate = `${dd}/${mm}`;
+				const [yyyy, mm, day] = session.day.split("-");
+				const formattedDate = `${day}`;
+				//console.log(formattedDate);
 				// Ajoute les informations de la session au tableau d'activités utilisateur
-				userActivity.push({
+				userSessions.push({
 					day: formattedDate,
-					kilograms: session.kilogram,
+					kilogram: session.kilogram,
 					calories: session.calories,
 				});
 			});
 		}
-
-		// Retourne le tableau d'activités utilisateur
-		return userActivity;
+		return new BarChartDto(userSessions, "Jour", "Kilogrammes", "Calories");
 	}
 
 	getUserNameByUserId(userId) {
@@ -50,10 +47,33 @@ class ApiMockProvider {
 		return todayScore;
 	}
 
-	getSessionsUserId(userId) {
-		let user = USER_AVERAGE_SESSIONS.filter((user) => {
+	getNutrimentByUserId(userId) {
+		let user = USER_MAIN_DATA.filter((user) => {
 			return user.id == userId;
 		});
+		const keyData = user[0].keyData;
+		return new NutrimentDto(keyData);
 	}
+
+	/* 	getKindPerfByUserId(userId) {
+		// j initialise
+		let userData = [];
+		console.log(userData);
+
+		// je cherche l'utilisateur correspondant à l'ID fourni
+		const userCurrent = USER_PERFORMANCE.find((user) => user.userId === Number(userId));
+		console.log(userCurrent);
+		if (userCurrent) {
+			userCurrent.data.forEach((kind) => {
+				//console.log(userCurrent);
+				userData.push({
+					kind: kind.value,
+					value: kind.value,
+				});
+			});
+		}
+		return new ChartPerformanceDto(userData, "value", "kind");
+	}
+} */
 }
 export default ApiMockProvider;
