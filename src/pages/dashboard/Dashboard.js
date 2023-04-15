@@ -9,9 +9,15 @@ import Loader from "Components/loader/Loader";
 import BarChartWrapper from "Components/barChart/BarChartWrapper";
 import WelcomeMessage from "Components/welcome/WelcomeMessage";
 import PieChart from "Components/pieChart/PieChart";
-import ChartPerformance from "Components/perfChart/ChartPerformance";
+import ChartPerformance from "Components/chartPerformance/ChartPerformance";
 import Nutriment from "Components/nutriment/Nutriment";
+import LineChartAverage from "Components/lineChart/LineChartAverage";
+//dto
+import BarChartDto from "dto/BarChartDto";
 import NutrimentDto from "dto/NutrimentDto";
+import LineChartDto from "dto/LineChartDto";
+import ChartPerformanceDto from "dto/ChartPerformanceDto";
+
 
 
 
@@ -28,8 +34,10 @@ const Dashboard = () => {
 	let provider = isDemo ? new ApiMockProvider() : new ApiProvider();
 	const barChartDto = provider.getActivitiesByUserId(userId);
 	const nutrimentDto = provider.getNutrimentByUserId(userId);
+	const lineChartDto = provider.getSessionsByUserId(userId);
+/* 	const chartPerformanceDto = provider.getPerformanceByUserId(userId);  */
+	//recupere les données de performance et stocke dans "chartPerformanceDto"
 
-	/* const chartPerformanceDto = provider.getKindPerfByUserId(userId); */
 	//recupere le nom de l'utilisateur et stocke dans "firstName"
 	let firstName = provider.getUserNameByUserId(userId);
 	let todayScore = provider.getTodayScoreByUserId(userId);
@@ -44,7 +52,10 @@ const Dashboard = () => {
 					<article className="dashboard__chartsContent">
 						<div className="Dashboard__flex">
 							<BarChartWrapper dto={barChartDto} />
-							{/* 		<ChartPerformance dto={chartPerformanceDto} /> */}
+							<div className="dashboard__line">
+								<LineChartAverage dto={lineChartDto} />
+							</div>
+							{/* <ChartPerformance dto={chartPerformanceDto} />  */}
 							{/* 	<PieChart todayScore={todayScore} /> */}
 						</div>
 					</article>

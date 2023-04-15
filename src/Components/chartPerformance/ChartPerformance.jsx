@@ -14,7 +14,7 @@ const Kind = ({ item }) => {
 
 
 const ChartPerformance = ({ dto }) => {
-	console.log(dto.data);
+
 	return (
 		<div className="performance">
 			<ResponsiveContainer width="100%" height="100%">

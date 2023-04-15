@@ -112,6 +112,7 @@ CustomTooltip.propType = {
 	payload: PropTypes.array.isRequired,
 };
 
+
 BarChartWrapper.propTypes = {
 	dto: PropTypes.oneOfType([PropTypes.object.isRequired, PropTypes.array.isRequired]),
 };

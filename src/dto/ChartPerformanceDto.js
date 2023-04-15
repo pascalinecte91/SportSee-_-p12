@@ -1,5 +1,5 @@
 /**
- * @classChartPerformanceDto
+ * @class ChartPerformanceDto
  */
 
 class ChartPerformanceDto {
