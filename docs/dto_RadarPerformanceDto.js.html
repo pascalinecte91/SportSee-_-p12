@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: pages/error/Error.js</title>
+    <title>JSDoc: Source: dto/RadarPerformanceDto.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: pages/error/Error.js</h1>
+    <h1 class="page-title">Source: dto/RadarPerformanceDto.js</h1>
 
     
 
@@ -26,29 +26,19 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>import React from "react";
-import { NavLink } from "react-router-dom";
-
-
-/**
- * Composant React pour la page d'erreur 404.
- * @returns {JSX.Element} Le composant React pour la page d'erreur 404.
+            <pre class="prettyprint source linenums"><code>/**
+ * @class RadarPerformanceDto
  */
 
-const Error = () => {
-	return (
-		&lt;section className="error">
-		
-			&lt;aside className="error__page">
-				&lt;h1>Erreur 404&lt;/h1>
-				&lt;p>Oups ! La page que vous recherchez n'existe pas !&lt;/p>
-				&lt;NavLink to="/">Retour Accueil&lt;/NavLink>
-			&lt;/aside>
-		&lt;/section>
-	);
-};
+class RadarPerformanceDto {
+	constructor(data) {
+		this.data = data;
+			console.log(data);
+	}
+}
+export default RadarPerformanceDto;
 
-export default Error;</code></pre>
+</code></pre>
         </article>
     </section>
 

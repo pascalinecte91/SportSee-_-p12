@@ -2,16 +2,20 @@ import React from 'react';
 import logo from "assets/logo.png";
 
 
+
+
 const Setting = () => {
-  return (
+	return (
 		<>
 			<section className="reglage">
-				<h1>Réglage</h1>
-				<h1>Bienvenu sur</h1>
-				<img src={logo} alt="logo" />
+				<div className="reglage__title">
+					<h1>Page Réglages</h1>
+
+					<img src={logo} alt="logo" />
+				</div>
 			</section>
 		</>
-  );
+	);
 };
 
 export default Setting;

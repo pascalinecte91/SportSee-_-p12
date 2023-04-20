@@ -2,25 +2,32 @@ import React from "react";
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, Rectangle } from "recharts";
 import { PropTypes } from "prop-types";
 
-
+/**
+ * @fubnction is used to display the tooltip when the user hovers over the graph.
+ * @param {active, payload}
+ * @return {*}
+ */
 const CustomTooltip = ({ active, payload }) => {
 	//  (si `active` est vrai et si `payload` existe et contient au moins un élément :(payload;length)
 	if (active && payload && payload.length) {
 		// Renvoie un élément  affichant les valeurs de `payload[0]` et `payload[1]` concaténées avec "kg" et "KCal" respectivement.
 		return (
 			<div className="tooltip">
-				<p>{`${payload[0]?.value} kg`}</p>
-				<p>{`${payload[1]?.value} KCal`}</p>
+				<p>{payload[0].value + " kg"}</p>
+				<p>{payload[1].value + " KCal"}</p>
 			</div>
 		);
 	}
-
 	//Si active est false, ou si payload n'est pas défini ou ne contient rien :
 	return null;
 };
 
+/**
+ * @component is used to display the tooltip when the user hovers over the graph.
+ * @param {*} { dto }
+ * @return {*}
+ */
 const BarChartWrapper = ({ dto }) => {
-
 	return (
 		<div className="wrapper">
 			<ResponsiveContainer aspect={2.3}>
@@ -39,20 +46,20 @@ const BarChartWrapper = ({ dto }) => {
 					<CartesianGrid vertical={false} strokeDasharray="3 3" stroke={`#dedede`} />
 					<XAxis
 						dataKey="day"
-						tickFormatter={(day) => day.slice(-1)}
-						tickLine={false}
-						axisLine={false}
+						tickFormatter={(day) => day.slice(-1)} // affiche le dernier caractère de la chaine de caractère
+						tickLine={false} // enleve la ligne verticale
+						axisLine={false} // enleve la ligne horizontale
 						tickMargin={15}
 					/>
 					<YAxis yAxisId="cal" dataKey="calories" orientation="left" tick={true} hide tickCount={3} />
 					<YAxis
 						yAxisId="kg"
 						dataKey="kilogram"
-						orientation="right"
+						orientation="right" // affiche les valeurs a droite
 						tickLine={false}
 						stroke="FFFFF"
-						domain={["dataMin - 1", "dataMax"]}
-						tickCount={3}
+						domain={["dataMin - 1", "dataMax"]} // affiche les valeurs min et max
+						tickCount={3} // affiche 3 valeurs à la legende
 						tick={{ stroke: "9B9EAC" }}
 						dx={50}
 					/>
@@ -60,7 +67,7 @@ const BarChartWrapper = ({ dto }) => {
 					<Legend
 						verticalAlign="top"
 						align="right"
-						iconSize={8}
+						iconSize={8} // taille des points
 						iconType={"circle"}
 						width={277}
 						height={25}
@@ -88,16 +95,16 @@ const BarChartWrapper = ({ dto }) => {
 						dataKey="calories"
 						name="Calories brûlées (kCal)"
 						fill="#FF0000"
-						barSize={7}
+						barSize={7} // epaisseur des barres
 						radius={[5, 5, 0, 0]}
 					/>
-					//* activite quotidienne :  X horizontal   Y vertical 
-					<text 
-						x="5%"
-						y="5%"
-						dominantBaseline="middle"
-						fill="#20253A"
-						style={{ fontWeight: 500, fontSize: 15, marginLeft: -50 }}
+					//* activite quotidienne : X horizontal Y vertical
+					<text
+						x="5%" // positionnement horizontal
+						y="7%" // positionnement vertical
+						dominantBaseline="middle" // alignement vertical
+						fill="#20253A" // couleur du texte
+						fontSize="15"
 					>
 						Activité quotidienne
 					</text>
@@ -112,10 +119,8 @@ CustomTooltip.propType = {
 	payload: PropTypes.array.isRequired,
 };
 
-
 BarChartWrapper.propTypes = {
 	dto: PropTypes.oneOfType([PropTypes.object.isRequired, PropTypes.array.isRequired]),
 };
-
 
 export default BarChartWrapper;

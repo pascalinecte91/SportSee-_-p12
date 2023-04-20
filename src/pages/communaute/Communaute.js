@@ -8,12 +8,16 @@ import React from "react";
  */
 
 const Communaute = () => {
+
+
 	return (
 		<>
 			<section className="communaute">
-				<h1>Communaute</h1>
-				<h1>Bienvenu sur</h1>
-				<img src={logo} alt="logo" />
+				<div className="communaute__title">
+					<h1>Page Communauté</h1>
+
+					<img src={logo} alt="logo" />
+				</div>
 			</section>
 		</>
 	);

@@ -9,12 +9,13 @@ const Home = () => {
   return (
 		<>
 			<section className="home">
-				<div className="test">
+				
 					<div className="home__title">
-						<h1>Bienvenu sur</h1>
+						<h1>Page   HOME</h1>
+						
 						<img src={logo} alt="logo" />
 					</div>
-				</div>
+			
 			</section>
 		</>
   );

@@ -1,9 +1,9 @@
 import axios from "axios";
 import BarChartWrapper from "Components/barChart/BarChartWrapper";
-import ChartPerformance from "Components/chartPerformance/ChartPerformance";
+import RadarPerformance from "Components/radarPerformance/RadarPerformance";
 //dto
-import ChartPerformanceDto from "dto/ChartPerformanceDto";
-import NutrimentDto  from "dto/NutrimentDto";
+import RadarPerformanceDto from "dto/RadarPerformanceDto";
+import NutrimentDto from "dto/NutrimentDto";
 import LineChartDto from "dto/LineChartDto";
 import BarChartDto from "dto/BarChartDto";
 
@@ -23,7 +23,8 @@ class ApiProvider {
 		return new BarChartDto("api");
 	}
 
-	getNutrimentByUserId(userId) {
+	
+	getNutrimentByUserId(userId) { 
 		//todo aller chercher les data depuis axios
 		// todo : hydrater le chartBardto avec les datas axios
 		return new NutrimentDto("api");
@@ -34,7 +35,15 @@ class ApiProvider {
 	}
 
 	getPerformanceyUserId(userId) {
-		return new ChartPerformanceDto("api");
+		return new RadarPerformanceDto("api");
+	}
+
+	getPerformanceyUserId(userId) {
+		return new RadarPerformanceDto("api");
+	}
+
+	getScoreByUserId(userId) {
+		return new RadarScoreDto("api");
 	}
 }
 export default ApiProvider;

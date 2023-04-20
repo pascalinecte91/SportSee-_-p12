@@ -1,15 +1,16 @@
 .dashboard {
-  &__content {
     font-size: 18px;
-  }
+    margin-top: 20px;
 
   &__charts {
     display: flex;
-    justify-content: space-between;
+    gap: 31px;
+    height: 80vh;
+    align-items: center;
   }
 
-  &__chartsContent {
-    width: 72%;
+  &__chartsLinear {
+   
     height: fit-content;
 
   }
@@ -20,19 +21,25 @@
     flex-wrap: wrap;
   }
 
-  &__figure {
-    width: 25%;
+  &__nutrients {
+    width: 20%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
   }
+}
 
-  &__line {
-    width: 30%;
-    height: 1px;
-    margin-left: 50px;
-    margin-top: 50px;
-
+.dashboard {
+  &__threeGraph {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    width: 70%;
+    gap: 30px;
+    position: relative;
+    margin-top: 30px;
   }
+
+
 
 }

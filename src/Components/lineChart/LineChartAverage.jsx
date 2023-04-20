@@ -4,28 +4,33 @@ import {LineChart,Line,XAxis,YAxis,Tooltip,ResponsiveContainer,Legend,CartesianG
 } from "recharts";
 
 
+/**
+ * @function is used to display the legend of the graph.
+ * @return {*} 
+ */
+
 const legendAverage = () => {
 	return <p style={{ width: "160px", color: "white", opacity: "0.5" }}>Durée moyenne des sessions</p>;
 };
 
-/**
- *
- *
- * @param {*} { points }
+/** 
+ * @param {points } 
  * @return {*} 
  */
-
 
 const CustomCursor = ({ points }) => {
 	return <Rectangle fill="#000000" opacity={0.2} x={points[0].x} width={98} height={300} />;
 };
 
-/* const CustomizedCursor = ({ points }) => {
-	const xPos = points[0].x;
-	return <rect x={xPos} y={0} width={"100%"} height={"100%"} fill="rgba(0, 0, 0, 0.1)" />;
-}; */
 
- const CustomTooltip = ({ active, payload }) => {
+/**
+ * @component is used to display the tooltip when the user hovers over the graph.
+ * @param {*} { active, payload }
+ * @return {*} 
+ * 
+ */
+
+const CustomTooltip = ({ active, payload }) => {
 		if (active && payload && payload.length) {
 			return (
 				<div
@@ -46,17 +51,18 @@ const CustomCursor = ({ points }) => {
 
 
 const LineChartAverage = ({ dto }) => {
-  console.log(dto);
+
 	return (
 		<div className="linearChart" style={{ minWidth: "258px", height: "263px" }}>
 			<ResponsiveContainer>
 				<LineChart
 					width={300}
 					height={300}
-					data={dto.data}
+					data={dto.data} //données à afficher
 					margin={{
+						//marge de l'axe x
 						top: 80,
-						right: 30,
+						right: 20,
 						left: 20,
 						bottom: 10,
 					}}
@@ -70,34 +76,32 @@ const LineChartAverage = ({ dto }) => {
 						</linearGradient>
 					</defs>
 					<XAxis
-						dataKey="day"
-						dy={10}
-						tickLine={false}
+						dataKey="day" //donnée à afficher
+						dy={10} //position de l'axe x
+						tickLine={false} //ligne de l'axe x
 						axisLine={false}
-						tick={{ fill: "white", opacity: "0.5" }}
+						tick={{ fill: "white", opacity: "0.5" }} //couleur de l'axe x
 					/>
 					<YAxis dataKey="sessionLength" domain={["dataMin - 10", "dataMax"]} hide />
 
-				 <Tooltip 
-				 content={<CustomTooltip />} 
-				 cursor={<CustomCursor />} />
-				 
+					<Tooltip content={<CustomTooltip />} cursor={<CustomCursor />} />
+
 					<Line
-						type="natural"
-						dataKey="sessionLength"
-						strokeWidth={2}
-						dot={false}
-						activeDot={{ r: 3, stroke: "white" }}
-						stroke="url(#colorUv)"
+						type="natural" //type de la ligne
+						dataKey="sessionLength" //donnée à afficher
+						strokeWidth={2} //epaisseur de la ligne
+						dot={false} //point sur la ligne
+						activeDot={{ r: 3, stroke: "white" }} //point sur la ligne au survol
+						stroke="url(#colorUv)" //couleur de la ligne
 					/>
 					<Legend
 						wrapperStyle={{
-							margin: "-3rem 1rem",
+							margin: "-3rem 1rem", //position de la légende
 						}}
-						fontWeight={500}
-						verticalAlign="top"
+						fontWeight={500} //epaisseur de la légende
+						verticalAlign="top" //
 						align="left"
-						content={legendAverage}
+						content={legendAverage} //contenu de la légende
 					/>
 				</LineChart>
 			</ResponsiveContainer>
@@ -109,12 +113,12 @@ LineChartAverage.propTypes = {
 	dto: PropTypes.object,
 };
 
-CustomTooltip.propTypes = {
+CustomTooltip.propType = {
 	active: PropTypes.array.isRequired,
 	payload: PropTypes.array.isRequired,
 };
 
-CustomCursor.propTypes = {	
+CustomCursor.propType = {	
 	points: PropTypes.array.isRequired,
 };
 

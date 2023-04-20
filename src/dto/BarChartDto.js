@@ -1,9 +1,5 @@
 
 
-/**
- * @class BarChartDto
- */
-
 class BarChartDto {
 	constructor(data, titleX, titleY ) {
 		this.data = data;

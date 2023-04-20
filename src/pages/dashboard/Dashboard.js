@@ -8,17 +8,16 @@ import Error from "pages/error/Error";
 import Loader from "Components/loader/Loader";
 import BarChartWrapper from "Components/barChart/BarChartWrapper";
 import WelcomeMessage from "Components/welcome/WelcomeMessage";
-import PieChart from "Components/pieChart/PieChart";
-import ChartPerformance from "Components/chartPerformance/ChartPerformance";
+import RadarScore from "Components/radarScore/RadarScore";
+import RadarPerformance from "Components/radarPerformance/RadarPerformance";
 import Nutriment from "Components/nutriment/Nutriment";
 import LineChartAverage from "Components/lineChart/LineChartAverage";
 //dto
 import BarChartDto from "dto/BarChartDto";
 import NutrimentDto from "dto/NutrimentDto";
 import LineChartDto from "dto/LineChartDto";
-import ChartPerformanceDto from "dto/ChartPerformanceDto";
-
-
+import RadarPerformanceDto from "dto/RadarPerformanceDto";
+import RadarScoreDto from "dto/RadarScoreDto";
 
 
 
@@ -35,36 +34,40 @@ const Dashboard = () => {
 	const barChartDto = provider.getActivitiesByUserId(userId);
 	const nutrimentDto = provider.getNutrimentByUserId(userId);
 	const lineChartDto = provider.getSessionsByUserId(userId);
-/* 	const chartPerformanceDto = provider.getPerformanceByUserId(userId);  */
-	//recupere les données de performance et stocke dans "chartPerformanceDto"
+	const radarPerformanceDto = provider.getPerformanceByUserId(userId);  
+	const radarScoreDto = provider.getScoreByUserId(userId);
+	console.log(radarScoreDto);
 
 	//recupere le nom de l'utilisateur et stocke dans "firstName"
 	let firstName = provider.getUserNameByUserId(userId);
-	let todayScore = provider.getTodayScoreByUserId(userId);
 
+
+	
 
 	return (
-		<main className="dashboard">
-			<section className="dashboard__content">
+		
+			<section className="dashboard">
 				<WelcomeMessage firstName={firstName} />
-
 				<aside className="dashboard__charts">
-					<article className="dashboard__chartsContent">
-						<div className="Dashboard__flex">
-							<BarChartWrapper dto={barChartDto} />
-							<div className="dashboard__line">
-								<LineChartAverage dto={lineChartDto} />
-							</div>
-							{/* <ChartPerformance dto={chartPerformanceDto} />  */}
-							{/* 	<PieChart todayScore={todayScore} /> */}
+		
+					<article className="dashboard__chartsLinear">
+						<BarChartWrapper dto={barChartDto} />
+
+						<div className="dashboard__threeGraph">
+							<LineChartAverage dto={lineChartDto} />
+							<RadarPerformance dto={radarPerformanceDto} />
+							<RadarScore dto={radarScoreDto} /> 
 						</div>
 					</article>
-					<article className="dashboard__figure">
+
+					
+					
+					<article className="dashboard__nutrients">
 						<Nutriment dto={nutrimentDto} />
 					</article>
 				</aside>
+		
 			</section>
-		</main>
 	);
 };
 

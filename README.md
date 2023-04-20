@@ -90,4 +90,3 @@ ___
 #### NB : 
 - npm run jsdoc for generated documentation
 
-# IN PROGRESS 

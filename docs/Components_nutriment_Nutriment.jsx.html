@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: pages/error/Error.js</title>
+    <title>JSDoc: Source: Components/nutriment/Nutriment.jsx</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: pages/error/Error.js</h1>
+    <h1 class="page-title">Source: Components/nutriment/Nutriment.jsx</h1>
 
     
 
@@ -27,28 +27,47 @@
     <section>
         <article>
             <pre class="prettyprint source linenums"><code>import React from "react";
-import { NavLink } from "react-router-dom";
-
+import protein from "assets/protein.png";
+import lipid from "assets/lipid.png";
+import carbohydrate from "assets/carbohydrate.png";
+import calories from "assets/calories.png";
+import { PropTypes } from "prop-types";
+import NutrimentDto  from "dto/NutrimentDto";
 
 /**
- * Composant React pour la page d'erreur 404.
- * @returns {JSX.Element} Le composant React pour la page d'erreur 404.
- */
+A React component that displays nutritional information.
+@param {Object} props - The props object for the Nutriment component.
+@param {Object} props.dto - An instance of the NutrimentDto class containing nutritional information.
+@returns {JSX.Element} - The JSX element for the Nutriment component.
+*/
 
-const Error = () => {
+
+const Nutriment = ({ dto }) => {
 	return (
-		&lt;section className="error">
-		
-			&lt;aside className="error__page">
-				&lt;h1>Erreur 404&lt;/h1>
-				&lt;p>Oups ! La page que vous recherchez n'existe pas !&lt;/p>
-				&lt;NavLink to="/">Retour Accueil&lt;/NavLink>
-			&lt;/aside>
-		&lt;/section>
+		//fonction qui formate en string et en US  pour afficher le nombre avec des virgules pour separarer les milliers
+		// et minimumFractionDigits: 0, maximumFractionDigits: 0 pour afficher le nombre sans decimales
+		&lt;section className="feeding">
+			&lt;div className="feeding__calorie">&lt;img src={calories} /> {"calories"} {dto.data.calorieCount.toLocaleString("en-US", 
+			{ minimumFractionDigits: 0, maximumFractionDigits: 0})} kCal 
+			&lt;/div>
+				&lt;div className="feeding__protein">&lt;img src={protein} />{"protein"} {dto.data.proteinCount} g&lt;/div>  
+				&lt;div className="feeding__lipid">&lt;img src={lipid} />{"lipid"} {dto.data.lipidCount} g&lt;/div>
+				&lt;div className="feeding__carbohydrate">&lt;img src={carbohydrate} />{"carbohydrate"} {dto.data.carbohydrateCount} g&lt;/div>
+		&lt;/section> 
 	);
 };
 
-export default Error;</code></pre>
+/**
+* An instance of the NutrimentDto class containing nutritional information.
+*/
+Nutriment.propTypes = {
+	dto: PropTypes.object,
+};
+
+
+
+export default Nutriment;
+</code></pre>
         </article>
     </section>
 

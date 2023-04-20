@@ -26,7 +26,7 @@ const Navbar = () => {
 		{ name: "Accueil", url: "/home/" },
 		{ name: "Profil", url: "/dashboard/" },
 		{ name: "Réglage", url: "/setting/" },
-		{ name: "Communauté", url: "/communite/" },
+		{ name: "Communauté", url: "/communaute/" },
 	];
 
 	return (
@@ -40,10 +40,10 @@ const Navbar = () => {
 			
 				{navItems.map((item, index) => (
 					<NavLink
-						to={userID ? item.url + userID : item.url}
-						key={item.name + index}
-						//* link actif  sinon nav_goToPage
-						className={(nav) => (nav.isActive ? "nav_goToPage--active" : "nav_goToPage")}
+						to={userID ? item.url + userID : item.url}// si userID existe alors on ajoute l'id sinon on ajoute rien
+						key={item.name + index}// key unique
+					
+						className={(nav) => (nav.isActive ? "nav_goToPage--active" : "nav_goToPage")}// si la page est active alors on ajoute la classe nav_goToPage--active sinon on ajoute nav_goToPage
 					>
 						{item.name}
 					</NavLink>

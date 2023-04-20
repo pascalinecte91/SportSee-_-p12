@@ -7,7 +7,9 @@
 }
 
 .content {
-  grid-area: content;
-
-
+margin: 30px 100px;
+@media   (min-width: 1441px) {
+  display: flex;
+  justify-content: space-evenly;
+}
 }
