@@ -1,24 +1,19 @@
-
 import logo from "assets/logo.png";
 import React from "react";
+import Login from "Components/login/Login";
+import Switch from "Components/switch/Switch";
 
-
-
-const Home = () => {
-
-  return (
+const Home = ( firstName, lastName, age) => {
+	return (
 		<>
 			<section className="home">
 				
-					<div className="home__title">
-						<h1>Page   HOME</h1>
-						
-						<img src={logo} alt="logo" />
-					</div>
 			
+					<Login firstName={firstName} lastName={lastName} age={age} />
+				
 			</section>
 		</>
-  );
+	);
 };
 
 export default Home;

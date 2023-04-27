@@ -40,34 +40,30 @@ const Dashboard = () => {
 
 	//recupere le nom de l'utilisateur et stocke dans "firstName"
 	let firstName = provider.getUserNameByUserId(userId);
+	let lastName = provider.getUserLastNameByUserId(userId);
 
-
-	
 
 	return (
-		
-			<section className="dashboard">
-				<WelcomeMessage firstName={firstName} />
-				<aside className="dashboard__charts">
-		
-					<article className="dashboard__chartsLinear">
-						<BarChartWrapper dto={barChartDto} />
+	
+		<section className="dashboard">
+			<WelcomeMessage firstName={firstName} lastName={lastName} />
 
-						<div className="dashboard__threeGraph">
-							<LineChartAverage dto={lineChartDto} />
-							<RadarPerformance dto={radarPerformanceDto} />
-							<RadarScore dto={radarScoreDto} /> 
-						</div>
-					</article>
+			<aside className="dashboard__charts">
+				<article className="dashboard__chartsLinear">
+					<BarChartWrapper dto={barChartDto} />
 
-					
-					
-					<article className="dashboard__nutrients">
-						<Nutriment dto={nutrimentDto} />
-					</article>
-				</aside>
-		
-			</section>
+					<div className="dashboard__threeGraph">
+						<LineChartAverage dto={lineChartDto} />
+						<RadarPerformance dto={radarPerformanceDto} />
+						<RadarScore dto={radarScoreDto} />
+					</div>
+				</article>
+
+				<article className="dashboard__nutrients">
+					<Nutriment dto={nutrimentDto} />
+				</article>
+			</aside>
+		</section>
 	);
 };
 

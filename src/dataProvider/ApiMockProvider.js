@@ -3,8 +3,7 @@ import RadarPerformanceDto from "dto/RadarPerformanceDto";
 import NutrimentDto from "dto/NutrimentDto";
 import LineChartDto from "dto/LineChartDto";
 import BarChartDto from "dto/BarChartDto";
-import RadarScoretDto from "dto/RadarScoreDto";
-import RadarScoreDto from "./../dto/RadarScoreDto";
+import RadarScoreDto from "dto/RadarScoreDto";
 
 
 /**
@@ -37,32 +36,41 @@ class ApiMockProvider {
 	/**
 	 * @use .filter pour trouver l'objet correspondant à l'id
 	 * @param {*} userId
-	 * @return {string} 
+	 * @return {string}
 	 * @memberof ApiMockProvider
 	 */
 
 	getUserNameByUserId(userId) {
 		let user = USER_MAIN_DATA.filter((user) => {
 			return user.id == userId;
+
 		});
 		let firstName = user[0].userInfos.firstName;
 		return firstName;
+		
 	}
 
-	
+	getUserLastNameByUserId(userId) {
+		let user = USER_MAIN_DATA.filter((user) => {
+			return user.id == userId;
+		
+		});
+		let lastName = user[0].userInfos.lastName;
+		return lastName;
+	}
+
 	getScoreByUserId(userId) {
 		let user = USER_MAIN_DATA.filter((user) => {
 			return user.id == userId;
 		});
 		const todayScore = user[0].todayScore;
 		return new RadarScoreDto(todayScore);
-		
 	}
 
 	/**
 	 * @use .filter pour trouver l'objet correspondant à l'id
 	 * @param {*} userId
-	 * @return {NutrimentDto} 
+	 * @return {NutrimentDto}
 	 * @memberof ApiMockProvider
 	 */
 

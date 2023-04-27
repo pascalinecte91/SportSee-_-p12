@@ -3,43 +3,56 @@ import { PropTypes } from "prop-types";
 import { PolarAngleAxis, RadialBar, RadialBarChart, PieChart, Pie, Legend } from "recharts";
 
 /**
- * 
+ *
  * @param {*} { dto }
- * @return {*} 
- * 
+ * @return {*}
+ *
  */
 
 const RadarScore = ({ dto }) => {
 	//console.log(dto); // data 0.12
 	const todayScore = dto.data;
-	//console.log(todayScore); // 0.12
 
+		const dataPie = [
+			{ value: 1, fill: "transparent" }, 
+			{ value: todayScore, fill: "#ff0101" },
+		];
 	
-	const data = todayScore >= 1 ? [{ data: 100 }] : [{ data: todayScore * 100 }];
+	
 
 	return (
 		<>
-			<div className="pieChartContent">
+			<section className="pieChart">
 				<PieChart
-					className="pieChart"
+					className="pieChartContent"
 					width={258}
 					height={263}
-					style={{ backgroundColor: "#fdfdfd", borderRadius: "5px" }}
+					style={{ backgroundColor: "#fbfbfb", borderRadius: "5px" }}
 				>
 					<Pie
-						data={dto.data}
-						startAngle={90} // degré de départ
-						endAngle={(dto.data / 1) * 360 + 90} // degré de fin
+						data={dataPie}
+						dataKey="value"
+						startAngle={-170} // degré de départ
 						cx="50%" // position du centre
 						cy="50%" //
-						innerRadius={60} // rayon interieur
-						outerRadius={80}
-						fill="#ff0000" // couleur du cercle
-						dataKey="value"
+						endAngle={170} // degré de fin
+						innerRadius={80} // epaissseur du cercle
+						outerRadius={90} //
+						fill="#ff0101" // couleur du cercle
 					/>
+					<text x={20} y={50}>
+						Score
+					</text>
 					<text x="41%" y="45%" fontSize="24px" fontWeight={900}>
 						{todayScore * 100} %
-						<tspan x="36%" y="46%" dy={20} fontWeight={500} fontSize="16px" letterSpacing="0.6">
+						<tspan
+							x="36%" // position du texte
+							y="46%"
+							dy={20} // décalage du texte
+							fontWeight={500}
+							fontSize="16px"
+							letterSpacing="0.6"
+						>
 							de votre
 						</tspan>
 						<tspan x="38%" y="46%" dy={40} fontSize="16px" fontWeight={500}>
@@ -47,11 +60,10 @@ const RadarScore = ({ dto }) => {
 						</tspan>
 					</text>
 				</PieChart>
-			</div>
+			</section>
 		</>
 	);
 };
-
 
 RadarScore.propTypes = {
 	dto: PropTypes.object,

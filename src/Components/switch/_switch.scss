@@ -1,0 +1,75 @@
+.switch {// le conteneur
+  position: relative;
+  display: inline-block;
+  width: 100px;
+  height: 39px;
+}
+
+
+.slider { // le bouton
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: map-get($colors, blood);
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: attr(data-off-text);
+  height: 35px;
+  width: 38px;
+  left: 2px;
+  bottom: 2px;
+background-color: map-get($colors, snow);
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked+.slider {
+  background-color: map-get($colors, night);
+}
+
+
+
+input:checked+.slider:before { 
+  -webkit-transform: translateX(50px);//
+  -ms-transform: translateX(42px);
+  transform: translateX(58px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+.switch__label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 14px;
+}
+
+.switch__label[data-on]:before { // le texte
+  content: attr(data-on);//
+  margin-right: 5px;
+}
+
+.switch__label[data-off]:after { // le texte
+  content: attr(data-off);
+  margin-left: 27px;
+}

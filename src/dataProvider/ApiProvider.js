@@ -34,11 +34,8 @@ class ApiProvider {
 		return new LineChartDto("api");
 	}
 
-	getPerformanceyUserId(userId) {
-		return new RadarPerformanceDto("api");
-	}
 
-	getPerformanceyUserId(userId) {
+	getPerformanceByUserId(userId) {
 		return new RadarPerformanceDto("api");
 	}
 
