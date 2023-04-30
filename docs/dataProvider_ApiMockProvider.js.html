@@ -31,13 +31,22 @@ import RadarPerformanceDto from "dto/RadarPerformanceDto";
 import NutrimentDto from "dto/NutrimentDto";
 import LineChartDto from "dto/LineChartDto";
 import BarChartDto from "dto/BarChartDto";
-import RadarScoretDto from "dto/RadarScoreDto";
+import RadarScoreDto from "dto/RadarScoreDto";
 
 /**
  * @class ApiMockProvider
+ * @description toutes les fonctions de cette classe sont des fonctions qui permettent de récupérer des données mockées
+ * @returns {ApiMockProvider}
  */
 
+
 class ApiMockProvider {
+	/**
+	 * @name getActivitiesByUserId
+	 * @use find pour trouver l'objet correspondant à l'id
+	 * @return {BarChartDto}
+	 * @memberof ApiMockProvider
+	 * */
 	getActivitiesByUserId(userId) {
 		const userSessions = []; // tableau vide
 		// on cherche l'objet correspondant à l'id
@@ -56,6 +65,15 @@ class ApiMockProvider {
 		}
 		return new BarChartDto(userSessions, "Jour", "Kilogrammes", "Calories");
 	}
+	/******************************************************************************************/
+
+	/**
+	 * @name getUserNameByUserId
+	 * @use filter pour trouver l'objet correspondant à l'id
+	 * @param {*} userId
+	 * @return {RadarPerformanceDto}
+	 * @memberof ApiMockProvider
+	 * */
 
 	getUserNameByUserId(userId) {
 		let user = USER_MAIN_DATA.filter((user) => {
@@ -64,14 +82,46 @@ class ApiMockProvider {
 		let firstName = user[0].userInfos.firstName;
 		return firstName;
 	}
+	/******************************************************************************************/
+	/**
+	 * @name getUserLastNameByUserId
+	 * @use filter pour trouver l'objet correspondant à l'id
+	 * @param {*} userId
+	 * @return {RadarPerformanceDto}
+	 * @memberof ApiMockProvider
+	 * */
 
-	getTodayScoreByUserId(userId) {
+	getUserLastNameByUserId(userId) {
+		let user = USER_MAIN_DATA.filter((user) => {
+			return user.id == userId;
+		});
+		let lastName = user[0].userInfos.lastName;
+		return lastName;
+	}
+	/******************************************************************************************/
+	/**
+	 * @name getScoreByUserId
+	 * @use filter pour trouver l'objet correspondant à l'id
+	 * @param {*} userId
+	 * @return {RadarPerformanceDto}
+	 * @memberof ApiMockProvider
+	 * */
+
+	getScoreByUserId(userId) {
 		let user = USER_MAIN_DATA.filter((user) => {
 			return user.id == userId;
 		});
 		const todayScore = user[0].todayScore;
-		return todayScore;
+		return new RadarScoreDto(todayScore);
 	}
+	/******************************************************************************************/
+	/**
+	* @name getNutrimentByUserId
+	* @use filter pour trouver l'objet correspondant à l'id
+	* @param {*} userId
+	* @return {NutrimentDto}
+	* @memberof ApiMockProvider
+	* */
 
 	getNutrimentByUserId(userId) {
 		let user = USER_MAIN_DATA.filter((user) => {
@@ -80,18 +130,17 @@ class ApiMockProvider {
 		const keyData = user[0].keyData;
 		return new NutrimentDto(keyData);
 	}
-
+	/******************************************************************************************/
 	/**
-	 * @use .find pour trouver l'objet correspondant à l'id
-	 * @use parseInt pour convertir le string en un entier
-	 * @use .map pour créer un tableau avec les données souhaitées avec la prop day et session length
+	 * @name getSessionsByUserId
+	 * @use find pour trouver l'objet correspondant à l'id
 	 * @param {*} userId
-	 * day = chaines de caractères
-	 * sessionLength = nombre
-	 * @valeur  session.day - 1 pour avoir le bon index du tableau
 	 * @return {LineChartDto}
 	 * @memberof ApiMockProvider
-	 */
+	 * */
+
+	// on ne peut pas utiliser la fonction getActivitiesByUserId(userId) pour récupérer les sessions
+	// parce que les données ne sont pas formatées de la même manière
 
 	getSessionsByUserId(userId) {
 		const currentUser = USER_AVERAGE_SESSIONS.find((user) => user.userId === parseInt(userId));
@@ -104,12 +153,24 @@ class ApiMockProvider {
 		return new LineChartDto(userSessions, "day", "sessionLength");
 	}
 
+	/****************************************************************************************/
+	/**
+	 * @name getPerformanceByUserId
+	 * @use find pour trouver l'objet correspondant à l'id
+	 * @param {*} userId
+	 * @return {RadarPerformanceDto}
+	 * @memberof ApiMockProvider
+	 * @useparseInt pour convertir l'id en nombre
+	 * @desc on cherche l'objet correspondant à l'id
+	 * parce que dans le fichier dataMock, l'id est un nombre
+	 * dans le fichier dataProvider, l'id est une chaîne de caractères
+	 */
+
 	getPerformanceByUserId(userId) {
 		const currentUser = USER_PERFORMANCE.find((user) => {
-			//.find pour trouver l'objet correspondant à l'id
 			return user.userId === parseInt(userId);
 		});
-console.log(currentUser);
+
 		return new RadarPerformanceDto(currentUser);
 	}
 }
@@ -125,13 +186,13 @@ export default ApiMockProvider;
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="ApiMockProvider.html">ApiMockProvider</a></li><li><a href="ApiProvider.html">ApiProvider</a></li><li><a href="BarChartDto.html">BarChartDto</a></li><li><a href="RadarPerformanceDto.html">RadarPerformanceDto</a></li></ul><h3>Global</h3><ul><li><a href="global.html#Communaute">Communaute</a></li><li><a href="global.html#CustomCursor">CustomCursor</a></li><li><a href="global.html#Error">Error</a></li><li><a href="global.html#Login">Login</a></li><li><a href="global.html#Navbar">Navbar</a></li><li><a href="global.html#Nutriment">Nutriment</a></li><li><a href="global.html#VerticalSidebar">VerticalSidebar</a></li><li><a href="global.html#WelcomeMessage">WelcomeMessage</a></li><li><a href="global.html#with">with</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="ApiMockProvider.html">ApiMockProvider</a></li><li><a href="ApiProvider.html">ApiProvider</a></li></ul><h3>Global</h3><ul><li><a href="global.html#BarChartWrapper">BarChartWrapper</a></li><li><a href="global.html#Communaute">Communaute</a></li><li><a href="global.html#CustomCursor">CustomCursor</a></li><li><a href="global.html#CustomTooltip">CustomTooltip</a></li><li><a href="global.html#Error">Error</a></li><li><a href="global.html#FormatDataKind">FormatDataKind</a></li><li><a href="global.html#Login">Login</a></li><li><a href="global.html#Navbar">Navbar</a></li><li><a href="global.html#Nutriment">Nutriment</a></li><li><a href="global.html#RadarScore">RadarScore</a></li><li><a href="global.html#VerticalSidebar">VerticalSidebar</a></li><li><a href="global.html#WelcomeMessage">WelcomeMessage</a></li><li><a href="global.html#isusedtodisplaythelegendofthegraph.">is used to display the legend of the graph.</a></li><li><a href="global.html#with">with</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.2</a> on Thu Apr 20 2023 20:59:02 GMT+0200 (heure d’été d’Europe centrale)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.2</a> on Sun Apr 30 2023 12:09:05 GMT+0200 (heure d’été d’Europe centrale)
 </footer>
 
 <script> prettyPrint(); </script>

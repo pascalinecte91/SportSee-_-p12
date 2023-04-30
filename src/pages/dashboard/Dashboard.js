@@ -31,12 +31,13 @@ const Dashboard = () => {
 
 	// Initialise le provider API en fonction du mode démo
 	let provider = isDemo ? new ApiMockProvider() : new ApiProvider();
+	console.log(provider);
 	const barChartDto = provider.getActivitiesByUserId(userId);
 	const nutrimentDto = provider.getNutrimentByUserId(userId);
 	const lineChartDto = provider.getSessionsByUserId(userId);
 	const radarPerformanceDto = provider.getPerformanceByUserId(userId);  
 	const radarScoreDto = provider.getScoreByUserId(userId);
-	console.log(radarScoreDto);
+	//console.log(radarScoreDto);
 
 	//recupere le nom de l'utilisateur et stocke dans "firstName"
 	let firstName = provider.getUserNameByUserId(userId);
@@ -44,10 +45,8 @@ const Dashboard = () => {
 
 
 	return (
-	
 		<section className="dashboard">
 			<WelcomeMessage firstName={firstName} lastName={lastName} />
-
 			<aside className="dashboard__charts">
 				<article className="dashboard__chartsLinear">
 					<BarChartWrapper dto={barChartDto} />

@@ -25,7 +25,7 @@ const Navbar = () => {
 
 	const navItems = [
 		{ name: "Accueil", url: "/" },
-		{ name: "Profil", url: "/dashboard" },
+		{ name: "Profil", url: "/dashboard" }, 
 		{ name: "Réglage", url: "/setting" },
 		{ name: "Communauté", url: "/communaute" },
 	];

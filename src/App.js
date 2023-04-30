@@ -25,13 +25,10 @@ const App = () => {
 			<section className="content">
 				<Routes>
 					<Route path="/" element={<Home />} />
-			{/* 		<Route path="/home" element={<Home />} /> */}
-			
-						<Route path="/dashboard/:userId" element={<Dashboard />} />
-						<Route path="/setting/" element={<Setting />} />
-						<Route path="/communaute/" element={<Communaute />} />
-					
-					
+					<Route path="/dashboard/:userId" element={<Dashboard />} />
+					<Route path="/setting/" element={<Setting />} />
+					<Route path="/communaute/" element={<Communaute />} />
+
 					<Route path="*" element={<Error />} />
 				</Routes>
 			</section>

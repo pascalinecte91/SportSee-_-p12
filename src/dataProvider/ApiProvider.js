@@ -1,39 +1,42 @@
 import axios from "axios";
-import BarChartWrapper from "Components/barChart/BarChartWrapper";
-import RadarPerformance from "Components/radarPerformance/RadarPerformance";
 //dto
 import RadarPerformanceDto from "dto/RadarPerformanceDto";
 import NutrimentDto from "dto/NutrimentDto";
 import LineChartDto from "dto/LineChartDto";
 import BarChartDto from "dto/BarChartDto";
+import WelcomeMessage from "Components/welcome/WelcomeMessage";
 
-/**
- * @class ApiProvider
- */
+
 
 class ApiProvider {
-	/**
-	 * Creates an instance of ApiProvider.
-	 * @memberof ApiProvider
-	 * @param {*} userId
-	 * @return {*}
-	 */
+  async getActivitiesByUserId(userId) {
+    try {
+      const response = await axios.get(`/users/${userId}/activities`);
+      const userSessions = response.data.sessions.map((session) => {
+        const [yyyy, mm, day] = session.day.split("-");
+        const formattedDate = `${day}`;
+        return {
+          day: formattedDate,
+          kilogram: session.kilogram,
+          calories: session.calories,
+        };
+      });
+      return new BarChartDto(
+        userSessions,
+        "Jour",
+        "Kilogrammes",
+        "Calories"
+      );
+    } catch (error) {
+      console.error(error);
+    }
+  }
+}
 
-	getActivitiesByUserId(userId) {
-		return new BarChartDto("api");
-	}
 
-	
-	getNutrimentByUserId(userId) { 
-		//todo aller chercher les data depuis axios
-		// todo : hydrater le chartBardto avec les datas axios
-		return new NutrimentDto("api");
-	}
-
-	getAverageByUserId(userId) {
+/* 	getAverageByUserId(userId) {
 		return new LineChartDto("api");
 	}
-
 
 	getPerformanceByUserId(userId) {
 		return new RadarPerformanceDto("api");
@@ -41,6 +44,7 @@ class ApiProvider {
 
 	getScoreByUserId(userId) {
 		return new RadarScoreDto("api");
-	}
-}
+	}  
+ */
+
 export default ApiProvider;

@@ -1,7 +1,7 @@
 class RadarScoreDto {
 	constructor(data) {
 		this.data = data;
-	console.log(data);
+	//console.log(data);
 	}
 	
 }

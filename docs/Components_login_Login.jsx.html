@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Home</title>
+    <title>JSDoc: Source: Components/login/Login.jsx</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,32 +17,73 @@
 
 <div id="main">
 
-    <h1 class="page-title">Home</h1>
+    <h1 class="page-title">Source: Components/login/Login.jsx</h1>
 
     
 
 
 
     
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React from "react";
+import { NavLink } from "react-router-dom";
+import logo from "assets/logo.png";
+import Dashboard from "pages/dashboard/Dashboard.js";
+import { USER_MAIN_DATA } from "dataProvider/dataMock";
+import { useParams } from "react-router-dom";
+import ApiMockProvider from "dataProvider/ApiMockProvider";
+import ApiProvider from "dataProvider/ApiProvider";
+import girl from "assets/girl.png";
+import Switch from "Components/switch/Switch.jsx";
+
+	
+/**
+ * Composant React pour le tableau de bord.
+ * @returns {JSX.Element} Le composant React pour le tableau de bord.
+ */
+
+const Login = () => {
+	const { userId } = useParams();
 
 
-    <h3> </h3>
+	return (
+		&lt;section className="login">
+			&lt;header className="login__header">
+				&lt;picture>
+					&lt;img src={logo} alt="logo Sportsee">&lt;/img>
+					&lt;h1>Choisissez et connectez-vous &lt;/h1>
+				&lt;/picture>
+						&lt;Switch />
+			&lt;/header>
+		
+			&lt;div className="login__wrapper">
+					
+				&lt;ul>
+					{USER_MAIN_DATA.map((user, index) => {
+						const userInfos = user.userInfos;
+						const { firstName, lastName, age } = userInfos;
+						return (
+							&lt;li key={user.id}>
+								&lt;NavLink to={`/dashboard/${user.id}`}>
+									&lt;div className="login__identity">
+										{`${firstName} ${lastName} `}
+										&lt;p className="login__age">{`${age} ans`}&lt;/p>
+									&lt;/div>
+								&lt;/NavLink>
+							&lt;/li>
+						);
+					})}
+				&lt;/ul>
+			&lt;/div>
+		&lt;/section>
+	);
+};
 
-
-
-
-
-
-
-
-
-
-    
-
-
-
-
-
+export default Login;
+</code></pre>
+        </article>
+    </section>
 
 
 

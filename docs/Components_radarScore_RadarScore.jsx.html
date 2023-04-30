@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: pages/error/Error.js</title>
+    <title>JSDoc: Source: Components/radarScore/RadarScore.jsx</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: pages/error/Error.js</h1>
+    <h1 class="page-title">Source: Components/radarScore/RadarScore.jsx</h1>
 
     
 
@@ -27,28 +27,77 @@
     <section>
         <article>
             <pre class="prettyprint source linenums"><code>import React from "react";
-import { NavLink } from "react-router-dom";
-
+import { PropTypes } from "prop-types";
+import { PolarAngleAxis, RadialBar, RadialBarChart, PieChart, Pie, Legend } from "recharts";
 
 /**
- * Composant React pour la page d'erreur 404.
- * @returns {JSX.Element} Le composant React pour la page d'erreur 404.
+ *
+ * @param {*} { dto }
+ * @return {*}
+ *
  */
 
-const Error = () => {
+const RadarScore = ({ dto }) => {
+	//console.log(dto); // data 0.12
+	const todayScore = dto.data;
+
+		const dataPie = [
+			{ value: 1, fill: "transparent" }, 
+			{ value: todayScore, fill: "#ff0101" },
+		];
+	
+	
+
 	return (
-		&lt;section className="error">
-		
-			&lt;aside className="error__page">
-				&lt;h1>Erreur 404&lt;/h1>
-				&lt;p>Oups ! La page que vous recherchez n'existe pas !&lt;/p>
-				&lt;NavLink to="/">Retour Accueil&lt;/NavLink>
-			&lt;/aside>
-		&lt;/section>
+		&lt;>
+			&lt;section className="pieChart">
+				&lt;PieChart
+					className="pieChartContent"
+					width={258}
+					height={263}
+					style={{ backgroundColor: "#fbfbfb", borderRadius: "5px" }}
+				>
+					&lt;Pie
+						data={dataPie}
+						dataKey="value"
+						startAngle={-170} // degré de départ
+						cx="50%" // position du centre
+						cy="50%" //
+						endAngle={170} // degré de fin
+						innerRadius={80} // epaissseur du cercle
+						outerRadius={90} //
+						fill="#ff0101" // couleur du cercle
+					/>
+					&lt;text x={20} y={50}>
+						Score
+					&lt;/text>
+					&lt;text x="41%" y="45%" fontSize="24px" fontWeight={900}>
+						{todayScore * 100} %
+						&lt;tspan
+							x="36%" // position du texte
+							y="46%"
+							dy={20} // décalage du texte
+							fontWeight={500}
+							fontSize="16px"
+							letterSpacing="0.6"
+						>
+							de votre
+						&lt;/tspan>
+						&lt;tspan x="38%" y="46%" dy={40} fontSize="16px" fontWeight={500}>
+							objectif
+						&lt;/tspan>
+					&lt;/text>
+				&lt;/PieChart>
+			&lt;/section>
+		&lt;/>
 	);
 };
 
-export default Error;</code></pre>
+RadarScore.propTypes = {
+	dto: PropTypes.object,
+};
+export default RadarScore;
+</code></pre>
         </article>
     </section>
 

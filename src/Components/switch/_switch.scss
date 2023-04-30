@@ -1,7 +1,7 @@
 .switch {// le conteneur
   position: relative;
   display: inline-block;
-  width: 100px;
+  width: 105px;
   height: 39px;
 }
 
@@ -21,10 +21,10 @@
 .slider:before {
   position: absolute;
   content: attr(data-off-text);
-  height: 35px;
-  width: 38px;
+  height: 37px;
+  width: 43px;
   left: 2px;
-  bottom: 2px;
+  bottom: 1px;
 background-color: map-get($colors, snow);
   -webkit-transition: .4s;
   transition: .4s;
