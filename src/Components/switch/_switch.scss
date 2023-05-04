@@ -1,4 +1,5 @@
-.switch {// le conteneur
+.switch {
+  // le conteneur
   position: relative;
   display: inline-block;
   width: 105px;
@@ -6,7 +7,8 @@
 }
 
 
-.slider { // le bouton
+.slider {
+  // le bouton
   position: absolute;
   cursor: pointer;
   top: 0;
@@ -25,7 +27,7 @@
   width: 43px;
   left: 2px;
   bottom: 1px;
-background-color: map-get($colors, snow);
+  background-color: map-get($colors, snow);
   -webkit-transition: .4s;
   transition: .4s;
 }
@@ -36,8 +38,8 @@ input:checked+.slider {
 
 
 
-input:checked+.slider:before { 
-  -webkit-transform: translateX(50px);//
+input:checked+.slider:before {
+  -webkit-transform: translateX(50px); //
   -ms-transform: translateX(42px);
   transform: translateX(58px);
 }
@@ -64,12 +66,14 @@ input:checked+.slider:before {
   font-size: 14px;
 }
 
-.switch__label[data-on]:before { // le texte
-  content: attr(data-on);//
+.switch__label[data-on]:before {
+  // le texte
+  content: attr(data-on); //
   margin-right: 5px;
 }
 
-.switch__label[data-off]:after { // le texte
+.switch__label[data-off]:after {
+  // le texte
   content: attr(data-off);
   margin-left: 27px;
 }

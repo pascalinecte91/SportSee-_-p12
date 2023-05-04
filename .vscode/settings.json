@@ -1,25 +1,48 @@
 {
-  "autoimport.doubleQuotes": true,
-  "auto-close-tag.activationOnLanguage": [
-	
-		"xml",
-		"php",
-		"blade",
-		"ejs",
-		"jinja",
-		"javascript",
-		"javascriptreact",
-		"typescript",
-		"typescriptreact",
-		"plaintext",
-		"markdown",
-		"vue",
-		"liquid",
-		"erb",
-		"lang-cfml",
-		"cfml",
-		"HTML (EEx)",
-		"HTML (Eex)",
-		"plist"
-	],
-}
+  "window.zoomLevel": 0,
+  "editor.minimap.enabled": false,
+  "editor.formatOnSave": false,
+  "editor.formatOnPaste": false,
+  "editor.inlineSuggest.enabled": true,
+  "editor.linkedEditing": true,
+  "editor.occurrencesHighlight": false,
+  "editor.suggest.insertMode": "replace",
+  "editor.acceptSuggestionOnCommitCharacter": false,
+  "emmet.triggerExpansionOnTab": true,
+  "files.autoSave": "onFocusChange",
+  "files.defaultLanguage": "javascript",
+  "explorer.autoReveal": false,
+  "explorer.confirmDelete": true,
+  "workbench.colorTheme": "Default Dark+",
+  "explorer.confirmDragAndDrop": true,
+  "workbench.tree.indent": 15,
+  "workbench.tree.renderIndentGuides": "always",
+  "workbench.editor.enablePreview": false,
+  "editor.fontFamily": "'JetBrains Mono', Consolas, 'Courier New', monospace",
+  "editor.fontLigatures": true, 
+  "editor.lineHeight": 24,
+  "editor.fontSize": 17,
+  "workbench.iconTheme": "material-icon-theme",
+  "terminal.integrated.defaultProfile.windows": "Git Bash",
+  "workbench.colorCustomizations": {
+    "[Default Dark+]": {
+      "editor.selectionBackground": "#3D59A1",
+      "editor.selectionHighlightBackground": "#3D59A1",
+    }
+  },
+  "multiCommand.commands": [
+    {
+      "command": "multiCommand.makeRoom",// ferme 2 bandes latterales icone et dossier pour place
+      "sequence": [
+        "workbench.action.toggleSidebarVisibility",
+        "workbench.action.toggleActivityBarVisibility"
+      ]
+    }
+  ],
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode" // formatter
+  },
+  "javascript.preferences.importModuleSpecifierEnding": "js",// terminaison des imports
+  "typescript.preferences.importModuleSpecifierEnding": "js"
+  }
+

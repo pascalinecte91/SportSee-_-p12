@@ -1,8 +1,6 @@
 class RadarScoreDto {
-	constructor(data) {
-		this.data = data;
-	//console.log(data);
-	}
-	
+  constructor(data) {
+    this.data = data;
+  }
 }
 export default RadarScoreDto;

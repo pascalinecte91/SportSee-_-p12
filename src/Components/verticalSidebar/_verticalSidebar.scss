@@ -1,41 +1,45 @@
 .vertical__nav {
 	display: flex;
-		flex-direction: column;
-		width: 100px;
-		min-height: 100vh;
-		height: auto;
-		background-color: black;
-		align-items: center;
-		justify-content: center;
+	flex-direction: column;
+	width: 100px;
+	min-height: 100vh;
+	height: auto;
+	background-color: black;
+	align-items: center;
+	justify-content: center;
 
-	
-		ul {
-			display: flex;
-			flex-direction: column;
-			position: relative;
-			right:20%;
-			justify-content: center;
-			align-items: center;
-			gap: 10px;
-			li{
-				list-style-type: none;
+
+	ul {
+		display: flex;
+		flex-direction: column;
+		position: relative;
+		right: 20%;
+		justify-content: center;
+		align-items: center;
+		gap: 10px;
+
+		li {
+			list-style-type: none;
+
 			&:hover {
 				transform: scale(1.04);
 				cursor: pointer;
-				
+
 			}
-			}
-		
 		}
-		span {
-			color: white;
-			transform: rotate(-90deg);
-			height: auto;
-			width: 400px;
-			font-size: 12px;
-			margin-top: 50px;
-			@media screen and (max-width: 1024px) {
-				display: none;
-			}
+
+	}
+
+	span {
+		color: white;
+		transform: rotate(-90deg);
+		height: auto;
+		width: 400px;
+		font-size: 12px;
+		margin-top: 50px;
+
+		@media screen and (max-width: 1024px) {
+			display: none;
 		}
 	}
+}

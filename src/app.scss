@@ -1,9 +1,9 @@
 .routePage {
   display: grid;
   grid-template-columns: auto 1fr;
-  grid-template-areas: 'horizontal horizontal'
-    'vertical content';
-
+  grid-template-areas:
+    "horizontal horizontal"
+    "vertical content";
 }
 
 .content {

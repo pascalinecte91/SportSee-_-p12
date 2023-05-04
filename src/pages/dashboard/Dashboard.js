@@ -1,69 +1,83 @@
 import ApiMockProvider from "dataProvider/ApiMockProvider";
 import ApiProvider from "dataProvider/ApiProvider";
-import { userUseState } from "dataProvider/ApiProvider";
 import { useParams } from "react-router-dom";
-import React, { useState, useEffect } from "react";
-import Error from "pages/error/Error";
+import { useState, useEffect } from "react";
 //components
-import Loader from "Components/loader/Loader";
 import BarChartWrapper from "Components/barChart/BarChartWrapper";
 import WelcomeMessage from "Components/welcome/WelcomeMessage";
 import RadarScore from "Components/radarScore/RadarScore";
 import RadarPerformance from "Components/radarPerformance/RadarPerformance";
 import Nutriment from "Components/nutriment/Nutriment";
 import LineChartAverage from "Components/lineChart/LineChartAverage";
-//dto
-import BarChartDto from "dto/BarChartDto";
-import NutrimentDto from "dto/NutrimentDto";
-import LineChartDto from "dto/LineChartDto";
-import RadarPerformanceDto from "dto/RadarPerformanceDto";
-import RadarScoreDto from "dto/RadarScoreDto";
-
-
-
 
 const Dashboard = () => {
-	// Obtient l'ID d'utilisateur à partir de l'URL
-	const { userId } = useParams();
+  // Obtient l'ID d'utilisateur à partir de l'URL
+  const { userId } = useParams();
 
-	// Indique si le mode démo est activé ou non
-	let isDemo = true;
+  // Indique si le mode démo est activé ou non
+  let isDemo = false;
+  console.log("isDemo: ", isDemo);
+  let provider = isDemo ? new ApiMockProvider() : new ApiProvider();
+  //console.log(provider);
 
-	// Initialise le provider API en fonction du mode démo
-	let provider = isDemo ? new ApiMockProvider() : new ApiProvider();
-	console.log(provider);
-	const barChartDto = provider.getActivitiesByUserId(userId);
-	const nutrimentDto = provider.getNutrimentByUserId(userId);
-	const lineChartDto = provider.getSessionsByUserId(userId);
-	const radarPerformanceDto = provider.getPerformanceByUserId(userId);  
-	const radarScoreDto = provider.getScoreByUserId(userId);
-	//console.log(radarScoreDto);
+  //const barChartDto = provider.getActivitiesByUserId(userId);
+   // const nutrimentDto = provider.getNutrimentByUserId(userId);
 
-	//recupere le nom de l'utilisateur et stocke dans "firstName"
-	let firstName = provider.getUserNameByUserId(userId);
-	let lastName = provider.getUserLastNameByUserId(userId);
+  let nutrimentDto,  radarPerformanceDto, radarScoreDto;
+  if (isDemo) {
+    nutrimentDto = provider.getNutrimentByUserId(userId);
+  
+    radarPerformanceDto = provider.getPerformanceByUserId(userId);
+    radarScoreDto = provider.getScoreByUserId(userId);
+  }
+  // stocker le prénom et le nom de l'utilisateur
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [barChartDto, setBarChartDto] = useState([]);
+  const [lineChartDto, setLineChartDto] = useState({});
+  
 
+  // pour executer le code 
+  useEffect(() => {
+    async function getData() {
+   
+      // attendre que la fonction asynchrone soit terminée
+      let firstName = await provider.getUserNameByUserId(userId);
+      let lastName = await provider.getUserLastNameByUserId(userId);
+      let barChartDto = await provider.getActivitiesByUserId(userId);
+      let lineChartDto = await provider.getSessionsByUserId(userId);
+     
+      setFirstName(firstName);
+      setLastName(lastName);
+      setBarChartDto(barChartDto);
+      setLineChartDto(lineChartDto);
+     
+    }
+    // appel de la fonction getData
+    getData();
+   
+    
+  }, [userId]);// useEffect doit etre execute à chaque fois que userId change
 
-	return (
-		<section className="dashboard">
-			<WelcomeMessage firstName={firstName} lastName={lastName} />
-			<aside className="dashboard__charts">
-				<article className="dashboard__chartsLinear">
-					<BarChartWrapper dto={barChartDto} />
+  return (
+    <section className="dashboard">
+      <WelcomeMessage firstName={firstName} lastName={lastName} />
+      <aside className="dashboard__charts">
+        <article className="dashboard__chartsLinear">
+          <BarChartWrapper dto={barChartDto} />
+          <div className="dashboard__threeGraph">
+             <LineChartAverage dto={lineChartDto} />
+            {isDemo && <RadarPerformance dto={radarPerformanceDto} />}
+            {isDemo && <RadarScore dto={radarScoreDto} />}
+          </div>
+        </article>
 
-					<div className="dashboard__threeGraph">
-						<LineChartAverage dto={lineChartDto} />
-						<RadarPerformance dto={radarPerformanceDto} />
-						<RadarScore dto={radarScoreDto} />
-					</div>
-				</article>
-
-				<article className="dashboard__nutrients">
-					<Nutriment dto={nutrimentDto} />
-				</article>
-			</aside>
-		</section>
-	);
+        <article className="dashboard__nutrients">
+          {isDemo && <Nutriment dto={nutrimentDto} />}
+        </article>
+      </aside>
+    </section>
+  );
 };
 
 export default Dashboard;

@@ -1,27 +1,26 @@
-
-
- .header {
+.header {
     margin-bottom: 60px;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: flex-start;
-   
-        height: 89px;
-     &__name {
-            color: #ff0000;
-            padding-left: 10px;
-        }
- 
- h1 {
-     font-size: 48px;
-     font-weight: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
 
- }
+    height: 89px;
+
+    &__name {
+        color: #ff0000;
+        padding-left: 10px;
+    }
+
+    h1 {
+        font-size: 48px;
+        font-weight: 500px;
+
+    }
 
 
- p {
-     height: 24px;
-     font-weight: 500;
- }
+    p {
+        height: 24px;
+        font-weight: 500;
+    }
 }

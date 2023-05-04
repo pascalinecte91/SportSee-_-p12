@@ -1,6 +1,6 @@
 .dashboard {
-    font-size: 18px;
-    margin-top: 20px;
+  font-size: 18px;
+  margin-top: 20px;
 
   &__charts {
     display: flex;
@@ -10,7 +10,7 @@
   }
 
   &__chartsLinear {
-   
+
     height: fit-content;
 
   }
@@ -38,7 +38,7 @@
     gap: 30px;
     position: relative;
     margin-top: 30px;
-    
+
   }
 
 

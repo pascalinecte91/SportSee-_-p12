@@ -1,6 +1,6 @@
 class LineChartDto {
- constructor(data) {
+  constructor(data) {
     this.data = data;
-}
+  }
 }
 export default LineChartDto;

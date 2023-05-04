@@ -1,28 +1,30 @@
  .feeding {
-	&__calorie,
-	&__lipid,
-	&__protein,
-	&__carbohydrate {
 
-		width: 258px;
-		display: flex;
-		align-items: center;
-		justify-content: flex-start;
-		gap: 10%;
-		background: rgba(251, 251, 251, 1);
-		margin-bottom: 20px;
-		height: 124px;
-		padding-left: 15px;
-		color: rgba(40, 45, 48, 1);
-		border-radius: 5px;
-} 
+ 	&__calorie,
+ 	&__lipid,
+ 	&__protein,
+ 	&__carbohydrate {
 
-img {
-	height: 64px;
-	object-fit: contain;
-}
-	 	&__nutri {
-	 		margin-bottom: 83px;
-	 	}
+ 		width: 258px;
+ 		display: flex;
+ 		align-items: center;
+ 		justify-content: flex-start;
+ 		gap: 10%;
+ 		background: rgba(251, 251, 251, 1);
+ 		margin-bottom: 20px;
+ 		height: 124px;
+ 		padding-left: 15px;
+ 		color: rgba(40, 45, 48, 1);
+ 		border-radius: 5px;
+ 	}
 
-}
+ 	img {
+ 		height: 64px;
+ 		object-fit: contain;
+ 	}
+
+ 	&__nutri {
+ 		margin-bottom: 83px;
+ 	}
+
+ }

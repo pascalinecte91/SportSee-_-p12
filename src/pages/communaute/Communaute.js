@@ -2,14 +2,12 @@ import logo from "assets/logo.png";
 import React from "react";
 
 /**
- * Composant React pour la section "Communaute".
- * @returns {JSX.Element} Le composant React pour la section "Communaute".
+ * @component Communaute - A simple communaute page
+ * @returns {JSX.Element} .
  *
  */
 
 const Communaute = () => {
-
-
 	return (
 		<>
 			<section className="communaute">

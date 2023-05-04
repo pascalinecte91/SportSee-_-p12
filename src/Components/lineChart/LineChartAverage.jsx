@@ -1,54 +1,50 @@
 import React from "react";
-import { PropTypes } from "prop-types";
-import {LineChart,Line,XAxis,YAxis,Tooltip,ResponsiveContainer,Legend,CartesianGrid,Rectangle,
-} from "recharts";
-
+import PropTypes from "prop-types";
+import { LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer, Legend, CartesianGrid, Rectangle } from "recharts";
 
 /**
  * @function is used to display the legend of the graph.
- * @return {*} 
+ * @return {*}
  */
 
 const legendAverage = () => {
 	return <p style={{ width: "160px", color: "white", opacity: "0.5" }}>Durée moyenne des sessions</p>;
 };
 
-/** 
- * @param {points } 
- * @return {*} 
+/**
+ * @param {points }
+ * @return {*}
  */
 
 const CustomCursor = ({ points }) => {
 	return <Rectangle fill="#000000" opacity={0.2} x={points[0].x} width={98} height={300} />;
 };
 
-
 /**
  * @component is used to display the tooltip when the user hovers over the graph.
  * @param {*} { active, payload }
- * @return {*} 
- * 
+ * @return {*}
+ *
  */
 
 const CustomTooltip = ({ active, payload }) => {
-		if (active && payload && payload.length) {
-			return (
-				<div
-					style={{
-						background: "white",
-						fontSize: 10,
-						fontWeight: 500,
-						textAlign: "center",
-						padding: 10,
-					}}
-				>
-					<p>{`${payload[0].value} min`}</p>
-				</div>
-			);
-		}
-		return null;
- };
-
+	if (active && payload && payload.length) {
+		return (
+			<div
+				style={{
+					background: "white",
+					fontSize: 10,
+					fontWeight: 500,
+					textAlign: "center",
+					padding: 10,
+				}}
+			>
+				<p>{`${payload[0].value} min`}</p>
+			</div>
+		);
+	}
+	return null;
+};
 
 const LineChartAverage = ({ dto }) => {
 
@@ -109,7 +105,7 @@ const LineChartAverage = ({ dto }) => {
 	);
 };
 
-LineChartAverage.propTypes = {	
+LineChartAverage.propTypes = {
 	dto: PropTypes.object,
 };
 
@@ -118,9 +114,8 @@ CustomTooltip.propType = {
 	payload: PropTypes.array.isRequired,
 };
 
-CustomCursor.propType = {	
+CustomCursor.propType = {
 	points: PropTypes.array.isRequired,
 };
-
 
 export default LineChartAverage;
