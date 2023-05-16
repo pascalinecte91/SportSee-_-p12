@@ -1,17 +1,13 @@
+import React, { useContext } from "react";
+import DemoContext from "Components/switch/DemoContext"; // Assurez-vous du chemin d'importation
 
-/**
- * @description 		: 	To render the switch component
- * @param {boolean} 	: 	demo
- * @param {function} 	: 	setDemo
- * @returns 		   	: 	React node
- * @exports 		    : 	Switch
- * @return {*}
- */
-
-const Switch = ({ isDemo }) => {
+const Switch = () => {
+  const { isDemo, setDemo } = useContext(DemoContext);
 
   const handleChange = () => {
-  
+    console.log(handleChange);
+    setDemo(!isDemo);
+    console.log(!isDemo);
   };
 
   return (
@@ -22,4 +18,5 @@ const Switch = ({ isDemo }) => {
     </label>
   );
 };
+
 export default Switch;
