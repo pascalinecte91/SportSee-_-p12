@@ -1,7 +1,7 @@
 import ApiMockProvider from "dataProvider/ApiMockProvider";
 import ApiProvider from "dataProvider/ApiProvider";
-import { useParams } from "react-router-dom";
-import { useState, useEffect, useContext } from "react";
+import {  useParams } from "react-router-dom";
+import { useState, useEffect } from "react";
 //components
 import BarChartWrapper from "Components/barChart/BarChartWrapper";
 import WelcomeMessage from "Components/welcome/WelcomeMessage";
@@ -9,20 +9,25 @@ import RadarScore from "Components/radarScore/RadarScore";
 import RadarPerformance from "Components/radarPerformance/RadarPerformance";
 import Nutriment from "Components/nutriment/Nutriment";
 import LineChartAverage from "Components/lineChart/LineChartAverage";
-import DemoContext from "Components/switch/DemoContext.jsx";
 
-const Dashboard = () => {
+
+const Dashboard = (  ) => {
+
   // Obtient l'ID d'utilisateur à partir de l'URL
   const { userId } = useParams();
-  let isDemo = false;
-
+  const { isDemo }= useParams();
+console.log("isDemo: ",isDemo);
+  //  let isDemo = true;
+ const isDemoBooleen= isDemo?.toLocaleLowerCase() === "true";
 
   // Indique si le mode démo est activé ou non
   // let isDemo = true;
   console.log("isDemo: ", isDemo);
 
-  let provider = isDemo ? new ApiMockProvider() : new ApiProvider();
-  console.log("provider: ", provider, "isDemo: ", isDemo, new ApiMockProvider(), new ApiProvider());
+  let provider = isDemoBooleen ? new ApiMockProvider() : new ApiProvider();
+
+  console.log("provider: ",provider,"isDemo: ",isDemo,new ApiMockProvider(),new ApiProvider()
+  );
 
   // Variables d'état pour stocker les données récupérées de l'API
   const [firstName, setFirstName] = useState("");
@@ -43,7 +48,9 @@ const Dashboard = () => {
         const barChartDto = await provider.getActivitiesByUserId(userId);
         const lineChartDto = await provider.getSessionsByUserId(userId);
         const nutrimentDto = await provider.getNutrimentByUserId(userId);
-        const radarPerformanceDto = await provider.getPerformanceByUserId(userId);
+        const radarPerformanceDto = await provider.getPerformanceByUserId(
+          userId
+        );
         const radarScoreDto = await provider.getScoreByUserId(userId);
 
         // Mettre à jour les variables d'état avec les données récupérées
@@ -71,7 +78,9 @@ const Dashboard = () => {
           <BarChartWrapper dto={barChartDto} />
           <div className="dashboard__threeGraph">
             <LineChartAverage dto={lineChartDto} />
-            {radarPerformanceDto && <RadarPerformance dto={radarPerformanceDto} />}
+            {radarPerformanceDto && (
+              <RadarPerformance dto={radarPerformanceDto} />
+            )}
             {radarScoreDto && <RadarScore dto={radarScoreDto} />}
           </div>
         </article>

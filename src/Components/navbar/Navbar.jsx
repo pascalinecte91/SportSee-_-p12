@@ -15,7 +15,7 @@ const Navbar = () => {
    * @constant
    * @type {number}
    */
-  const { userID } = useParams();
+   const { userID } = useParams();
   /**
    * Array containing objects with name and uri for each navigation's link
    * @constant with 4 objects  with name and uri for each navigation
@@ -25,7 +25,7 @@ const Navbar = () => {
 
   const navItems = [
     { name: "Accueil", url: "/" },
-    { name: "Profil", url: "/dashboard" },
+    { name: "Profil", url: "/dashboard/" },
     { name: "Réglage", url: "/setting" },
     { name: "Communauté", url: "/communaute" },
   ];
