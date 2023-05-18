@@ -21,16 +21,21 @@ const Nutriment = ({ dto }) => {
           <img src={calories} alt="Calories" /> {"calories"}{" "}
           {dto.data.calorieCount.toLocaleString("en-US", {
             minimumFractionDigits: 0,
-            maximumFractionDigits: 0,})}{" "}kCal
+            maximumFractionDigits: 0,
+          })}{" "}
+          kCal
         </div>
         <div className="feeding__protein">
-          <img src={protein} alt="Protein" />{"protein"} {dto.data.proteinCount} g
+          <img src={protein} alt="Protein" />
+          {"protein"} {dto.data.proteinCount} g
         </div>
         <div className="feeding__lipid">
-          <img src={lipid} alt="Lipid" />{"lipid"} {dto.data.lipidCount} g
+          <img src={lipid} alt="Lipid" />
+          {"lipid"} {dto.data.lipidCount} g
         </div>
         <div className="feeding__carbohydrate">
-          <img src={carbohydrate} alt="Carbohydrate" />{"carbohydrate"} {dto.data.carbohydrateCount} g
+          <img src={carbohydrate} alt="Carbohydrate" />
+          {"carbohydrate"} {dto.data.carbohydrateCount} g
         </div>
       </div>
     </section>
@@ -47,13 +52,13 @@ const Nutriment = ({ dto }) => {
  */
 
 /**
- * @Props for the Nutriment component.
+ * Props for the Nutriment component.
  * @typedef {Object} NutrimentProps
  * @property {NutrimentDto} dto - An instance of the NutrimentDto class containing nutritional information.
  */
 
 /**
- * @PropTypes for the Nutriment component.
+ * PropTypes for the Nutriment component.
  * @type {NutrimentProps}
  */
 Nutriment.propTypes = {

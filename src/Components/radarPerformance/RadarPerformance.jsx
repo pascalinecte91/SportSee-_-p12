@@ -1,25 +1,25 @@
 import React from "react";
-import {Radar,RadarChart,PolarGrid,PolarAngleAxis,ResponsiveContainer} from "recharts";
+import { Radar, RadarChart, PolarGrid, PolarAngleAxis, ResponsiveContainer } from "recharts";
 import { PropTypes } from "prop-types";
 
 /**
- * @Composant RadarPerformance utilisé pour afficher le graphique radar de la page de performance.
+ * RadarPerformance component used to display the radar chart on the performance page.
  * @component
- * @param {Object} props - Les propriétés du composant.
- * @param {Object} props.dto - L'objet contenant les données du graphique radar.
- * @returns {JSX.Element} Le composant RadarPerformance.
- * @content {Array} props.dto.data - Un tableau d'objets avec les clés "kind" et "value".
- * La clé "kind" représente le type de performance et "value" représente la valeur de la performance.
+ * @param {Object} props - The component props.
+ * @param {Object} props.dto - The object containing radar chart data.
+ * @returns {JSX.Element} The RadarPerformance component.
+ * @content {Array} props.dto.data - An array of objects with "kind" and "value" keys.
+ * The "kind" key represents the performance type and "value" represents the performance value.
  */
 
 /**
- * @function FormatDataKind
- * @param {number} tickItem - L'élément de la graduation.
- * @returns {string} La chaîne de caractères correspondant au type de performance.
- * @description Vérifie si tickItem n'est pas null, false, undefined ou 0, puis renvoie le type de performance correspondant.
+ * FormatDataKind function.
+ * @param {number} tickItem - The tick item of the graduation.
+ * @returns {string} The string corresponding to the performance type.
+ * @description Checks if tickItem is not null, false, undefined, or 0, then returns the corresponding performance type.
  */
 const FormatDataKind = (tickItem) => {
-  const Kind = ["Cardio","Energie","Endurance","Force","Vitesse","Intensité"];
+  const Kind = ["Cardio", "Energy", "Endurance", "Strength", "Speed", "Intensity"];
   if (tickItem) return Kind[tickItem - 1];
 };
 
@@ -31,20 +31,20 @@ const RadarPerformance = ({ dto }) => {
     >
       <ResponsiveContainer>
         <RadarChart
-          cx="50%" //centre x
+          cx="50%" // center x
           cy="50%"
-          outerRadius={80} //rayon extérieur
+          outerRadius={80} // outer radius
           data={dto.data.data}
-          style={{ backgroundColor: "#282D30", borderRadius: "5px" }} //style du graphique radar
+          style={{ backgroundColor: "#282D30", borderRadius: "5px" }} // radar chart style
         >
           <PolarGrid radialLines={false} />
 
           <PolarAngleAxis
             dataKey="kind"
             tickFormatter={FormatDataKind}
-            stroke="#ffff" //couleur des lignes
-            dy={2} //décalage des lignes
-            tickLine={false} //affichage des lignes entre octogone et texte
+            stroke="#ffff" // line color
+            dy={2} // line offset
+            tickLine={false} // display lines between octagon and text
             style={{
               fontSize: "10px",
               fontWeight: "500",
@@ -52,9 +52,9 @@ const RadarPerformance = ({ dto }) => {
           />
 
           <Radar
-            dataKey="value" //valeur de l'axe
-            stroke="#FF0000" //couleur du contour
-            fill="#FF0000" //couleur de remplissage
+            dataKey="value" // axis value
+            stroke="#FF0000" // outline color
+            fill="#FF0000" // fill color
             fillOpacity={0.6}
           />
         </RadarChart>

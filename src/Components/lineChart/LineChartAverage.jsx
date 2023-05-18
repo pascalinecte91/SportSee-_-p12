@@ -1,43 +1,32 @@
 import React from "react";
 import PropTypes from "prop-types";
-import {
-  LineChart,
-  Line,
-  XAxis,
-  YAxis,
-  Tooltip,
-  ResponsiveContainer,
-  Legend,
-  CartesianGrid,
-  Rectangle,
-} from "recharts";
+import { LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer, Legend, CartesianGrid, Rectangle } from "recharts";
 
 /**
- * @function is used to display the legend of the graph.
- * @return {*}
+ * Function used to display the legend of the graph.
+ * @returns {JSX.Element}
  */
-
 const legendAverage = () => {
   return (
     <p style={{ width: "160px", color: "white", opacity: "0.5" }}>
-      Durée moyenne des sessions
+      Average session duration
     </p>
   );
 };
 
 /**
- * @param {points }
- * @return {*}
+ * CustomCursor component used to display a rectangle on mouse hover.
+ * @param {Object} points - Array of points containing x and y coordinates.
+ * @returns {JSX.Element}
  */
-
 const CustomCursor = ({ points }) => {
   return (
-    <Rectangle //rectangle qui apparait au survol de la souris
+    <Rectangle
       fill="#000000"
       opacity={0.2}
       x={points[0].x}
-      width={98} //largeur du rectangle
-      height={300} //hauteur du rectangle
+      width={98}
+      height={300}
       textAlign="center"
       top={-300}
     />
@@ -45,28 +34,26 @@ const CustomCursor = ({ points }) => {
 };
 
 /**
- * @component is used to display the tooltip when the user hovers over the graph.
- * @param {*} { active, payload }
- * @return {*}
- *
+ * CustomTooltip component used to display the tooltip on graph hover.
+ * @param {Object} props - Props containing active and payload.
+ * @returns {JSX.Element}
  */
-
 const CustomTooltip = ({ active, payload }) => {
   if (active && payload && payload.length) {
     return (
       <div
-      style={{
-        background: "white",
-        fontSize: 10,
-        fontWeight: 500,
-        textAlign: "center",
-        padding: 10,
-        width: 50,
-        height: 30,
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-      }}
+        style={{
+          background: "white",
+          fontSize: 10,
+          fontWeight: 500,
+          textAlign: "center",
+          padding: 10,
+          width: 50,
+          height: 30,
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+        }}
       >
         <p>{`${payload[0].value} min`}</p>
       </div>
@@ -75,6 +62,11 @@ const CustomTooltip = ({ active, payload }) => {
   return null;
 };
 
+/**
+ * LineChartAverage component used to display a line chart.
+ * @param {Object} props - Props containing dto.
+ * @returns {JSX.Element}
+ */
 const LineChartAverage = ({ dto }) => {
   return (
     <div className="linearChart" style={{ minWidth: "258px", height: "263px" }}>
@@ -82,15 +74,14 @@ const LineChartAverage = ({ dto }) => {
         <LineChart
           width={300}
           height={300}
-          data={dto.data} //données à afficher
+          data={dto.data}
           margin={{
-            //marge de l'axe x
             top: 80,
-            right: 0, //marge de l'axe y
+            right: 0,
             left: 0,
             bottom: 20,
           }}
-          style={{ background: "#FF0000", borderRadius: "5px" }} //couleur de fond du graphique
+          style={{ background: "#FF0000", borderRadius: "5px" }}
         >
           <CartesianGrid vertical={false} horizontal={false} />
           <defs>
@@ -100,16 +91,16 @@ const LineChartAverage = ({ dto }) => {
             </linearGradient>
           </defs>
           <XAxis
-            dataKey="day" //donnée à afficher
-            dy={10} //position de l'axe x
-            tickLine={false} //ligne de l'axe x
+            dataKey="day"
+            dy={10}
+            tickLine={false}
             axisLine={false}
             tick={{
               fill: "white",
               opacity: "0.5",
               textAnchor: "middle",
               fontSize: 15,
-            }} //couleur de l'axe x
+            }}
           />
           <YAxis
             dataKey="sessionLength"
@@ -120,19 +111,19 @@ const LineChartAverage = ({ dto }) => {
           <Tooltip content={<CustomTooltip />} cursor={<CustomCursor />} />
 
           <Line
-            type="natural" //type de la ligne
-            dataKey="sessionLength" //donnée à afficher
-            strokeWidth={2} //epaisseur de la ligne
-            dot={false} //point sur la ligne
-            activeDot={{ r: 3, stroke: "white" }} //point sur la ligne au survol
-            stroke="url(#colorUv)" //couleur de la ligne
+            type="natural"
+            dataKey="sessionLength"
+            strokeWidth={2}
+            dot={false}
+            activeDot={{ r: 3, stroke: "white" }}
+            stroke="url(#colorUv)"
           />
           <Legend
             wrapperStyle={{ margin: "-3rem 1rem" }}
-            fontWeight={500} //epaisseur de la légende
-            verticalAlign="top" //
+            fontWeight={500}
+            verticalAlign="top"
             align="left"
-            content={legendAverage} //contenu de la légende
+            content={legendAverage}
           />
         </LineChart>
       </ResponsiveContainer>
@@ -144,12 +135,12 @@ LineChartAverage.propTypes = {
   dto: PropTypes.object,
 };
 
-CustomTooltip.propType = {
+CustomTooltip.propTypes = {
   active: PropTypes.array.isRequired,
   payload: PropTypes.array.isRequired,
 };
 
-CustomCursor.propType = {
+CustomCursor.propTypes = {
   points: PropTypes.array.isRequired,
 };
 

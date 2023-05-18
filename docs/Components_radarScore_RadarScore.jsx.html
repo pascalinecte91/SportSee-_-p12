@@ -28,74 +28,73 @@
         <article>
             <pre class="prettyprint source linenums"><code>import React from "react";
 import { PropTypes } from "prop-types";
-import { PolarAngleAxis, RadialBar, RadialBarChart, PieChart, Pie, Legend } from "recharts";
+import { PieChart, Pie } from "recharts";
 
 /**
- *
- * @param {*} { dto }
- * @return {*}
- *
+ * RadarScore component to display a pie chart representing the daily score.
+ * @component
+ * @param {Object} props - The component props.
+ * @param {Object} props.dto - The object containing score data.
+ * @returns {*} The RadarScore component.
  */
-
 const RadarScore = ({ dto }) => {
-	//console.log(dto); // data 0.12
-	const todayScore = dto.data;
+  const todayScore = dto.data;
 
-		const dataPie = [
-			{ value: 1, fill: "transparent" }, 
-			{ value: todayScore, fill: "#ff0101" },
-		];
-	
-	
+  const dataPie = [
+    { value: 1, fill: "transparent" },
+    { value: todayScore, fill: "#ff0101" },
+  ];
 
-	return (
-		&lt;>
-			&lt;section className="pieChart">
-				&lt;PieChart
-					className="pieChartContent"
-					width={258}
-					height={263}
-					style={{ backgroundColor: "#fbfbfb", borderRadius: "5px" }}
-				>
-					&lt;Pie
-						data={dataPie}
-						dataKey="value"
-						startAngle={-170} // degré de départ
-						cx="50%" // position du centre
-						cy="50%" //
-						endAngle={170} // degré de fin
-						innerRadius={80} // epaissseur du cercle
-						outerRadius={90} //
-						fill="#ff0101" // couleur du cercle
-					/>
-					&lt;text x={20} y={50}>
-						Score
-					&lt;/text>
-					&lt;text x="41%" y="45%" fontSize="24px" fontWeight={900}>
-						{todayScore * 100} %
-						&lt;tspan
-							x="36%" // position du texte
-							y="46%"
-							dy={20} // décalage du texte
-							fontWeight={500}
-							fontSize="16px"
-							letterSpacing="0.6"
-						>
-							de votre
-						&lt;/tspan>
-						&lt;tspan x="38%" y="46%" dy={40} fontSize="16px" fontWeight={500}>
-							objectif
-						&lt;/tspan>
-					&lt;/text>
-				&lt;/PieChart>
-			&lt;/section>
-		&lt;/>
-	);
+  return (
+    &lt;>
+      &lt;section className="pieChart">
+        &lt;PieChart
+          className="pieChartContent"
+          width={258}
+          height={263}
+          style={{ backgroundColor: "#fbfbfb", borderRadius: "5px" }}
+        >
+          &lt;Pie
+            data={dataPie}
+            dataKey="value"
+            startAngle={-170} // starting degree
+            cx="50%" // center position
+            cy="50%" //
+            endAngle={170} // ending degree
+            innerRadius={80} // thickness of the circle
+            outerRadius={90} //
+            fill="#ff0101" // circle color
+          />
+          &lt;text x={20} y={50}>
+            Score
+          &lt;/text>
+          &lt;text x="41%" y="45%" fontSize="24px" fontWeight={900}>
+            {todayScore * 100} %
+            &lt;tspan
+              x="36%" // text position
+              y="46%"
+              dy={20} // text offset
+              fontWeight={500}
+              fontSize="16px"
+              letterSpacing="0.6"
+            >
+              of your
+            &lt;/tspan>
+            &lt;tspan x="38%" y="46%" dy={40} fontSize="16px" fontWeight={500}>
+              goal
+            &lt;/tspan>
+          &lt;/text>
+        &lt;/PieChart>
+      &lt;/section>
+    &lt;/>
+  );
 };
 
+// Definition of the component's property types
 RadarScore.propTypes = {
-	dto: PropTypes.object,
+  dto: PropTypes.object,
 };
+
 export default RadarScore;
 </code></pre>
         </article>
@@ -107,13 +106,13 @@ export default RadarScore;
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="ApiMockProvider.html">ApiMockProvider</a></li><li><a href="ApiProvider.html">ApiProvider</a></li></ul><h3>Global</h3><ul><li><a href="global.html#BarChartWrapper">BarChartWrapper</a></li><li><a href="global.html#Communaute">Communaute</a></li><li><a href="global.html#CustomCursor">CustomCursor</a></li><li><a href="global.html#CustomTooltip">CustomTooltip</a></li><li><a href="global.html#Error">Error</a></li><li><a href="global.html#FormatDataKind">FormatDataKind</a></li><li><a href="global.html#Login">Login</a></li><li><a href="global.html#Navbar">Navbar</a></li><li><a href="global.html#Nutriment">Nutriment</a></li><li><a href="global.html#RadarScore">RadarScore</a></li><li><a href="global.html#VerticalSidebar">VerticalSidebar</a></li><li><a href="global.html#WelcomeMessage">WelcomeMessage</a></li><li><a href="global.html#isusedtodisplaythelegendofthegraph.">is used to display the legend of the graph.</a></li><li><a href="global.html#with">with</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="ApiMockProvider.html">ApiMockProvider</a></li><li><a href="ApiProvider.html">ApiProvider</a></li><li><a href="BarChartDto.html">BarChartDto</a></li><li><a href="LineChartDto.html">LineChartDto</a></li><li><a href="global.html#NutrimentDto">NutrimentDto</a></li><li><a href="RadarPerformanceDto.html">RadarPerformanceDto</a></li><li><a href="RadarScoreDto.html">RadarScoreDto</a></li></ul><h3>Global</h3><ul><li><a href="global.html#BarChartWrapper">BarChartWrapper</a></li><li><a href="global.html#Communaute">Communaute</a></li><li><a href="global.html#CustomCursor">CustomCursor</a></li><li><a href="global.html#CustomTooltip">CustomTooltip</a></li><li><a href="global.html#Dashboard">Dashboard</a></li><li><a href="global.html#Error">Error</a></li><li><a href="global.html#FormatDataKind">FormatDataKind</a></li><li><a href="global.html#Home">Home</a></li><li><a href="global.html#LineChartAverage">LineChartAverage</a></li><li><a href="global.html#Login">Login</a></li><li><a href="global.html#LoginReminder">LoginReminder</a></li><li><a href="global.html#Navbar">Navbar</a></li><li><a href="global.html#Nutriment">Nutriment</a></li><li><a href="global.html#RadarScore">RadarScore</a></li><li><a href="global.html#Setting">Setting</a></li><li><a href="global.html#Switch">Switch</a></li><li><a href="global.html#VerticalSidebar">VerticalSidebar</a></li><li><a href="global.html#WelcomeMessage">WelcomeMessage</a></li><li><a href="global.html#legendAverage">legendAverage</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.2</a> on Sun Apr 30 2023 12:09:05 GMT+0200 (heure d’été d’Europe centrale)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.2</a> on Thu May 18 2023 19:20:34 GMT+0200 (heure d’été d’Europe centrale)
 </footer>
 
 <script> prettyPrint(); </script>

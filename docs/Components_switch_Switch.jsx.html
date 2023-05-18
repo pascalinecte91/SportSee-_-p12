@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: Components/verticalSidebar/VerticalSidebar.jsx</title>
+    <title>JSDoc: Source: Components/switch/Switch.jsx</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: Components/verticalSidebar/VerticalSidebar.jsx</h1>
+    <h1 class="page-title">Source: Components/switch/Switch.jsx</h1>
 
     
 
@@ -27,31 +27,32 @@
     <section>
         <article>
             <pre class="prettyprint source linenums"><code>import React from "react";
-import yoga from "assets/yoga.png";
-import swimming from "assets/swimming.png";
-import bike from "assets/bike.png";
-import weight from "assets/weight.png";
 
 /**
- * VerticalSidebar component to display the vertical sidebar.
- * @component
- * @returns {*} The VerticalSidebar component.
+ * Switch component for toggling between "Mock" and "Api" modes.
+ * @param {Object} props - The component props.
+ * @param {function} props.setDemo - The function to set the "Demo" mode.
+ * @param {boolean} props.isDemo - The current "Demo" mode.
+ * @returns {JSX.Element} - The Switch component.
  */
-const VerticalSidebar = () => {
+const Switch = ({ setDemo, isDemo }) => {
+  /**
+   * Handles the switch state change.
+   */
+  const handleChange = () => {
+    setDemo(!isDemo);
+  };
+
   return (
-    &lt;section className="vertical__nav">
-      &lt;ul>
-        &lt;li>&lt;img src={yoga} alt="Yoga" />&lt;/li>
-        &lt;li>&lt;img src={swimming} alt="Swimming" />&lt;/li>
-        &lt;li>&lt;img src={bike} alt="Bike" />&lt;/li>
-        &lt;li>&lt;img src={weight} alt="Weight" />&lt;/li>
-      &lt;/ul>
-      &lt;span>© SportSee {new Date().getFullYear()}&lt;/span>
-    &lt;/section>
+    &lt;label className="switch">
+      &lt;input type="checkbox" checked={isDemo} onChange={handleChange} />
+      &lt;span className="slider round">&lt;/span>
+      &lt;span className="switch__label" data-on="Mock" data-off="Api">&lt;/span>
+    &lt;/label>
   );
 };
 
-export default VerticalSidebar;
+export default Switch;
 </code></pre>
         </article>
     </section>

@@ -2,17 +2,16 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 
 /**
- * @component Error - A simple error page
- * @Descriptif - A simple error page
- *
+ * Error component representing a simple error page.
+ * @returns {JSX.Element} The Error component.
  */
 const Error = () => {
 	return (
 		<section className="error">
 			<aside className="error__page">
-				<h1>Erreur 404</h1>
-				<p>Oups ! La page que vous recherchez n'existe pas !</p>
-				<NavLink to="/">Retour Accueil</NavLink>
+				<h1>Error 404</h1>
+				<p>Oops! The page you are looking for does not exist!</p>
+				<NavLink to="/">Return Home</NavLink>
 			</aside>
 		</section>
 	);

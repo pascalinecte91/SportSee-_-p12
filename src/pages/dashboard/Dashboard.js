@@ -2,7 +2,7 @@ import ApiMockProvider from "dataProvider/ApiMockProvider";
 import ApiProvider from "dataProvider/ApiProvider";
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
-//components
+// Components
 import BarChartWrapper from "Components/barChart/BarChartWrapper";
 import WelcomeMessage from "Components/welcome/WelcomeMessage";
 import RadarScore from "Components/radarScore/RadarScore";
@@ -12,24 +12,23 @@ import LineChartAverage from "Components/lineChart/LineChartAverage";
 import { NavLink } from "react-router-dom";
 
 /**
- * @Composant Dashboard représentant le tableau de bord.
+ * Dashboard component representing the dashboard.
+ * @returns {JSX.Element} The Dashboard component.
  */
 const Dashboard = () => {
-
-  
-  // Obtient l'ID d'utilisateur à partir de l'URL
-  const { userId } = useParams();//useParams() est un Hook qui permet d'extraire les paramètres d'une URL.
+  // Get user ID from the URL
+  const { userId } = useParams(); // useParams() is a Hook that allows extracting parameters from a URL.
   const { isDemo } = useParams();
   console.log("isDemo: ", isDemo);
-  // Vérifie si l'application est en mode démo
+  // Check if the application is in demo mode
   const isDemoBooleen = isDemo?.toLocaleLowerCase() === "true";
-  //toLocaleLowerCase() est une méthode qui permet de convertir une chaîne de caractères en minuscules.
+  // toLocaleLowerCase() is a method that converts a string to lowercase.
 
   let provider = isDemoBooleen ? new ApiMockProvider() : new ApiProvider();
 
-  // Variables d'état pour stocker les données récupérées de l'API
+  // State variables to store data fetched from the API
 
-  //useState() est un Hook qui permet d'ajouter l'état local à un composant fonctionnel.
+  // useState() is a Hook that allows adding local state to a functional component.
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [barChartDto, setBarChartDto] = useState([]);
@@ -39,15 +38,15 @@ const Dashboard = () => {
   const [radarScoreDto, setRadarScoreDto] = useState(null);
 
   /**
-   * @Fonction d'effet pour récupérer les données de l'API.
+   * Effect function to fetch data from the API.
    */
   useEffect(() => {
     /**
-     * @Fonction asynchrone pour récupérer les données de l'API.
+     * Async function to fetch data from the API.
      */
     async function getData() {
       try {
-        // Récupérer les données de l'API en utilisant les fonctions de la classe `provider`
+        // Retrieve data from the API using the functions from the `provider` class
         const firstName = await provider.getUserNameByUserId(userId);
         const lastName = await provider.getUserLastNameByUserId(userId);
         const barChartDto = await provider.getActivitiesByUserId(userId);
@@ -56,8 +55,7 @@ const Dashboard = () => {
         const radarPerformanceDto = await provider.getPerformanceByUserId(userId);
         const radarScoreDto = await provider.getScoreByUserId(userId);
 
-        // Met à jour les variables d'état avec les données récupérées
-        
+        // Update state variables with the fetched data
         setFirstName(firstName);
         setLastName(lastName);
         setBarChartDto(barChartDto);
@@ -65,12 +63,12 @@ const Dashboard = () => {
         setNutrimentDto(nutrimentDto);
         setRadarPerformanceDto(radarPerformanceDto);
         setRadarScoreDto(radarScoreDto);
-      } catch (error) {//catch() est une méthode qui permet de gérer les erreurs.
+      } catch (error) {
         console.error("Error fetching user data: ", error);
       }
     }
 
- // Appelle la fonction pour récupérer les données de l'API
+    // Call the function to fetch data from the API
     getData();
   }, [userId]);
 

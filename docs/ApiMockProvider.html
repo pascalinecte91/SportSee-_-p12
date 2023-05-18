@@ -30,6 +30,8 @@
     
         <h2><span class="attribs"><span class="type-signature"></span></span>ApiMockProvider<span class="signature">()</span><span class="type-signature"> &rarr; {<a href="ApiMockProvider.html">ApiMockProvider</a>}</span></h2>
         
+            <div class="class-description"><p>Class ApiMockProvider with functions to retrieve mocked data.</p></div>
+        
     
 </header>
 
@@ -39,6 +41,8 @@
         
 
     
+    <h2>Constructor</h2>
+    
 
     
     <h4 class="name" id="ApiMockProvider"><span class="type-signature"></span>new ApiMockProvider<span class="signature">()</span><span class="type-signature"> &rarr; {<a href="ApiMockProvider.html">ApiMockProvider</a>}</span></h4>
@@ -47,10 +51,6 @@
     
 
 
-
-<div class="description">
-    <p>toutes les fonctions de cette classe sont des fonctions qui permettent de récupérer des données mockées</p>
-</div>
 
 
 
@@ -93,7 +93,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="dataProvider_ApiMockProvider.js.html">dataProvider/ApiMockProvider.js</a>, <a href="dataProvider_ApiMockProvider.js.html#line8">line 8</a>
+        <a href="dataProvider_ApiMockProvider.js.html">dataProvider/ApiMockProvider.js</a>, <a href="dataProvider_ApiMockProvider.js.html#line18">line 18</a>
     </li></ul></dd>
     
 
@@ -157,135 +157,25 @@
     
 
     
-        <h3 class="subsection-title">Members</h3>
+
+    
+        <h3 class="subsection-title">Methods</h3>
 
         
             
-<h4 class="name" id=".getActivitiesByUserId"><span class="type-signature">(static) </span>getActivitiesByUserId<span class="type-signature"></span></h4>
-
-
-
-
-
-
-
-
-
-
-<dl class="details">
 
     
 
     
-
+    <h4 class="name" id="getActivitiesByUserId"><span class="type-signature"></span>getActivitiesByUserId<span class="signature">(userId)</span><span class="type-signature"> &rarr; {<a href="BarChartDto.html">BarChartDto</a>}</span></h4>
     
 
     
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="dataProvider_ApiMockProvider.js.html">dataProvider/ApiMockProvider.js</a>, <a href="dataProvider_ApiMockProvider.js.html#line16">line 16</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-        
-            
-<h4 class="name" id=".getNutrimentByUserId"><span class="type-signature">(static) </span>getNutrimentByUserId<span class="type-signature"></span></h4>
-
-
-
-
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="dataProvider_ApiMockProvider.js.html">dataProvider/ApiMockProvider.js</a>, <a href="dataProvider_ApiMockProvider.js.html#line90">line 90</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-        
-            
-<h4 class="name" id=".getPerformanceByUserId"><span class="type-signature">(static) </span>getPerformanceByUserId<span class="type-signature"></span></h4>
-
 
 
 
 <div class="description">
-    <p>on cherche l'objet correspondant à l'id
-parce que dans le fichier dataMock, l'id est un nombre
-dans le fichier dataProvider, l'id est une chaîne de caractères</p>
+    <p>Retrieves user activities by user ID.</p>
 </div>
 
 
@@ -294,6 +184,61 @@ dans le fichier dataProvider, l'id est une chaîne de caractères</p>
 
 
 
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>userId</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The user ID.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
 <dl class="details">
 
     
@@ -323,7 +268,7 @@ dans le fichier dataProvider, l'id est une chaîne de caractères</p>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="dataProvider_ApiMockProvider.js.html">dataProvider/ApiMockProvider.js</a>, <a href="dataProvider_ApiMockProvider.js.html#line129">line 129</a>
+        <a href="dataProvider_ApiMockProvider.js.html">dataProvider/ApiMockProvider.js</a>, <a href="dataProvider_ApiMockProvider.js.html#line25">line 25</a>
     </li></ul></dd>
     
 
@@ -334,6 +279,44 @@ dans le fichier dataProvider, l'id est une chaîne de caractères</p>
     
 </dl>
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <ul>
+<li>User activities in the form of BarChartDto.</li>
+</ul>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type"><a href="BarChartDto.html">BarChartDto</a></span>
+
+
+    </dd>
+</dl>
+
+    
 
 
 
@@ -341,11 +324,76 @@ dans le fichier dataProvider, l'id est une chaîne de caractères</p>
 
         
             
-<h4 class="name" id=".getScoreByUserId"><span class="type-signature">(static) </span>getScoreByUserId<span class="type-signature"></span></h4>
+
+    
+
+    
+    <h4 class="name" id="getNutrimentByUserId"><span class="type-signature"></span>getNutrimentByUserId<span class="signature">(userId)</span><span class="type-signature"> &rarr; {<a href="global.html#NutrimentDto">NutrimentDto</a>}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    <p>Retrieves the nutrient data of a user by user ID.</p>
+</div>
 
 
 
 
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>userId</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The user ID.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
 
 
 
@@ -381,7 +429,7 @@ dans le fichier dataProvider, l'id est une chaîne de caractères</p>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="dataProvider_ApiMockProvider.js.html">dataProvider/ApiMockProvider.js</a>, <a href="dataProvider_ApiMockProvider.js.html#line74">line 74</a>
+        <a href="dataProvider_ApiMockProvider.js.html">dataProvider/ApiMockProvider.js</a>, <a href="dataProvider_ApiMockProvider.js.html#line97">line 97</a>
     </li></ul></dd>
     
 
@@ -392,6 +440,44 @@ dans le fichier dataProvider, l'id est une chaîne de caractères</p>
     
 </dl>
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <ul>
+<li>The user's nutrient data in the form of NutrimentDto.</li>
+</ul>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type"><a href="global.html#NutrimentDto">NutrimentDto</a></span>
+
+
+    </dd>
+</dl>
+
+    
 
 
 
@@ -399,11 +485,76 @@ dans le fichier dataProvider, l'id est une chaîne de caractères</p>
 
         
             
-<h4 class="name" id=".getSessionsByUserId"><span class="type-signature">(static) </span>getSessionsByUserId<span class="type-signature"></span></h4>
+
+    
+
+    
+    <h4 class="name" id="getPerformanceByUserId"><span class="type-signature"></span>getPerformanceByUserId<span class="signature">(userId)</span><span class="type-signature"> &rarr; {<a href="RadarPerformanceDto.html">RadarPerformanceDto</a>}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    <p>Retrieves user performance by user ID.</p>
+</div>
 
 
 
 
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>userId</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The user ID.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
 
 
 
@@ -439,7 +590,7 @@ dans le fichier dataProvider, l'id est une chaîne de caractères</p>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="dataProvider_ApiMockProvider.js.html">dataProvider/ApiMockProvider.js</a>, <a href="dataProvider_ApiMockProvider.js.html#line106">line 106</a>
+        <a href="dataProvider_ApiMockProvider.js.html">dataProvider/ApiMockProvider.js</a>, <a href="dataProvider_ApiMockProvider.js.html#line131">line 131</a>
     </li></ul></dd>
     
 
@@ -450,6 +601,44 @@ dans le fichier dataProvider, l'id est une chaîne de caractères</p>
     
 </dl>
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <ul>
+<li>User performance in the form of RadarPerformanceDto.</li>
+</ul>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type"><a href="RadarPerformanceDto.html">RadarPerformanceDto</a></span>
+
+
+    </dd>
+</dl>
+
+    
 
 
 
@@ -457,11 +646,76 @@ dans le fichier dataProvider, l'id est une chaîne de caractères</p>
 
         
             
-<h4 class="name" id=".getUserLastNameByUserId"><span class="type-signature">(static) </span>getUserLastNameByUserId<span class="type-signature"></span></h4>
+
+    
+
+    
+    <h4 class="name" id="getScoreByUserId"><span class="type-signature"></span>getScoreByUserId<span class="signature">(userId)</span><span class="type-signature"> &rarr; {<a href="RadarScoreDto.html">RadarScoreDto</a>}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    <p>Retrieves the score of a user by user ID.</p>
+</div>
 
 
 
 
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>userId</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The user ID.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
 
 
 
@@ -497,7 +751,7 @@ dans le fichier dataProvider, l'id est une chaîne de caractères</p>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="dataProvider_ApiMockProvider.js.html">dataProvider/ApiMockProvider.js</a>, <a href="dataProvider_ApiMockProvider.js.html#line58">line 58</a>
+        <a href="dataProvider_ApiMockProvider.js.html">dataProvider/ApiMockProvider.js</a>, <a href="dataProvider_ApiMockProvider.js.html#line83">line 83</a>
     </li></ul></dd>
     
 
@@ -508,6 +762,44 @@ dans le fichier dataProvider, l'id est une chaîne de caractères</p>
     
 </dl>
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <ul>
+<li>The user's score in the form of RadarScoreDto.</li>
+</ul>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type"><a href="RadarScoreDto.html">RadarScoreDto</a></span>
+
+
+    </dd>
+</dl>
+
+    
 
 
 
@@ -515,11 +807,76 @@ dans le fichier dataProvider, l'id est une chaîne de caractères</p>
 
         
             
-<h4 class="name" id=".getUserNameByUserId"><span class="type-signature">(static) </span>getUserNameByUserId<span class="type-signature"></span></h4>
+
+    
+
+    
+    <h4 class="name" id="getSessionsByUserId"><span class="type-signature"></span>getSessionsByUserId<span class="signature">(userId)</span><span class="type-signature"> &rarr; {<a href="LineChartDto.html">LineChartDto</a>}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    <p>Retrieves user sessions by user ID.</p>
+</div>
 
 
 
 
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>userId</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The user ID.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
 
 
 
@@ -555,7 +912,7 @@ dans le fichier dataProvider, l'id est une chaîne de caractères</p>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="dataProvider_ApiMockProvider.js.html">dataProvider/ApiMockProvider.js</a>, <a href="dataProvider_ApiMockProvider.js.html#line42">line 42</a>
+        <a href="dataProvider_ApiMockProvider.js.html">dataProvider/ApiMockProvider.js</a>, <a href="dataProvider_ApiMockProvider.js.html#line111">line 111</a>
     </li></ul></dd>
     
 
@@ -571,9 +928,367 @@ dans le fichier dataProvider, l'id est une chaîne de caractères</p>
 
 
 
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
         
+<div class="param-desc">
+    <ul>
+<li>User sessions in the form of LineChartDto.</li>
+</ul>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type"><a href="LineChartDto.html">LineChartDto</a></span>
+
+
+    </dd>
+</dl>
+
     
 
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="getUserLastNameByUserId"><span class="type-signature"></span>getUserLastNameByUserId<span class="signature">(userId)</span><span class="type-signature"> &rarr; {string}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    <p>Retrieves the last name of a user by user ID.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>userId</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The user ID.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="dataProvider_ApiMockProvider.js.html">dataProvider/ApiMockProvider.js</a>, <a href="dataProvider_ApiMockProvider.js.html#line69">line 69</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <ul>
+<li>The last name of the user.</li>
+</ul>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">string</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="getUserNameByUserId"><span class="type-signature"></span>getUserNameByUserId<span class="signature">(userId)</span><span class="type-signature"> &rarr; {string}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    <p>Retrieves the first name of a user by user ID.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>userId</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The user ID.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="dataProvider_ApiMockProvider.js.html">dataProvider/ApiMockProvider.js</a>, <a href="dataProvider_ApiMockProvider.js.html#line55">line 55</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <ul>
+<li>The first name of the user.</li>
+</ul>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">string</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
     
 
     
@@ -589,13 +1304,13 @@ dans le fichier dataProvider, l'id est une chaîne de caractères</p>
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="ApiMockProvider.html">ApiMockProvider</a></li><li><a href="ApiProvider.html">ApiProvider</a></li></ul><h3>Global</h3><ul><li><a href="global.html#BarChartWrapper">BarChartWrapper</a></li><li><a href="global.html#Communaute">Communaute</a></li><li><a href="global.html#CustomCursor">CustomCursor</a></li><li><a href="global.html#CustomTooltip">CustomTooltip</a></li><li><a href="global.html#Error">Error</a></li><li><a href="global.html#FormatDataKind">FormatDataKind</a></li><li><a href="global.html#Login">Login</a></li><li><a href="global.html#Navbar">Navbar</a></li><li><a href="global.html#Nutriment">Nutriment</a></li><li><a href="global.html#RadarScore">RadarScore</a></li><li><a href="global.html#VerticalSidebar">VerticalSidebar</a></li><li><a href="global.html#WelcomeMessage">WelcomeMessage</a></li><li><a href="global.html#isusedtodisplaythelegendofthegraph.">is used to display the legend of the graph.</a></li><li><a href="global.html#with">with</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="ApiMockProvider.html">ApiMockProvider</a></li><li><a href="ApiProvider.html">ApiProvider</a></li><li><a href="BarChartDto.html">BarChartDto</a></li><li><a href="LineChartDto.html">LineChartDto</a></li><li><a href="global.html#NutrimentDto">NutrimentDto</a></li><li><a href="RadarPerformanceDto.html">RadarPerformanceDto</a></li><li><a href="RadarScoreDto.html">RadarScoreDto</a></li></ul><h3>Global</h3><ul><li><a href="global.html#BarChartWrapper">BarChartWrapper</a></li><li><a href="global.html#Communaute">Communaute</a></li><li><a href="global.html#CustomCursor">CustomCursor</a></li><li><a href="global.html#CustomTooltip">CustomTooltip</a></li><li><a href="global.html#Dashboard">Dashboard</a></li><li><a href="global.html#Error">Error</a></li><li><a href="global.html#FormatDataKind">FormatDataKind</a></li><li><a href="global.html#Home">Home</a></li><li><a href="global.html#LineChartAverage">LineChartAverage</a></li><li><a href="global.html#Login">Login</a></li><li><a href="global.html#LoginReminder">LoginReminder</a></li><li><a href="global.html#Navbar">Navbar</a></li><li><a href="global.html#Nutriment">Nutriment</a></li><li><a href="global.html#RadarScore">RadarScore</a></li><li><a href="global.html#Setting">Setting</a></li><li><a href="global.html#Switch">Switch</a></li><li><a href="global.html#VerticalSidebar">VerticalSidebar</a></li><li><a href="global.html#WelcomeMessage">WelcomeMessage</a></li><li><a href="global.html#legendAverage">legendAverage</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.2</a> on Sun Apr 30 2023 12:09:05 GMT+0200 (heure d’été d’Europe centrale)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.2</a> on Thu May 18 2023 19:20:34 GMT+0200 (heure d’été d’Europe centrale)
 </footer>
 
 <script> prettyPrint(); </script>

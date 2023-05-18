@@ -27,63 +27,207 @@
     <section>
         <article>
             <pre class="prettyprint source linenums"><code>import axios from "axios";
-import BarChartWrapper from "Components/barChart/BarChartWrapper";
-import RadarPerformance from "Components/radarPerformance/RadarPerformance";
-//dto
 import RadarPerformanceDto from "dto/RadarPerformanceDto";
-import NutrimentDto from "dto/NutrimentDto";
 import LineChartDto from "dto/LineChartDto";
 import BarChartDto from "dto/BarChartDto";
+import RadarScoreDto from "dto/RadarScoreDto";
+import NutrimentDto from "dto/NutrimentDto";
+
+// Use constants for values that do not change
+const BASE_URL = "http://localhost:3000/user/";
 
 /**
- * @class ApiProvider
+ * Class ApiProvider with functions to retrieve user data from an API.
+ * @returns {ApiProvider}
+ * @class
  */
-
-
 class ApiProvider {
-	/**
-	 * Creates an instance of ApiProvider.
-	 * @memberof ApiProvider
-	 * @param {*} userId
-	 * @return {*}
-	 */
+  constructor() {
+    this.baseURL = BASE_URL;
+  }
 
+  /**
+   * Handles errors when retrieving user data.
+   * @param {Error} error - The error generated when retrieving the data.
+   * @throws {Error} - An error indicating that user data cannot be fetched.
+   */
+  handleError(error) {
+    console.log("Error fetching user data: ", error);
+    console.error("Error fetching user data: ", error);
+    throw new Error("Unable to fetch user data");
+  }
 
-	getActivitiesByUserId(userId) {
-		return new BarChartDto("api");
-	}
+  /**
+   * Retrieves the user's first name by user ID.
+   * @param {string} userId - The user ID.
+   * @returns {Promise&lt;string|null>} - A promise that resolves with the user's first name or null if not found.
+   */
+  async getUserNameByUserId(userId) {
+    // Check if the request URL is correct
+    console.log("Request URL: ", this.baseURL + userId);
 
-	getNutrimentByUserId(userId) {
-		// todo : faire une requete axios pour récupérer les datas
-		// todo : hydrater le chartBardto avec les datas axios
-		return new NutrimentDto("api");
+    // Make a GET request using axios
+    return axios
+      .get(this.baseURL + userId)
+      .then((response) => {
+        console.log("response: ", response);
 
-		axios
-			.get()
-			.then((res) => {
-				const datas = res.data;
-				this.setState({ datas });
-			})
-			.catch((error) => {
-				console.log(error);
-			});
+        return response.data &amp;&amp;
+          response.data.data &amp;&amp;
+          response.data.data.userInfos &amp;&amp;
+          response.data.data.userInfos.firstName
+          ? response.data.data.userInfos.firstName
+          : null;
+      })
+      .catch((error) => {
+        this.handleError(error);
+      });
+  }
 
-		// todo : hydrater le chartBardto avec les datas axios
-		return new NutrimentDto("api");
-	}
+  /**
+   * Retrieves the user's last name by user ID.
+   * @param {string} userId - The user ID.
+   * @returns {Promise&lt;string|null>} - A promise that resolves with the user's last name or null if not found.
+   */
+  async getUserLastNameByUserId(userId) {
+    return axios
+      .get(this.baseURL + userId)
+      .then((response) => {
+        console.log("response: ", response);
 
-	getAverageByUserId(userId) {
-		return new LineChartDto("api");
-	}
+        return response.data &amp;&amp;
+          response.data.userId &amp;&amp;
+          response.data.userId.lastName
+          ? response.data.userId.lastName
+          : null;
+      })
+      .catch((error) => {
+        this.handleError(error);
+      });
+  }
 
-	getPerformanceByUserId(userId) {
-		return new RadarPerformanceDto("api");
-	}
+  /**
+   * Retrieves user activities by user ID.
+   * @param {string} userId - The user ID.
+   * @returns {Promise&lt;BarChartDto>} - A promise that resolves with the activity data in the form of BarChartDto.
+   */
+  async getActivitiesByUserId(userId) {
+    console.log("Request URL: ", this.baseURL + userId + "/activity");
+    return axios
+      .get(this.baseURL + userId + "/activity")
+      .then((response) => {
+        console.log("response: ", response);
 
-	getScoreByUserId(userId) {
-		return new RadarScoreDto("api");
-	}
+        // Handle successful request
+        const data = response.data.data.sessions;
+        console.log("Data: ", data);
+
+        // Access specific data
+        return new BarChartDto(data, "Day", "Kilograms", "Calories");
+      })
+      .catch((error) => {
+        this.handleError(error);
+      });
+  }
+
+  /**
+   * Retrieves user sessions by user ID.
+   * @param {string} userId - The user ID.
+   * @returns {Promise&lt;LineChartDto>} - A promise that resolves with the session data in the form of LineChartDto.
+   */
+  async getSessionsByUserId(userId) {
+    console.log(userId);
+    return axios
+      .get(this.baseURL + userId + "/average-sessions")
+      .then((response) => {
+        console.log("response: ", response);
+
+        // Handle successful request
+        const data = response.data.data.sessions;
+        console.log("Data: ", data);
+
+        // Map data to include the day
+        const sessionsWithDay = data.map((session) => ({
+          day: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"][session.day - 1],
+          sessionLength: session.sessionLength,
+        }));
+        return new LineChartDto(sessionsWithDay, "day", "sessionLength");
+      })
+      .catch((error) => {
+        this.handleError(error);
+      });
+  }
+
+  /**
+   * Retrieves user performance by user ID.
+   * @param {string} userId - The user ID.
+   * @returns {Promise&lt;RadarPerformanceDto>} - A promise that resolves with the performance data in the form of RadarPerformanceDto.
+   */
+  async getPerformanceByUserId(userId) {
+    console.log(userId);
+    return axios
+      .get(this.baseURL + userId + "/performance")
+      .then((response) => {
+        console.log("response: ", response);
+
+        // Handle successful request
+        const data = response.data.data;
+        const kind = data.kind;
+        const values = data.data;
+        console.log("Kind: ", kind);
+        console.log("Values: ", values);
+
+        console.log("Data: ", data);
+
+        return new RadarPerformanceDto(data);
+      })
+      .catch((error) => {
+        this.handleError(error);
+      });
+  }
+
+  /**
+   * Retrieves the user's score by user ID.
+   * @param {string} userId - The user ID.
+   * @returns {Promise&lt;RadarScoreDto>} - A promise that resolves with the user's score in the form of RadarScoreDto.
+   */
+  async getScoreByUserId(userId) {
+    return axios
+      .get(this.baseURL + userId)
+      .then((response) => {
+        console.log("response: ", response);
+
+        const data = response.data.data.score;
+
+        return new RadarScoreDto(data);
+      })
+      .catch((error) => {
+        this.handleError(error);
+      });
+  }
+
+  /**
+   * Retrieves user nutritional data by user ID.
+   * @param {string} userId - The user ID.
+   * @returns {Promise&lt;NutrimentDto>} - A promise that resolves with the nutritional data in the form of NutrimentDto.
+   */
+  async getNutrimentByUserId(userId) {
+    return axios
+      .get(this.baseURL + userId)
+      .then((response) => {
+        console.log("response: ", response);
+
+        const keyData = response.data.data.keyData;
+        console.log("KeyData: ", keyData);
+
+        return new NutrimentDto(keyData);
+      })
+      .catch((error) => {
+        this.handleError(error);
+      });
+  }
 }
+
 export default ApiProvider;
 </code></pre>
         </article>
@@ -95,13 +239,13 @@ export default ApiProvider;
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="ApiMockProvider.html">ApiMockProvider</a></li><li><a href="ApiProvider.html">ApiProvider</a></li></ul><h3>Global</h3><ul><li><a href="global.html#BarChartWrapper">BarChartWrapper</a></li><li><a href="global.html#Communaute">Communaute</a></li><li><a href="global.html#CustomCursor">CustomCursor</a></li><li><a href="global.html#CustomTooltip">CustomTooltip</a></li><li><a href="global.html#Error">Error</a></li><li><a href="global.html#FormatDataKind">FormatDataKind</a></li><li><a href="global.html#Login">Login</a></li><li><a href="global.html#Navbar">Navbar</a></li><li><a href="global.html#Nutriment">Nutriment</a></li><li><a href="global.html#RadarScore">RadarScore</a></li><li><a href="global.html#VerticalSidebar">VerticalSidebar</a></li><li><a href="global.html#WelcomeMessage">WelcomeMessage</a></li><li><a href="global.html#isusedtodisplaythelegendofthegraph.">is used to display the legend of the graph.</a></li><li><a href="global.html#with">with</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="ApiMockProvider.html">ApiMockProvider</a></li><li><a href="ApiProvider.html">ApiProvider</a></li><li><a href="BarChartDto.html">BarChartDto</a></li><li><a href="LineChartDto.html">LineChartDto</a></li><li><a href="global.html#NutrimentDto">NutrimentDto</a></li><li><a href="RadarPerformanceDto.html">RadarPerformanceDto</a></li><li><a href="RadarScoreDto.html">RadarScoreDto</a></li></ul><h3>Global</h3><ul><li><a href="global.html#BarChartWrapper">BarChartWrapper</a></li><li><a href="global.html#Communaute">Communaute</a></li><li><a href="global.html#CustomCursor">CustomCursor</a></li><li><a href="global.html#CustomTooltip">CustomTooltip</a></li><li><a href="global.html#Dashboard">Dashboard</a></li><li><a href="global.html#Error">Error</a></li><li><a href="global.html#FormatDataKind">FormatDataKind</a></li><li><a href="global.html#Home">Home</a></li><li><a href="global.html#LineChartAverage">LineChartAverage</a></li><li><a href="global.html#Login">Login</a></li><li><a href="global.html#LoginReminder">LoginReminder</a></li><li><a href="global.html#Navbar">Navbar</a></li><li><a href="global.html#Nutriment">Nutriment</a></li><li><a href="global.html#RadarScore">RadarScore</a></li><li><a href="global.html#Setting">Setting</a></li><li><a href="global.html#Switch">Switch</a></li><li><a href="global.html#VerticalSidebar">VerticalSidebar</a></li><li><a href="global.html#WelcomeMessage">WelcomeMessage</a></li><li><a href="global.html#legendAverage">legendAverage</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.2</a> on Sun Apr 30 2023 12:09:05 GMT+0200 (heure d’été d’Europe centrale)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.2</a> on Thu May 18 2023 19:20:34 GMT+0200 (heure d’été d’Europe centrale)
 </footer>
 
 <script> prettyPrint(); </script>

@@ -1,121 +1,149 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-	<meta charset="utf-8">
-	<title>JSDoc: Source: pages/dashboard/Dashboard.js</title>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: pages/dashboard/Dashboard.js</title>
 
-	<script src="scripts/prettify/prettify.js"> </script>
-	<script src="scripts/prettify/lang-css.js"> </script>
-	<!--[if lt IE 9]>
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
       <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
-	<link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
-	<link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
 </head>
 
 <body>
 
-	<div id="main">
+<div id="main">
 
-		<h1 class="page-title">Source: pages/dashboard/Dashboard.js</h1>
+    <h1 class="page-title">Source: pages/dashboard/Dashboard.js</h1>
 
-
-
-
+    
 
 
-		<section>
-			<article>
-				<pre class="prettyprint source linenums"><code>import ApiMockProvider from "dataProvider/ApiMockProvider";
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import ApiMockProvider from "dataProvider/ApiMockProvider";
 import ApiProvider from "dataProvider/ApiProvider";
 import { useParams } from "react-router-dom";
-import React, { useState, useEffect } from "react";
-import BarChartWrapper from "Components/BarChartWrapper/BarChartWrapper";
+import { useState, useEffect } from "react";
+// Components
+import BarChartWrapper from "Components/barChart/BarChartWrapper";
 import WelcomeMessage from "Components/welcome/WelcomeMessage";
-import Loader from "Components/loader/Loader";
-import PieChartLevel from "Components/pieChartCard/PieChartCard";
-
-import { userUseState } from "dataProvider/ApiProvider";
+import RadarScore from "Components/radarScore/RadarScore";
+import RadarPerformance from "Components/radarPerformance/RadarPerformance";
+import Nutriment from "Components/nutriment/Nutriment";
+import LineChartAverage from "Components/lineChart/LineChartAverage";
+import { NavLink } from "react-router-dom";
 
 /**
- * Composant React pour le tableau de bord.
- * @returns {JSX.Element} Le composant React pour le tableau de bord.
+ * Dashboard component representing the dashboard.
+ * @returns {JSX.Element} The Dashboard component.
  */
-
 const Dashboard = () => {
-	// Obtient l'ID d'utilisateur à partir de l'URL
-	const { userId } = useParams();
+  // Get user ID from the URL
+  const { userId } = useParams(); // useParams() is a Hook that allows extracting parameters from a URL.
+  const { isDemo } = useParams();
+  console.log("isDemo: ", isDemo);
+  // Check if the application is in demo mode
+  const isDemoBooleen = isDemo?.toLocaleLowerCase() === "true";
+  // toLocaleLowerCase() is a method that converts a string to lowercase.
 
-	// Indique si le mode démo est activé ou non
-	let isDemo = true;
-const mockedData = new ApiMockProvider(userId).getActivitiesByUserId(userId);
-	// Initialise le provider API en fonction du mode démo
-	let provider = isDemo ? new ApiMockProvider() : new ApiProvider();
+  let provider = isDemoBooleen ? new ApiMockProvider() : new ApiProvider();
 
-	// Obtient les activités de l'utilisateur à partir du fournisseur API
-	let bartChartDtoActivities = provider.getActivitiesByUserId();
+  // State variables to store data fetched from the API
 
+  // useState() is a Hook that allows adding local state to a functional component.
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [barChartDto, setBarChartDto] = useState([]);
+  const [lineChartDto, setLineChartDto] = useState({});
+  const [nutrimentDto, setNutrimentDto] = useState(null);
+  const [radarPerformanceDto, setRadarPerformanceDto] = useState(null);
+  const [radarScoreDto, setRadarScoreDto] = useState(null);
 
-	/**************************************** */
+  /**
+   * Effect function to fetch data from the API.
+   */
+  useEffect(() => {
+    /**
+     * Async function to fetch data from the API.
+     */
+    async function getData() {
+      try {
+        // Retrieve data from the API using the functions from the `provider` class
+        const firstName = await provider.getUserNameByUserId(userId);
+        const lastName = await provider.getUserLastNameByUserId(userId);
+        const barChartDto = await provider.getActivitiesByUserId(userId);
+        const lineChartDto = await provider.getSessionsByUserId(userId);
+        const nutrimentDto = await provider.getNutrimentByUserId(userId);
+        const radarPerformanceDto = await provider.getPerformanceByUserId(userId);
+        const radarScoreDto = await provider.getScoreByUserId(userId);
 
+        // Update state variables with the fetched data
+        setFirstName(firstName);
+        setLastName(lastName);
+        setBarChartDto(barChartDto);
+        setLineChartDto(lineChartDto);
+        setNutrimentDto(nutrimentDto);
+        setRadarPerformanceDto(radarPerformanceDto);
+        setRadarScoreDto(radarScoreDto);
+      } catch (error) {
+        console.error("Error fetching user data: ", error);
+      }
+    }
 
-	//fonction qui renvoie  le prenom du user et stocke dans la var firstname
-	let firstName = provider.getUserNameByUserId(userId);
+    // Call the function to fetch data from the API
+    getData();
+  }, [userId]);
 
-	//renvoie le score de la journee et stocke dans "todayScore"
-	let todayScore = provider.getTodayScoreByUserId(userId);
+  return (
+    &lt;section className="dashboard">
+      &lt;WelcomeMessage firstName={firstName} lastName={lastName} />
+      &lt;aside className="dashboard__charts">
+        &lt;article className="dashboard__chartsLinear">
+          &lt;BarChartWrapper dto={barChartDto} />
+          &lt;div className="dashboard__threeGraph">
+            &lt;LineChartAverage dto={lineChartDto} />
+            {radarPerformanceDto &amp;&amp; (
+              &lt;RadarPerformance dto={radarPerformanceDto} />
+            )}
+            {radarScoreDto &amp;&amp; &lt;RadarScore dto={radarScoreDto} />}
+          &lt;/div>
+        &lt;/article>
 
-	return (
-		&lt;section className="dashboard">
-			&lt;WelcomeMessage firstName={firstName} />
-			&lt;div className="dashboard__content">
-				&lt;PieChartLevel todayScore={todayScore} />
-		 		{&lt;BarChartWrapper dto={bartChartDtoActivities} />} 
-			&lt;/div>
-		&lt;/section>
-	);
+        &lt;article className="dashboard__nutrients">
+          {nutrimentDto &amp;&amp; &lt;Nutriment dto={nutrimentDto} />}
+        &lt;/article>
+      &lt;/aside>
+    &lt;/section>
+  );
 };
 
 export default Dashboard;
 </code></pre>
-			</article>
-		</section>
+        </article>
+    </section>
 
 
 
 
-	</div>
+</div>
 
-	<nav>
-		<h2><a href="index.html">Home</a></h2>
-		<h3>Classes</h3>
-		<ul>
-			<li><a href="ApiProvider.html">ApiProvider</a></li>
-			<li><a href="BarChartDto.html">BarChartDto</a></li>
-		</ul>
-		<h3>Global</h3>
-		<ul>
-			<li><a href="global.html#Communaute">Communaute</a></li>
-			<li><a href="global.html#Dashboard">Dashboard</a></li>
-			<li><a href="global.html#Error">Error</a></li>
-			<li><a href="global.html#Login">Login</a></li>
-			<li><a href="global.html#Navbar">Navbar</a></li>
-			<li><a href="global.html#VerticalSidebar">VerticalSidebar</a></li>
-			<li><a href="global.html#WelcomeMessage">WelcomeMessage</a></li>
-			<li><a href="global.html#with">with</a></li>
-		</ul>
-	</nav>
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="ApiMockProvider.html">ApiMockProvider</a></li><li><a href="ApiProvider.html">ApiProvider</a></li><li><a href="BarChartDto.html">BarChartDto</a></li><li><a href="LineChartDto.html">LineChartDto</a></li><li><a href="global.html#NutrimentDto">NutrimentDto</a></li><li><a href="RadarPerformanceDto.html">RadarPerformanceDto</a></li><li><a href="RadarScoreDto.html">RadarScoreDto</a></li></ul><h3>Global</h3><ul><li><a href="global.html#BarChartWrapper">BarChartWrapper</a></li><li><a href="global.html#Communaute">Communaute</a></li><li><a href="global.html#CustomCursor">CustomCursor</a></li><li><a href="global.html#CustomTooltip">CustomTooltip</a></li><li><a href="global.html#Dashboard">Dashboard</a></li><li><a href="global.html#Error">Error</a></li><li><a href="global.html#FormatDataKind">FormatDataKind</a></li><li><a href="global.html#Home">Home</a></li><li><a href="global.html#LineChartAverage">LineChartAverage</a></li><li><a href="global.html#Login">Login</a></li><li><a href="global.html#LoginReminder">LoginReminder</a></li><li><a href="global.html#Navbar">Navbar</a></li><li><a href="global.html#Nutriment">Nutriment</a></li><li><a href="global.html#RadarScore">RadarScore</a></li><li><a href="global.html#Setting">Setting</a></li><li><a href="global.html#Switch">Switch</a></li><li><a href="global.html#VerticalSidebar">VerticalSidebar</a></li><li><a href="global.html#WelcomeMessage">WelcomeMessage</a></li><li><a href="global.html#legendAverage">legendAverage</a></li></ul>
+</nav>
 
-	<br class="clear">
+<br class="clear">
 
-	<footer>
-		Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.2</a> on Fri Mar 31 2023 21:18:27
-		GMT+0200 (heure d’été d’Europe centrale)
-	</footer>
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.2</a> on Thu May 18 2023 19:20:34 GMT+0200 (heure d’été d’Europe centrale)
+</footer>
 
-	<script> prettyPrint(); </script>
-	<script src="scripts/linenumber.js"> </script>
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
 </body>
-
 </html>

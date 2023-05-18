@@ -6,38 +6,35 @@ import { useParams } from "react-router-dom";
 import Switch from "Components/switch/Switch.jsx";
 
 /**
- * Composant React pour le tableau de bord.
- * @returns {JSX.Element} Le composant React pour le tableau de bord.
+ * React component for the login page.
+ * @returns {JSX.Element} - Login component.
  */
-
 const Login = () => {
   const [isDemo, setDemo] = useState(false);
-  //console.log(isDemo);
   const { userId } = useParams();
- console.log(isDemo);
  
   return (
     <section className="login">
       <header className="login__header">
         <picture>
-          <img src={logo} alt="logo Sportsee"></img>
-          <h1>Choisissez et connectez-vous </h1>
+          <img src={logo} alt="logo Sportsee" />
+          <h1>Choose and log in</h1>
         </picture>
-        <Switch setDemo={setDemo} isDemo={isDemo}/>
+        <Switch setDemo={setDemo} isDemo={isDemo} />
       </header>
 
       <div className="login__wrapper">
-      <ul>
+        <ul>
           {USER_MAIN_DATA.map((user) => {
             const userInfos = user.userInfos;
             const { firstName, lastName, age } = userInfos;
-            let emoji = null;//emoji est initialisé à null pour le switch entre api et mock
-            //si isDemo est vrai, on va chercher l'emoji correspondant à l'id de l'utilisateur
+            let emoji = null;
             if (isDemo) {
+              // Set emoji based on user ID when in demo mode
               if (user.id === 18) {
-                emoji = "👩🏼";
+                emoji = "🏃‍♀️";
               } else if (user.id === 12) {
-                emoji = "🕵️‍♂️";
+                emoji = "🏃‍♂️";
               }
             }
             return (
@@ -46,7 +43,7 @@ const Login = () => {
                   <div className="login__identity">
                     <div className="login__emoji">{emoji}</div>
                     {`${firstName} ${lastName} `}
-                    <p className="login__age">{`${age} ans`}</p>
+                    <p className="login__age">{`${age} years old`}</p>
                   </div>
                 </NavLink>
               </li>

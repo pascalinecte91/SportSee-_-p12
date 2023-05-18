@@ -1,15 +1,15 @@
 import React from "react";
 
 /**
- * @Composant Switch permettant de basculer entre les modes "Mock" et "Api".
- * @param {Object} props - Les propriétés du composant.
- * @param {function} props.setDemo - La fonction pour définir le mode "Demo".
- * @param {boolean} props.isDemo - Le mode "Demo" actuel.
- * @returns {JSX.Element} - Le composant Switch.
+ * Switch component for toggling between "Mock" and "Api" modes.
+ * @param {Object} props - The component props.
+ * @param {function} props.setDemo - The function to set the "Demo" mode.
+ * @param {boolean} props.isDemo - The current "Demo" mode.
+ * @returns {JSX.Element} - The Switch component.
  */
 const Switch = ({ setDemo, isDemo }) => {
   /**
-   * Gère le changement de l'état du switch.
+   * Handles the switch state change.
    */
   const handleChange = () => {
     setDemo(!isDemo);

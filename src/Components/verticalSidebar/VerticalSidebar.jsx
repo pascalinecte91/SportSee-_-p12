@@ -5,9 +5,9 @@ import bike from "assets/bike.png";
 import weight from "assets/weight.png";
 
 /**
- * @Composant VerticalSidebar pour afficher la barre latérale verticale.
+ * VerticalSidebar component to display the vertical sidebar.
  * @component
- * @returns {*} Le composant VerticalSidebar.
+ * @returns {*} The VerticalSidebar component.
  */
 const VerticalSidebar = () => {
   return (
@@ -18,7 +18,6 @@ const VerticalSidebar = () => {
         <li><img src={bike} alt="Bike" /></li>
         <li><img src={weight} alt="Weight" /></li>
       </ul>
-      {/* Copyright */}
       <span>© SportSee {new Date().getFullYear()}</span>
     </section>
   );

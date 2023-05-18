@@ -11,15 +11,15 @@ import BarChartDto from "dto/BarChartDto";
 import RadarScoreDto from "dto/RadarScoreDto";
 
 /**
- * Classe ApiMockProvider avec des fonctions pour récupérer des données mockées.
+ * Class ApiMockProvider with functions to retrieve mocked data.
  * @returns {ApiMockProvider}
  * @class
  */
 class ApiMockProvider {
   /**
-   * Récupère les activités d'un utilisateur par son ID.
-   * @param {number} userId - L'ID de l'utilisateur.
-   * @returns {BarChartDto} - Les activités de l'utilisateur sous forme de BarChartDto.
+   * Retrieves user activities by user ID.
+   * @param {number} userId - The user ID.
+   * @returns {BarChartDto} - User activities in the form of BarChartDto.
    * @memberof ApiMockProvider
    */
   getActivitiesByUserId(userId) {
@@ -40,16 +40,16 @@ class ApiMockProvider {
     }
     return new BarChartDto(
       userSessions,
-      "Jour",
-      "Kilogrammes",
+      "Day",
+      "Kilograms",
       "Calories"
     );
   }
 
   /**
-   * Récupère le prénom d'un utilisateur par son ID.
-   * @param {number} userId - L'ID de l'utilisateur.
-   * @returns {string} - Le prénom de l'utilisateur.
+   * Retrieves the first name of a user by user ID.
+   * @param {number} userId - The user ID.
+   * @returns {string} - The first name of the user.
    * @memberof ApiMockProvider
    */
   getUserNameByUserId(userId) {
@@ -61,9 +61,9 @@ class ApiMockProvider {
   }
 
   /**
-   * Récupère le nom de famille d'un utilisateur par son ID.
-   * @param {number} userId - L'ID de l'utilisateur.
-   * @returns {string} - Le nom de famille de l'utilisateur.
+   * Retrieves the last name of a user by user ID.
+   * @param {number} userId - The user ID.
+   * @returns {string} - The last name of the user.
    * @memberof ApiMockProvider
    */
   getUserLastNameByUserId(userId) {
@@ -75,9 +75,9 @@ class ApiMockProvider {
   }
 
   /**
-   * Récupère le score d'un utilisateur par son ID.
-   * @param {number} userId - L'ID de l'utilisateur.
-   * @returns {RadarScoreDto} - Le score de l'utilisateur sous forme de RadarScoreDto.
+   * Retrieves the score of a user by user ID.
+   * @param {number} userId - The user ID.
+   * @returns {RadarScoreDto} - The user's score in the form of RadarScoreDto.
    * @memberof ApiMockProvider
    */
   getScoreByUserId(userId) {
@@ -89,9 +89,9 @@ class ApiMockProvider {
   }
 
   /**
-   * Récupère les données nutritives d'un utilisateur par son ID.
-   * @param {number} userId - L'ID de l'utilisateur.
-   * @returns {NutrimentDto} - Les données nutritives de l'utilisateur sous forme de NutrimentDto.
+   * Retrieves the nutrient data of a user by user ID.
+   * @param {number} userId - The user ID.
+   * @returns {NutrimentDto} - The user's nutrient data in the form of NutrimentDto.
    * @memberof ApiMockProvider
    */
   getNutrimentByUserId(userId) {
@@ -103,9 +103,9 @@ class ApiMockProvider {
   }
 
   /**
-   * Récupère les sessions d'un utilisateur par son ID.
-   * @param {number} userId - L'ID de l'utilisateur.
-   * @returns {LineChartDto} - Les sessions de l'utilisateur sous forme de LineChartDto.
+   * Retrieves user sessions by user ID.
+   * @param {number} userId - The user ID.
+   * @returns {LineChartDto} - User sessions in the form of LineChartDto.
    * @memberof ApiMockProvider
    */
   getSessionsByUserId(userId) {
@@ -114,7 +114,7 @@ class ApiMockProvider {
     );
     const userSessions = currentUser
       ? currentUser.sessions.map((session) => ({
-          day: ["L", "M", "M", "J", "V", "S", "D"][session.day - 1],
+          day: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"][session.day - 1],
           sessionLength: session.sessionLength,
         }))
       : [];
@@ -123,9 +123,9 @@ class ApiMockProvider {
   }
 
   /**
-   * Récupère les performances d'un utilisateur par son ID.
-   * @param {number} userId - L'ID de l'utilisateur.
-   * @returns {RadarPerformanceDto} - Les performances de l'utilisateur sous forme de RadarPerformanceDto.
+   * Retrieves user performance by user ID.
+   * @param {number} userId - The user ID.
+   * @returns {RadarPerformanceDto} - User performance in the form of RadarPerformanceDto.
    * @memberof ApiMockProvider
    */
   getPerformanceByUserId(userId) {

@@ -27,128 +27,141 @@
     <section>
         <article>
             <pre class="prettyprint source linenums"><code>import React from "react";
-import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, Rectangle } from "recharts";
+import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from "recharts";
 import { PropTypes } from "prop-types";
 
 /**
- * @fubnction is used to display the tooltip when the user hovers over the graph.
- * @param {active, payload}
- * @return {*}
+ * CustomTooltip component is used to display the tooltip when the user hovers over the graph.
+ * @param {boolean} active - Determines if the tooltip is active.
+ * @param {Array} payload - The data payload of the tooltip.
+ * @returns {JSX.Element} The tooltip component.
  */
 const CustomTooltip = ({ active, payload }) => {
-	//  (si `active` est vrai et si `payload` existe et contient au moins un élément :(payload;length)
-	if (active &amp;&amp; payload &amp;&amp; payload.length) {
-		// Renvoie un élément  affichant les valeurs de `payload[0]` et `payload[1]` concaténées avec "kg" et "KCal" respectivement.
-		return (
-			&lt;div className="tooltip">
-				&lt;p>{payload[0].value + " kg"}&lt;/p>
-				&lt;p>{payload[1].value + " KCal"}&lt;/p>
-			&lt;/div>
-		);
-	}
-	//Si active est false, ou si payload n'est pas défini ou ne contient rien :
-	return null;
+  if (active &amp;&amp; payload &amp;&amp; payload.length) {
+    return (
+      &lt;div className="tooltip">
+        &lt;p>{payload[0].value + " kg"}&lt;/p>
+        &lt;p>{payload[1].value + " KCal"}&lt;/p>
+      &lt;/div>
+    );
+  }
+  return null;
 };
 
 /**
- * @component is used to display the tooltip when the user hovers over the graph.
- * @param {*} { dto }
- * @return {*}
+ * BarChartWrapper component is used to display the bar chart with the tooltip.
+ * @param {*} props - The component props.
+ * @param {object} props.dto - The data object for the chart.
+ * @returns {JSX.Element} The bar chart component.
  */
 const BarChartWrapper = ({ dto }) => {
-	return (
-		&lt;div className="wrapper">
-			&lt;ResponsiveContainer aspect={2.3}>
-				&lt;BarChart
-					width={835}
-					height={320}
-					data={dto.data}
-					margin={{
-						top: 80,
-						right: 48,
-						left: 48,
-						bottom: 32,
-					}}
-					barGap={8}
-				>
-					&lt;CartesianGrid vertical={false} strokeDasharray="3 3" stroke={`#dedede`} />
-					&lt;XAxis
-						dataKey="day"
-						tickFormatter={(day) => day.slice(-1)} // affiche le dernier caractère de la chaine de caractère
-						tickLine={false} // enleve la ligne verticale
-						axisLine={false} // enleve la ligne horizontale
-						tickMargin={15}
-					/>
-					&lt;YAxis yAxisId="cal" dataKey="calories" orientation="left" tick={true} hide tickCount={3} />
-					&lt;YAxis
-						yAxisId="kg"
-						dataKey="kilogram"
-						orientation="right" // affiche les valeurs a droite
-						tickLine={false}
-						stroke="FFFFF"
-						domain={["dataMin - 1", "dataMax"]} // affiche les valeurs min et max
-						tickCount={3} // affiche 3 valeurs à la legende
-						tick={{ stroke: "9B9EAC" }}
-						dx={50}
-					/>
-					//*legendes :point noir &amp; rouge kilos et calories
-					&lt;Legend
-						verticalAlign="top"
-						align="right"
-						iconSize={8} // taille des points
-						iconType={"circle"}
-						width={277}
-						height={25}
-						wrapperStyle={{ top: "4%", right: "5%" }}
-						formatter={(kilogram) => {
-							return &lt;span style={{ color: "#74798C", fontSize: 14, fontWeight: 500 }}>{kilogram}&lt;/span>;
-						}}
-					/>
-					//* Fond de couleur gris des bars
-					&lt;Tooltip
-						wrapperStyle={{ outlineStyle: "none" }}
-						content={&lt;CustomTooltip />}
-						cursor={{ fill: "#DFDFDF" }}
-					/>
-					&lt;Bar
-						yAxisId="kg"
-						dataKey="kilogram"
-						name="Poids (kg)"
-						fill="#00000"
-						barSize={7}
-						radius={[5, 5, 0, 0]}
-					/>
-					&lt;Bar
-						yAxisId="cal"
-						dataKey="calories"
-						name="Calories brûlées (kCal)"
-						fill="#FF0000"
-						barSize={7} // epaisseur des barres
-						radius={[5, 5, 0, 0]}
-					/>
-					//* activite quotidienne : X horizontal Y vertical
-					&lt;text
-						x="5%" // positionnement horizontal
-						y="7%" // positionnement vertical
-						dominantBaseline="middle" // alignement vertical
-						fill="#20253A" // couleur du texte
-						fontSize="15"
-					>
-						Activité quotidienne
-					&lt;/text>
-				&lt;/BarChart>
-			&lt;/ResponsiveContainer>
-		&lt;/div>
-	);
+  return (
+    &lt;div className="wrapper">
+      &lt;ResponsiveContainer aspect={2.3}>
+        &lt;BarChart
+          width={835}
+          height={320}
+          data={dto.data}
+          margin={{
+            top: 80,
+            right: 48,
+            left: 48,
+            bottom: 32,
+          }}
+          barGap={8}
+        >
+          &lt;CartesianGrid
+            vertical={false}
+            strokeDasharray="3 3"
+            stroke={`#dedede`}
+          />
+          &lt;XAxis
+            dataKey="day"
+            tickFormatter={(day) => day.slice(-1)}
+            tickLine={false}
+            axisLine={false}
+            tickMargin={15}
+          />
+          &lt;YAxis
+            yAxisId="cal"
+            dataKey="calories"
+            orientation="left"
+            tick={true}
+            hide
+            tickCount={3}
+          />
+          &lt;YAxis
+            yAxisId="kg"
+            dataKey="kilogram"
+            orientation="right"
+            tickLine={false}
+            stroke="FFFFF"
+            domain={["dataMin - 1", "dataMax"]}
+            tickCount={3}
+            tick={{ stroke: "9B9EAC" }}
+            dx={50}
+          />
+          &lt;Legend
+            verticalAlign="top"
+            align="right"
+            iconSize={8}
+            iconType={"circle"}
+            width={277}
+            height={25}
+            wrapperStyle={{ top: "4%", right: "5%" }}
+            formatter={(kilogram) => {
+              return (
+                &lt;span style={{ color: "#74798C", fontSize: 14, fontWeight: 500 }}>{kilogram}
+                &lt;/span>
+              );
+            }}
+          />
+          &lt;Tooltip
+            wrapperStyle={{ outlineStyle: "none" }}
+            content={&lt;CustomTooltip />}
+            cursor={{ fill: "#DFDFDF" }}
+          />
+          &lt;Bar
+            yAxisId="kg"
+            dataKey="kilogram"
+            name="Poids (kg)"
+            fill="#00000"
+            barSize={7}
+            radius={[5, 5, 0, 0]}
+          />
+          &lt;Bar
+            yAxisId="cal"
+            dataKey="calories"
+            name="Calories brûlées (kCal)"
+            fill="#FF0000"
+            barSize={7}
+            radius={[5, 5, 0, 0]}
+          />
+          &lt;text
+            x="5%"
+            y="7%"
+            dominantBaseline="middle"
+            fill="#20253A"
+            fontSize="15"
+          >
+            Activité quotidienne
+          &lt;/text>
+        &lt;/BarChart>
+      &lt;/ResponsiveContainer>
+    &lt;/div>
+  );
 };
 
-CustomTooltip.propType = {
-	active: PropTypes.array.isRequired,
-	payload: PropTypes.array.isRequired,
+CustomTooltip.propTypes = {
+  active: PropTypes.bool.isRequired,
+  payload: PropTypes.array.isRequired,
 };
 
 BarChartWrapper.propTypes = {
-	dto: PropTypes.oneOfType([PropTypes.object.isRequired, PropTypes.array.isRequired]),
+  dto: PropTypes.oneOfType([
+    PropTypes.object.isRequired,
+    PropTypes.array.isRequired,
+  ]),
 };
 
 export default BarChartWrapper;
@@ -162,13 +175,13 @@ export default BarChartWrapper;
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="ApiMockProvider.html">ApiMockProvider</a></li><li><a href="ApiProvider.html">ApiProvider</a></li></ul><h3>Global</h3><ul><li><a href="global.html#BarChartWrapper">BarChartWrapper</a></li><li><a href="global.html#Communaute">Communaute</a></li><li><a href="global.html#CustomCursor">CustomCursor</a></li><li><a href="global.html#CustomTooltip">CustomTooltip</a></li><li><a href="global.html#Error">Error</a></li><li><a href="global.html#FormatDataKind">FormatDataKind</a></li><li><a href="global.html#Login">Login</a></li><li><a href="global.html#Navbar">Navbar</a></li><li><a href="global.html#Nutriment">Nutriment</a></li><li><a href="global.html#RadarScore">RadarScore</a></li><li><a href="global.html#VerticalSidebar">VerticalSidebar</a></li><li><a href="global.html#WelcomeMessage">WelcomeMessage</a></li><li><a href="global.html#isusedtodisplaythelegendofthegraph.">is used to display the legend of the graph.</a></li><li><a href="global.html#with">with</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="ApiMockProvider.html">ApiMockProvider</a></li><li><a href="ApiProvider.html">ApiProvider</a></li><li><a href="BarChartDto.html">BarChartDto</a></li><li><a href="LineChartDto.html">LineChartDto</a></li><li><a href="global.html#NutrimentDto">NutrimentDto</a></li><li><a href="RadarPerformanceDto.html">RadarPerformanceDto</a></li><li><a href="RadarScoreDto.html">RadarScoreDto</a></li></ul><h3>Global</h3><ul><li><a href="global.html#BarChartWrapper">BarChartWrapper</a></li><li><a href="global.html#Communaute">Communaute</a></li><li><a href="global.html#CustomCursor">CustomCursor</a></li><li><a href="global.html#CustomTooltip">CustomTooltip</a></li><li><a href="global.html#Dashboard">Dashboard</a></li><li><a href="global.html#Error">Error</a></li><li><a href="global.html#FormatDataKind">FormatDataKind</a></li><li><a href="global.html#Home">Home</a></li><li><a href="global.html#LineChartAverage">LineChartAverage</a></li><li><a href="global.html#Login">Login</a></li><li><a href="global.html#LoginReminder">LoginReminder</a></li><li><a href="global.html#Navbar">Navbar</a></li><li><a href="global.html#Nutriment">Nutriment</a></li><li><a href="global.html#RadarScore">RadarScore</a></li><li><a href="global.html#Setting">Setting</a></li><li><a href="global.html#Switch">Switch</a></li><li><a href="global.html#VerticalSidebar">VerticalSidebar</a></li><li><a href="global.html#WelcomeMessage">WelcomeMessage</a></li><li><a href="global.html#legendAverage">legendAverage</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.2</a> on Sun Apr 30 2023 12:09:05 GMT+0200 (heure d’été d’Europe centrale)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.2</a> on Thu May 18 2023 19:20:34 GMT+0200 (heure d’été d’Europe centrale)
 </footer>
 
 <script> prettyPrint(); </script>

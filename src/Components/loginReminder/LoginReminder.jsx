@@ -2,19 +2,23 @@ import React from "react";
 import logo from "assets/logo.png";
 import { NavLink } from "react-router-dom";
 
+/**
+ * Component for displaying a login reminder.
+ * @component
+ * @return {JSX.Element} - LoginReminder component.
+ */
 const LoginReminder = () => {
   return (
     <>
       <section className="LoginReminder">
         <div className="LoginReminder__title">
-		<h1>
-        Hello ! 👀 Rendez vous sur{" "}
-        <NavLink to="/" style={{ margin: "0 5px" }}>
-          l'onglet Accueil
-        </NavLink>{" "}
-        pour choisir votre profil
-      </h1>
-
+          <h1>
+            Hello! 👀 Go to{" "}
+            <NavLink to="/" style={{ margin: "0 5px" }}>
+              the Home tab
+            </NavLink>{" "}
+            to choose your profile.
+          </h1>
           <img src={logo} alt="logo" />
         </div>
       </section>

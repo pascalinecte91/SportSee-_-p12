@@ -3,11 +3,11 @@ import { PropTypes } from "prop-types";
 import { PieChart, Pie } from "recharts";
 
 /**
- * Composant RadarScore pour afficher un diagramme en secteurs (pie chart) représentant le score du jour.
+ * RadarScore component to display a pie chart representing the daily score.
  * @component
- * @param {Object} props - Les propriétés du composant.
- * @param {Object} props.dto - L'objet contenant les données du score.
- * @returns {*} Le composant RadarScore.
+ * @param {Object} props - The component props.
+ * @param {Object} props.dto - The object containing score data.
+ * @returns {*} The RadarScore component.
  */
 const RadarScore = ({ dto }) => {
   const todayScore = dto.data;
@@ -29,13 +29,13 @@ const RadarScore = ({ dto }) => {
           <Pie
             data={dataPie}
             dataKey="value"
-            startAngle={-170} // degré de départ
-            cx="50%" // position du centre
+            startAngle={-170} // starting degree
+            cx="50%" // center position
             cy="50%" //
-            endAngle={170} // degré de fin
-            innerRadius={80} // epaissseur du cercle
+            endAngle={170} // ending degree
+            innerRadius={80} // thickness of the circle
             outerRadius={90} //
-            fill="#ff0101" // couleur du cercle
+            fill="#ff0101" // circle color
           />
           <text x={20} y={50}>
             Score
@@ -43,17 +43,17 @@ const RadarScore = ({ dto }) => {
           <text x="41%" y="45%" fontSize="24px" fontWeight={900}>
             {todayScore * 100} %
             <tspan
-              x="36%" // position du texte
+              x="36%" // text position
               y="46%"
-              dy={20} // décalage du texte
+              dy={20} // text offset
               fontWeight={500}
               fontSize="16px"
               letterSpacing="0.6"
             >
-              de votre
+              of your
             </tspan>
             <tspan x="38%" y="46%" dy={40} fontSize="16px" fontWeight={500}>
-              objectif
+              goal
             </tspan>
           </text>
         </PieChart>
@@ -62,7 +62,7 @@ const RadarScore = ({ dto }) => {
   );
 };
 
-// Définition des types des propriétés du composant
+// Definition of the component's property types
 RadarScore.propTypes = {
   dto: PropTypes.object,
 };
