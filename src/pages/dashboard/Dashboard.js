@@ -1,6 +1,6 @@
 import ApiMockProvider from "dataProvider/ApiMockProvider";
 import ApiProvider from "dataProvider/ApiProvider";
-import {  useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 //components
 import BarChartWrapper from "Components/barChart/BarChartWrapper";
@@ -9,27 +9,27 @@ import RadarScore from "Components/radarScore/RadarScore";
 import RadarPerformance from "Components/radarPerformance/RadarPerformance";
 import Nutriment from "Components/nutriment/Nutriment";
 import LineChartAverage from "Components/lineChart/LineChartAverage";
+import { NavLink } from "react-router-dom";
 
+/**
+ * @Composant Dashboard représentant le tableau de bord.
+ */
+const Dashboard = () => {
 
-const Dashboard = (  ) => {
-
+  
   // Obtient l'ID d'utilisateur à partir de l'URL
-  const { userId } = useParams();
-  const { isDemo }= useParams();
-console.log("isDemo: ",isDemo);
-  //  let isDemo = true;
- const isDemoBooleen= isDemo?.toLocaleLowerCase() === "true";
-
-  // Indique si le mode démo est activé ou non
-  // let isDemo = true;
+  const { userId } = useParams();//useParams() est un Hook qui permet d'extraire les paramètres d'une URL.
+  const { isDemo } = useParams();
   console.log("isDemo: ", isDemo);
+  // Vérifie si l'application est en mode démo
+  const isDemoBooleen = isDemo?.toLocaleLowerCase() === "true";
+  //toLocaleLowerCase() est une méthode qui permet de convertir une chaîne de caractères en minuscules.
 
   let provider = isDemoBooleen ? new ApiMockProvider() : new ApiProvider();
 
-  console.log("provider: ",provider,"isDemo: ",isDemo,new ApiMockProvider(),new ApiProvider()
-  );
-
   // Variables d'état pour stocker les données récupérées de l'API
+
+  //useState() est un Hook qui permet d'ajouter l'état local à un composant fonctionnel.
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [barChartDto, setBarChartDto] = useState([]);
@@ -38,8 +38,13 @@ console.log("isDemo: ",isDemo);
   const [radarPerformanceDto, setRadarPerformanceDto] = useState(null);
   const [radarScoreDto, setRadarScoreDto] = useState(null);
 
-  // Fonction d'effet pour récupérer les données de l'API
+  /**
+   * @Fonction d'effet pour récupérer les données de l'API.
+   */
   useEffect(() => {
+    /**
+     * @Fonction asynchrone pour récupérer les données de l'API.
+     */
     async function getData() {
       try {
         // Récupérer les données de l'API en utilisant les fonctions de la classe `provider`
@@ -48,12 +53,11 @@ console.log("isDemo: ",isDemo);
         const barChartDto = await provider.getActivitiesByUserId(userId);
         const lineChartDto = await provider.getSessionsByUserId(userId);
         const nutrimentDto = await provider.getNutrimentByUserId(userId);
-        const radarPerformanceDto = await provider.getPerformanceByUserId(
-          userId
-        );
+        const radarPerformanceDto = await provider.getPerformanceByUserId(userId);
         const radarScoreDto = await provider.getScoreByUserId(userId);
 
-        // Mettre à jour les variables d'état avec les données récupérées
+        // Met à jour les variables d'état avec les données récupérées
+        
         setFirstName(firstName);
         setLastName(lastName);
         setBarChartDto(barChartDto);
@@ -61,12 +65,12 @@ console.log("isDemo: ",isDemo);
         setNutrimentDto(nutrimentDto);
         setRadarPerformanceDto(radarPerformanceDto);
         setRadarScoreDto(radarScoreDto);
-      } catch (error) {
+      } catch (error) {//catch() est une méthode qui permet de gérer les erreurs.
         console.error("Error fetching user data: ", error);
       }
     }
 
-    // Appeler la fonction getData pour récupérer les données de l'API
+ // Appelle la fonction pour récupérer les données de l'API
     getData();
   }, [userId]);
 

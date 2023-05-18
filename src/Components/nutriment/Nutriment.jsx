@@ -7,6 +7,7 @@ import { PropTypes } from "prop-types";
 
 /**
  * A React component that displays nutritional information.
+ * @component
  * @param {Object} props - The props object for the Nutriment component.
  * @param {Object} props.dto - An instance of the NutrimentDto class containing nutritional information.
  * @returns {JSX.Element} - The JSX element for the Nutriment component.
@@ -14,29 +15,22 @@ import { PropTypes } from "prop-types";
 
 const Nutriment = ({ dto }) => {
   return (
-    //fonction qui formate en string et en US  pour afficher le nombre avec des virgules pour separarer les milliers
-    // et minimumFractionDigits: 0, maximumFractionDigits: 0 pour afficher le nombre sans decimales
     <section className="feeding">
       <div className="feeding__nutri">
         <div className="feeding__calorie">
-          <img src={calories} /> {"calories"}{" "}
+          <img src={calories} alt="Calories" /> {"calories"}{" "}
           {dto.data.calorieCount.toLocaleString("en-US", {
             minimumFractionDigits: 0,
-            maximumFractionDigits: 0,
-          })}{" "}
-          kCal
+            maximumFractionDigits: 0,})}{" "}kCal
         </div>
         <div className="feeding__protein">
-          <img src={protein} />
-          {"protein"} {dto.data.proteinCount} g
+          <img src={protein} alt="Protein" />{"protein"} {dto.data.proteinCount} g
         </div>
         <div className="feeding__lipid">
-          <img src={lipid} />
-          {"lipid"} {dto.data.lipidCount} g
+          <img src={lipid} alt="Lipid" />{"lipid"} {dto.data.lipidCount} g
         </div>
         <div className="feeding__carbohydrate">
-          <img src={carbohydrate} />
-          {"carbohydrate"} {dto.data.carbohydrateCount} g
+          <img src={carbohydrate} alt="Carbohydrate" />{"carbohydrate"} {dto.data.carbohydrateCount} g
         </div>
       </div>
     </section>
@@ -45,6 +39,22 @@ const Nutriment = ({ dto }) => {
 
 /**
  * An instance of the NutrimentDto class containing nutritional information.
+ * @typedef {Object} NutrimentDto
+ * @property {number} calorieCount - The calorie count.
+ * @property {number} proteinCount - The protein count.
+ * @property {number} lipidCount - The lipid count.
+ * @property {number} carbohydrateCount - The carbohydrate count.
+ */
+
+/**
+ * @Props for the Nutriment component.
+ * @typedef {Object} NutrimentProps
+ * @property {NutrimentDto} dto - An instance of the NutrimentDto class containing nutritional information.
+ */
+
+/**
+ * @PropTypes for the Nutriment component.
+ * @type {NutrimentProps}
  */
 Nutriment.propTypes = {
   dto: PropTypes.object,

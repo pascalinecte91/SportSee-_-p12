@@ -3,14 +3,13 @@ import { PropTypes } from "prop-types";
 import { PieChart, Pie } from "recharts";
 
 /**
- *
- * @param {*} { dto }
- * @return {*}
- *
+ * Composant RadarScore pour afficher un diagramme en secteurs (pie chart) représentant le score du jour.
+ * @component
+ * @param {Object} props - Les propriétés du composant.
+ * @param {Object} props.dto - L'objet contenant les données du score.
+ * @returns {*} Le composant RadarScore.
  */
-
 const RadarScore = ({ dto }) => {
-  //console.log(dto); // data 0.12
   const todayScore = dto.data;
 
   const dataPie = [
@@ -63,7 +62,9 @@ const RadarScore = ({ dto }) => {
   );
 };
 
+// Définition des types des propriétés du composant
 RadarScore.propTypes = {
   dto: PropTypes.object,
 };
+
 export default RadarScore;

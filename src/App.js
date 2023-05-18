@@ -10,7 +10,9 @@ import Error from "pages/error/Error.js";
 import Navbar from "Components/navbar/Navbar";
 import VerticalSidebar from "Components/verticalSidebar/VerticalSidebar";
 
+
 import "./app.scss";
+import LoginReminder from "Components/loginReminder/LoginReminder.jsx";
 
 //! Routes and Links
 
@@ -26,6 +28,7 @@ const App = () => {
           <Route path="/setting/" element={<Setting />} />
           <Route path="/communaute/" element={<Communaute />} />
           <Route path="*" element={<Error />} />
+          <Route path="/login-reminder" element={<LoginReminder />} />
         </Routes>
       </section>
     </header>

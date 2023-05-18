@@ -1,5 +1,5 @@
 import React from "react";
-import { NavLink, useParams } from "react-router-dom";
+import { NavLink, useParams, useNavigate} from "react-router-dom";
 import logo from "assets/logo.png";
 
 /**
@@ -16,6 +16,8 @@ const Navbar = () => {
    * @type {number}
    */
    const { userID } = useParams();
+   const navigate = useNavigate();
+  
   /**
    * Array containing objects with name and uri for each navigation's link
    * @constant with 4 objects  with name and uri for each navigation
@@ -39,14 +41,20 @@ const Navbar = () => {
 
         {navItems.map((item, index) => (
           <NavLink
-            to={userID ? item.url + userID : item.url} // si userID existe alors on ajoute l'id sinon on ajoute rien
-            key={item.name + index} // key unique pour chaque item
-            className={(nav) =>
-              nav.isActive ? "nav_goToPage--active" : "nav_goToPage"
-            } // si la page est active alors on ajoute la classe nav_goToPage--active sinon on ajoute nav_goToPage
-          >
-            {item.name}
-          </NavLink>
+          to={userID ? item.url + userID : item.url}
+          key={item.name + index}
+          className={(nav) =>
+            nav.isActive ? "nav_goToPage--active" : "nav_goToPage"
+          }
+          onClick={(event) => {
+            if (item.name === "Profil") {
+              event.preventDefault();
+              navigate("/login-reminder");
+            }
+          }}
+        >
+          {item.name}
+        </NavLink>
         ))}
       </nav>
     </header>

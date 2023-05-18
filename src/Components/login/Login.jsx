@@ -12,9 +12,9 @@ import Switch from "Components/switch/Switch.jsx";
 
 const Login = () => {
   const [isDemo, setDemo] = useState(false);
-  console.log(isDemo);
+  //console.log(isDemo);
   const { userId } = useParams();
- 
+ console.log(isDemo);
  
   return (
     <section className="login">
@@ -27,14 +27,24 @@ const Login = () => {
       </header>
 
       <div className="login__wrapper">
-        <ul>
-          {USER_MAIN_DATA.map((user, index) => {
+      <ul>
+          {USER_MAIN_DATA.map((user) => {
             const userInfos = user.userInfos;
             const { firstName, lastName, age } = userInfos;
+            let emoji = null;//emoji est initialisé à null pour le switch entre api et mock
+            //si isDemo est vrai, on va chercher l'emoji correspondant à l'id de l'utilisateur
+            if (isDemo) {
+              if (user.id === 18) {
+                emoji = "👩🏼";
+              } else if (user.id === 12) {
+                emoji = "🕵️‍♂️";
+              }
+            }
             return (
               <li key={user.id}>
                 <NavLink to={`/dashboard/${user.id}/${isDemo}`}>
                   <div className="login__identity">
+                    <div className="login__emoji">{emoji}</div>
                     {`${firstName} ${lastName} `}
                     <p className="login__age">{`${age} ans`}</p>
                   </div>

@@ -2,8 +2,8 @@
   // le conteneur
   position: relative;
   display: inline-block;
-  width: 105px;
-  height: 39px;
+  width: 90px;// largeur du bouton
+  height: 39px;// hauteur du bouton
 }
 
 .slider {
@@ -12,7 +12,7 @@
   cursor: pointer;
   top: 0;
   left: 0;
-  right: 0;
+  right: -3px;
   bottom: 0;
   background-color: map-get($colors, blood);
   -webkit-transition: 0.4s;
@@ -22,10 +22,10 @@
 .slider:before {
   position: absolute;
   content: attr(data-off-text);
-  height: 37px;
-  width: 43px;
+  height: 35px;
+  width: 36px;
   left: 2px;
-  bottom: 1px;
+  bottom: 2px;
   background-color: map-get($colors, snow);
   -webkit-transition: 0.4s;
   transition: 0.4s;
@@ -38,7 +38,7 @@ input:checked + .slider {
 input:checked + .slider:before {
   -webkit-transform: translateX(50px);
   -ms-transform: translateX(42px);
-  transform: translateX(58px);
+  transform: translateX(54px);
 }
 
 /* Rounded sliders */
@@ -66,7 +66,7 @@ input:checked + .slider:before {
 .switch__label[data-on]:before {
   // le texte
   content: attr(data-on); //
-  margin-right: 5px;
+  // margin-right: 5px;
 }
 
 .switch__label[data-off]:after {

@@ -11,7 +11,7 @@ export const USER_MAIN_DATA = [
       calorieCount: 1930,
       proteinCount: 155,
       carbohydrateCount: 290,
-      lipidCount: 50,
+      lipidCount: 5000, //50 pour check api/ mock
     },
   },
   {
@@ -26,7 +26,7 @@ export const USER_MAIN_DATA = [
       calorieCount: 2500,
       proteinCount: 90,
       carbohydrateCount: 150,
-      lipidCount: 120,
+      lipidCount: 5000, //120 pour check api/ mock
     },
   },
 ];

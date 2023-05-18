@@ -5,29 +5,21 @@ import bike from "assets/bike.png";
 import weight from "assets/weight.png";
 
 /**
- * @component         : 	VerticalSidebar
- * @description 		  : 	To render the vertical sidebar component
- * @return {*}
+ * @Composant VerticalSidebar pour afficher la barre latérale verticale.
+ * @component
+ * @returns {*} Le composant VerticalSidebar.
  */
 const VerticalSidebar = () => {
   return (
     <section className="vertical__nav">
       <ul>
-        <li>
-          <img src={yoga} alt="Yoga" />
-        </li>
-        <li>
-          <img src={swimming} alt="Swimming" />
-        </li>
-        <li>
-          <img src={bike} alt="Bike" />
-        </li>
-        <li>
-          <img src={weight} alt="Weight" />
-        </li>
+        <li><img src={yoga} alt="Yoga" /></li>
+        <li><img src={swimming} alt="Swimming" /></li>
+        <li><img src={bike} alt="Bike" /></li>
+        <li><img src={weight} alt="Weight" /></li>
       </ul>
-
-      <span>© Copyright, SportSee {new Date().getFullYear()}</span>
+      {/* Copyright */}
+      <span>© SportSee {new Date().getFullYear()}</span>
     </section>
   );
 };

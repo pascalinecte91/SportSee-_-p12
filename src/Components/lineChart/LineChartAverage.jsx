@@ -55,15 +55,18 @@ const CustomTooltip = ({ active, payload }) => {
   if (active && payload && payload.length) {
     return (
       <div
-        style={{
-          background: "white",
-          fontSize: 10,
-          fontWeight: 500,
-          textAlign: "center",
-          padding: 10,
-          width: 50,
-          height: 30,
-        }}
+      style={{
+        background: "white",
+        fontSize: 10,
+        fontWeight: 500,
+        textAlign: "center",
+        padding: 10,
+        width: 50,
+        height: 30,
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+      }}
       >
         <p>{`${payload[0].value} min`}</p>
       </div>
