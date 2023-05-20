@@ -10,8 +10,8 @@ import { NavLink } from "react-router-dom";
 const LoginReminder = () => {
   return (
     <>
-      <section className="LoginReminder">
-        <div className="LoginReminder__title">
+      <section className="loginReminder">
+        <div className="loginReminder__title">
           <h1>
             Hello! 👀 Go to{" "}
             <NavLink to="/" style={{ margin: "0 5px" }}>

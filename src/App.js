@@ -9,8 +9,6 @@ import Error from "pages/error/Error.js";
 //components
 import Navbar from "Components/navbar/Navbar";
 import VerticalSidebar from "Components/verticalSidebar/VerticalSidebar";
-
-
 import "./app.scss";
 import LoginReminder from "Components/loginReminder/LoginReminder.jsx";
 

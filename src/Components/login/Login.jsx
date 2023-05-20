@@ -32,9 +32,9 @@ const Login = () => {
             if (isDemo) {
               // Set emoji based on user ID when in demo mode
               if (user.id === 18) {
-                emoji = "🏃‍♀️";
+                emoji = "👱🏼‍♀️";
               } else if (user.id === 12) {
-                emoji = "🏃‍♂️";
+                emoji = "👲";
               }
             }
             return (

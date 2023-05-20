@@ -114,7 +114,7 @@ class ApiMockProvider {
     );
     const userSessions = currentUser
       ? currentUser.sessions.map((session) => ({
-          day: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"][session.day - 1],
+          day: ["L", "M", "M", "J", "V", "S", "D"][session.day - 1],
           sessionLength: session.sessionLength,
         }))
       : [];

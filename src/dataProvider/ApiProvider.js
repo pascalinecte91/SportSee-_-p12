@@ -120,7 +120,7 @@ class ApiProvider {
 
         // Map data to include the day
         const sessionsWithDay = data.map((session) => ({
-          day: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"][session.day - 1],
+          day: ["L", "M", "M", "J", "V", "S", "D"][session.day - 1],
           sessionLength: session.sessionLength,
         }));
         return new LineChartDto(sessionsWithDay, "day", "sessionLength");
