@@ -1,6 +1,6 @@
 import React from "react";
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from "recharts";
-import { PropTypes } from "prop-types";
+import PropTypes  from "prop-types";
 
 /**
  * CustomTooltip component is used to display the tooltip when the user hovers over the graph.
@@ -125,8 +125,8 @@ const BarChartWrapper = ({ dto }) => {
 };
 
 CustomTooltip.propTypes = {
-  active: PropTypes.bool.isRequired,
-  payload: PropTypes.array.isRequired,
+  active: PropTypes.bool,
+  payload: PropTypes.array,
 };
 
 BarChartWrapper.propTypes = {

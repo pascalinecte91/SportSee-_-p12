@@ -1,15 +1,14 @@
 import ApiMockProvider from "dataProvider/ApiMockProvider";
 import ApiProvider from "dataProvider/ApiProvider";
 import { useParams } from "react-router-dom";
-import { useState, useEffect } from "react";
-// Components
+import React, { useState, useEffect } from "react";
 import BarChartWrapper from "Components/barChart/BarChartWrapper";
 import WelcomeMessage from "Components/welcome/WelcomeMessage";
 import RadarScore from "Components/radarScore/RadarScore";
 import RadarPerformance from "Components/radarPerformance/RadarPerformance";
 import Nutriment from "Components/nutriment/Nutriment";
 import LineChartAverage from "Components/lineChart/LineChartAverage";
-import { NavLink } from "react-router-dom";
+import Loader from "Components/loader/Loader.jsx";
 
 /**
  * Dashboard component representing the dashboard.
@@ -17,18 +16,23 @@ import { NavLink } from "react-router-dom";
  */
 const Dashboard = () => {
   // Get user ID from the URL
-  const { userId } = useParams(); // useParams() is a Hook that allows extracting parameters from a URL.
+  const { userId } = useParams();
   const { isDemo } = useParams();
+  const [isLoading, setIsLoading] = useState(true);
   console.log("isDemo: ", isDemo);
-  // Check if the application is in demo mode
-  const isDemoBooleen = isDemo?.toLocaleLowerCase() === "true";
-  // toLocaleLowerCase() is a method that converts a string to lowercase.
+  const isDemoBoolean = isDemo?.toLocaleLowerCase() === "true";
+  let provider = isDemoBoolean ? new ApiMockProvider() : new ApiProvider();
 
-  let provider = isDemoBooleen ? new ApiMockProvider() : new ApiProvider();
-
-  // State variables to store data fetched from the API
-
-  // useState() is a Hook that allows adding local state to a functional component.
+  /**
+   * State variables to store data fetched from the API.
+   * @type {string} firstName - The first name of the user.
+   * @type {string} lastName - The last name of the user.
+   * @type {Array} barChartDto - The data for the bar chart.
+   * @type {Object} lineChartDto - The data for the line chart.
+   * @type {Object} nutrimentDto - The data for the nutriment.
+   * @type {Object} radarPerformanceDto - The data for the radar performance.
+   * @type {Object} radarScoreDto - The data for the radar score.
+   */
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [barChartDto, setBarChartDto] = useState([]);
@@ -46,7 +50,6 @@ const Dashboard = () => {
      */
     async function getData() {
       try {
-        // Retrieve data from the API using the functions from the `provider` class
         const firstName = await provider.getUserNameByUserId(userId);
         const lastName = await provider.getUserLastNameByUserId(userId);
         const barChartDto = await provider.getActivitiesByUserId(userId);
@@ -55,7 +58,8 @@ const Dashboard = () => {
         const radarPerformanceDto = await provider.getPerformanceByUserId(userId);
         const radarScoreDto = await provider.getScoreByUserId(userId);
 
-        // Update state variables with the fetched data
+        // Simulate loading for 5 seconds
+        await new Promise((resolve) => setTimeout(resolve, 1000));
         setFirstName(firstName);
         setLastName(lastName);
         setBarChartDto(barChartDto);
@@ -63,35 +67,42 @@ const Dashboard = () => {
         setNutrimentDto(nutrimentDto);
         setRadarPerformanceDto(radarPerformanceDto);
         setRadarScoreDto(radarScoreDto);
+        setIsLoading(false);
       } catch (error) {
-        console.error("Error fetching user data: ", error);
+        setIsLoading(false);
       }
     }
 
-    // Call the function to fetch data from the API
+    // Call the function to fetch data from the
     getData();
   }, [userId]);
 
   return (
     <section className="dashboard">
-      <WelcomeMessage firstName={firstName} lastName={lastName} />
-      <aside className="dashboard__charts">
-        <article className="dashboard__chartsLinear">
-          <BarChartWrapper dto={barChartDto} />
-          <div className="dashboard__threeGraph">
-            <LineChartAverage dto={lineChartDto} />
-            {radarPerformanceDto && (
-              <RadarPerformance dto={radarPerformanceDto} />
-            )}
-            {radarScoreDto && <RadarScore dto={radarScoreDto} />}
-          </div>
-        </article>
-
-        <article className="dashboard__nutrients">
-          {nutrimentDto && <Nutriment dto={nutrimentDto} />}
-        </article>
-      </aside>
-    </section>
+  
+    {isLoading ? (
+      <Loader />
+    ) : (
+      <>
+        <WelcomeMessage firstName={firstName} lastName={lastName} />
+        <aside className="dashboard__charts">
+          <article className="dashboard__chartsLinear">
+            <BarChartWrapper dto={barChartDto} />
+            <div className="dashboard__threeGraph">
+              <LineChartAverage dto={lineChartDto} />
+              {radarPerformanceDto && (
+                <RadarPerformance dto={radarPerformanceDto} />
+              )}
+              {radarScoreDto && <RadarScore dto={radarScoreDto} />}
+            </div>
+          </article>
+          <article className="dashboard__nutrients">
+            {nutrimentDto && <Nutriment dto={nutrimentDto} />}
+          </article>
+        </aside>
+      </>
+    )}
+  </section>
   );
 };
 

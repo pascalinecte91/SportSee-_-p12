@@ -136,12 +136,13 @@ LineChartAverage.propTypes = {
 };
 
 CustomTooltip.propTypes = {
-  active: PropTypes.array.isRequired,
-  payload: PropTypes.array.isRequired,
+  active: PropTypes.bool,
+  payload: PropTypes.array,
 };
 
+
 CustomCursor.propTypes = {
-  points: PropTypes.array.isRequired,
+  points: PropTypes.array,
 };
 
 export default LineChartAverage;
