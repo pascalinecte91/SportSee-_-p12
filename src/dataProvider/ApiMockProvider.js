@@ -118,6 +118,7 @@ class ApiMockProvider {
           sessionLength: session.sessionLength,
         }))
       : [];
+      
     console.log(userSessions);
     return new LineChartDto(userSessions, "day", "sessionLength");
   }

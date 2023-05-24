@@ -93,13 +93,16 @@ const LineChartAverage = ({ dto }) => {
           <XAxis
             dataKey="day"
             dy={10}
+            dx={1}
             tickLine={false}
             axisLine={false}
+            interval={"preserveStartEnd"}
+            margin={{ left: 10, right: 10 }}
             tick={{
               fill: "white",
               opacity: "0.5",
               textAnchor: "middle",
-              fontSize: 15,
+              fontSize: 14,
             }}
           />
           <YAxis
