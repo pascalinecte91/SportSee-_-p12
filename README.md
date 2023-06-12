@@ -13,6 +13,10 @@ ___
 ![NodeJS](https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white)
 ![NPM](https://img.shields.io/badge/NPM-%23000000.svg?style=for-the-badge&logo=npm&logoColor=white)
 ![Recharts](https://img.shields.io/badge/Recharts-%23E34F26.svg?style=for-the-badge&logo=Recharts&logoColor=white)
+---
+
+## Project 12 OpenClassrooms , le switch pour API  ne fonctionnera pas si le backEnd sur le port 3000 n'est pas lancé
+---
 
 ## Prerequisites
 - [Node.js](https://nodejs.org/en/) version v18.14.0
