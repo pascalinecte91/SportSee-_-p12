@@ -9,7 +9,7 @@
   "editor.suggest.insertMode": "replace",
   "editor.acceptSuggestionOnCommitCharacter": false,
   "emmet.triggerExpansionOnTab": true,
-  "files.autoSave": "onFocusChange",
+  "files.autoSave": "afterDelay",
   "files.defaultLanguage": "javascript",
   "explorer.autoReveal": false,
   "explorer.confirmDelete": true,

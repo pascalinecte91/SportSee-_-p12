@@ -16,6 +16,7 @@ const BASE_URL = "http://localhost:3000/user/";
 class ApiProvider {
   constructor() {
     this.baseURL = BASE_URL;
+    console.log(this.baseURL);
   }
 
   /**
@@ -84,7 +85,8 @@ class ApiProvider {
    * @returns {Promise<BarChartDto>} - A promise that resolves with the activity data in the form of BarChartDto.
    */
   async getActivitiesByUserId(userId) {
-    console.log("Request URL: ", this.baseURL + userId + "/activity");
+    console.log("Request URL: ", this.baseURL  + userId + "/activity");
+
     return axios
       .get(this.baseURL + userId + "/activity")
       .then((response) => {
