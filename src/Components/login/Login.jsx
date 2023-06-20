@@ -18,7 +18,7 @@ const Login = () => {
       <header className="login__header">
         <picture>
           <img src={logo} alt="logo Sportsee" />
-          <h1>Choose and log in</h1>
+          <h1>Choisis le mode de Démo</h1>
         </picture>
         <Switch setDemo={setDemo} isDemo={isDemo} />
       </header>
@@ -43,7 +43,7 @@ const Login = () => {
                   <div className="login__identity">
                     <div className="login__emoji">{emoji}</div>
                     {`${firstName} ${lastName} `}
-                    <p className="login__age">{`${age} years old`}</p>
+                    <p className="login__age">{`${age} ans`}</p>
                   </div>
                 </NavLink>
               </li>

@@ -50,10 +50,10 @@ const RadarScore = ({ dto }) => {
               fontSize="16px"
               letterSpacing="0.6"
             >
-              of your
+              de votre
             </tspan>
             <tspan x="38%" y="46%" dy={40} fontSize="16px" fontWeight={500}>
-              goal
+              score
             </tspan>
           </text>
         </PieChart>

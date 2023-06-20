@@ -20,8 +20,11 @@ const Dashboard = () => {
   const { isDemo } = useParams();
   const [isLoading, setIsLoading] = useState(true);
   console.log("isDemo: ", isDemo);
+  // si la var est = à true, une fois convertie en minuscule avec toLocaleLowerCase()
+  // si isDemo est = à true, alors isDemoBoolean est bien à true , sino, false
   const isDemoBoolean = isDemo?.toLocaleLowerCase() === "true";
   let provider = isDemoBoolean ? new ApiMockProvider() : new ApiProvider();
+
 
   /**
    * State variables to store data fetched from the API.

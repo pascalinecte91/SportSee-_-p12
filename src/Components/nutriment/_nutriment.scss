@@ -17,6 +17,20 @@
  		color: rgba(40, 45, 48, 1);
  		border-radius: 5px;
  	}
+	 &__column {
+		display: flex;
+		flex-direction: column-reverse;
+		line-height: 25px;
+	
+		
+	}
+	&__content {
+		font-weight: bold;
+		
+	}
+	&__text {
+		font-size: 15px;
+	}
 
  	img {
  		height: 64px;
@@ -25,6 +39,7 @@
 
  	&__nutri {
  		margin-bottom: 83px;
+		
  	}
 
  }

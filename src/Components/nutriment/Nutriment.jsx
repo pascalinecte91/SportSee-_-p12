@@ -18,24 +18,46 @@ const Nutriment = ({ dto }) => {
     <section className="feeding">
       <div className="feeding__nutri">
         <div className="feeding__calorie">
-          <img src={calories} alt="Calories" /> {"calories"}{" "}
-          {dto.data.calorieCount.toLocaleString("en-US", {
-            minimumFractionDigits: 0,
-            maximumFractionDigits: 0,
-          })}{" "}
-          kCal
+          <img src={calories} alt="Calories" />
+          <div className="feeding__column">
+            <span className="feeding__text">{"Calories"}</span>{" "}
+            <div className="feeding__content">
+              {dto.data.calorieCount.toLocaleString("en-US", {
+                minimumFractionDigits: 0,
+                maximumFractionDigits: 0,
+              })}{" "}
+              kCal
+            </div>
+          </div>
         </div>
+
         <div className="feeding__protein">
           <img src={protein} alt="Protein" />
-          {"protein"} {dto.data.proteinCount} g
+          <div className="feeding__column">
+          <span className="feeding__text">{"Protein"}</span>{" "}
+          <div className="feeding__content">
+          {dto.data.proteinCount} g
+        </div>
+        </div>
         </div>
         <div className="feeding__lipid">
           <img src={lipid} alt="Lipid" />
-          {"lipid"} {dto.data.lipidCount} g
+          <div className="feeding__column">
+          <span className="feeding__text">{"Lipid"}</span>{" "}
+          <div className="feeding__content">
+          {dto.data.lipidCount} g
         </div>
+        </div>
+        </div>
+       
         <div className="feeding__carbohydrate">
           <img src={carbohydrate} alt="Carbohydrate" />
-          {"carbohydrate"} {dto.data.carbohydrateCount} g
+          <div className="feeding__column">
+          <span className="feeding__text">{"Carbohydrate"}</span>{" "}
+          <div className="feeding__content">
+          {dto.data.carbohydrateCount} g
+        </div>
+        </div>
         </div>
       </div>
     </section>
